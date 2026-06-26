@@ -335,7 +335,6 @@ function addTree(){
 }
 function buildCastle(){
 
-  // Four towers
   const towerPositions = [
     [-8, -8],
     [8, -8],
@@ -360,7 +359,6 @@ function buildCastle(){
 
   });
 
-  // Main castle building
   for(let x = -4; x <= 4; x += 2){
     for(let z = -4; z <= 4; z += 2){
       for(let y = 0; y < 3; y++){
@@ -374,11 +372,72 @@ function buildCastle(){
 
         scene.add(block);
         blocks.push(block);
-        checkBadge();
       }
     }
   }
+
+  checkBadge();
 }
+
+function saveWorld(){
+
+  const worldData = [];
+
+  blocks.forEach(block => {
+
+    worldData.push({
+      x: block.position.x,
+      y: block.position.y,
+      z: block.position.z,
+      color: block.material.color.getHex()
+    });
+
+  });
+
+  const dataStr = JSON.stringify(worldData);
+
+  const blob = new Blob([dataStr], {type:'application/json'});
+
+  const link = document.createElement('a');
+  link.href = URL.createObjectURL(blob);
+  link.download = 'bobwarts-world.json';
+  link.click();
+}
+
+document.getElementById('loadFile').addEventListener('change', function(event){
+
+  const file = event.target.files[0];
+
+  if(!file) return;
+
+  const reader = new FileReader();
+
+  reader.onload = function(e){
+
+    resetWorld();
+
+    const worldData = JSON.parse(e.target.result);
+
+    worldData.forEach(data => {
+
+      const block = new THREE.Mesh(
+        new THREE.BoxGeometry(),
+        new THREE.MeshLambertMaterial({color:data.color})
+      );
+
+      block.position.set(data.x, data.y, data.z);
+
+      scene.add(block);
+      blocks.push(block);
+
+    });
+
+    checkBadge();
+  };
+
+  reader.readAsText(file);
+
+});
   
 function checkBadge(){
 
