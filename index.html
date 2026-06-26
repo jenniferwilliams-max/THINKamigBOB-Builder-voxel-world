@@ -141,6 +141,30 @@ document.addEventListener('click', (event)=>{
   }
 
 });
+document.addEventListener('contextmenu', (event)=>{
+
+  event.preventDefault();
+
+  mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+  mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+
+  raycaster.setFromCamera(mouse, camera);
+
+  const intersects = raycaster.intersectObjects(blocks);
+
+  if(intersects.length > 0){
+
+    const blockToRemove = intersects[0].object;
+
+    scene.remove(blockToRemove);
+
+    const index = blocks.indexOf(blockToRemove);
+    if(index > -1){
+      blocks.splice(index, 1);
+    }
+  }
+
+});
   function animate(){
   requestAnimationFrame(animate);
   renderer.render(scene,camera);
