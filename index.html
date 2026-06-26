@@ -99,23 +99,24 @@ document.addEventListener('mousemove', (event)=>{
   camera.lookAt(0,0,0);
 
 });
-
 function animate(){
-
   requestAnimationFrame(animate);
-
-  angle += 0.003;
-
-  camera.position.x = Math.sin(angle) * 20;
-  camera.position.z = Math.cos(angle) * 20;
-
-  camera.lookAt(0,0,0);
-
   renderer.render(scene,camera);
 }
-function animate(){
 
-  requestAnimationFrame(animate);
+animate();
 
-  renderer.render(scene,camera);
-}
+window.addEventListener('resize', ()=>{
+  camera.aspect = window.innerWidth/window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+});
+</script>
+</body>
+</html>
+camera.position.set(0,8,15);
+camera.lookAt(0,0,0);
+
+let angle = 0;
+let mouseX = 0;
+let mouseY = 0;
