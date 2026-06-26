@@ -30,7 +30,15 @@
 <body>
 <div id="info">
   <h2>🏰 Bobwarts Build World</h2>
-  <p><b>Mission:</b> Build something magical!</p>
+<p><b>Mission:</b> Build a Wizard Castle!</p>
+
+<p>⭐ Challenge:</p>
+
+<ul>
+  <li>Add 4 towers</li>
+  <li>Create a grand entrance</li>
+  <li>Build a dragon perch</li>
+</ul>
   <p>Use your mouse to look around.</p>
 </div>
 
@@ -77,6 +85,20 @@ scene.add(ambient);
 
 camera.position.set(0,8,15);
 let angle = 0;
+let mouseX = 0;
+let mouseY = 0;
+
+document.addEventListener('mousemove', (event)=>{
+
+  mouseX = (event.clientX / window.innerWidth - 0.5) * 30;
+  mouseY = (event.clientY / window.innerHeight - 0.5) * 10;
+
+  camera.position.x = mouseX;
+  camera.position.y = 8 - mouseY;
+
+  camera.lookAt(0,0,0);
+
+});
 
 function animate(){
 
@@ -91,14 +113,9 @@ function animate(){
 
   renderer.render(scene,camera);
 }
+function animate(){
 
-animate();
+  requestAnimationFrame(animate);
 
-window.addEventListener('resize', ()=>{
-  camera.aspect = window.innerWidth/window.innerHeight;
-  camera.updateProjectionMatrix();
-  renderer.setSize(window.innerWidth, window.innerHeight);
-});
-</script>
-</body>
-</html>
+  renderer.render(scene,camera);
+}
