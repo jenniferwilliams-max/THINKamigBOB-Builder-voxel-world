@@ -461,7 +461,6 @@ document.addEventListener('mousemove', (event)=>{
 
     previousMouseX = event.clientX;
 
-    updateCamera();
   }
 });
 
@@ -469,6 +468,36 @@ updateCamera();
 
 // STOP ADDING HERE
 
+// Two-finger touchpad zoom (Chromebooks)
+
+document.addEventListener('wheel', (event) => {
+
+  // Prevent page scrolling
+  event.preventDefault();
+
+  // Scroll up = zoom in
+  if(event.deltaY < 0){
+    cameraDistance -= 0.5;
+  }
+
+  // Scroll down = zoom out
+  if(event.deltaY > 0){
+    cameraDistance += 0.5;
+  }
+
+  // Limit zoom range
+  if(cameraDistance < 6){
+    cameraDistance = 6;
+  }
+
+  if(cameraDistance > 50){
+    cameraDistance = 50;
+  }
+
+  updateCamera();
+
+}, { passive: false });
+  
 const raycaster = new THREE.Raycaster();
 const mouse = new THREE.Vector2();
 
