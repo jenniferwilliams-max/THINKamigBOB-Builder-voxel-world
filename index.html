@@ -107,6 +107,7 @@ Choose a world to begin your adventure.
 <button onclick="addRocks()">🪨 Add Rocks</button>
 <button onclick="addBuilding()">🏢 Add Building</button>
 <button onclick="addPortal()">✨ Add Magic Portal</button>
+<button onclick="addVolcano()">🌋 Add Volcano</button>  
  
 <input type="file" id="loadFile" style="display:none" accept=".json">
 <p>Use W A S D keys to move.</p>
@@ -565,6 +566,48 @@ function addPortal(){
     scene.add(magic);
     blocks.push(magic);
   }
+
+  checkBadge();
+}
+
+function addVolcano(){
+
+  const centerX = -6 + Math.random() * 12;
+  const centerZ = -6 + Math.random() * 12;
+
+  // Volcano base
+  for(let y = 0; y < 4; y++){
+
+    for(let x = -2; x <= 2; x += 2){
+      for(let z = -2; z <= 2; z += 2){
+
+        const rock = new THREE.Mesh(
+          new THREE.BoxGeometry(),
+          new THREE.MeshLambertMaterial({color:0x555555})
+        );
+
+        rock.position.set(
+          centerX + x * (1 - y * 0.2),
+          y,
+          centerZ + z * (1 - y * 0.2)
+        );
+
+        scene.add(rock);
+        blocks.push(rock);
+      }
+    }
+  }
+
+  // Lava opening at top
+  const lava = new THREE.Mesh(
+    new THREE.BoxGeometry(2, 1, 2),
+    new THREE.MeshLambertMaterial({color:0xFF4500})
+  );
+
+  lava.position.set(centerX, 4, centerZ);
+
+  scene.add(lava);
+  blocks.push(lava);
 
   checkBadge();
 }
