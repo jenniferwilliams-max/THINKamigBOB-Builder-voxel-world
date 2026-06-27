@@ -89,7 +89,8 @@ select {
 <button onclick="buildCastle()">🏰 Build Castle</button>
 <button onclick="buildPlayground()">🛝 Build Playground</button>  
 <button onclick="buildHabitat()">🌳 Build Habitat</button>
-  <button onclick="buildDragonLair()">🐉 Dragon Lair</button>
+<button onclick="buildDragonLair()">🐉 Dragon Lair</button>
+<button onclick="buildFutureCity()">🏙️ Future City</button>
 
 <input type="file" id="loadFile" style="display:none" accept=".json">
 <p>Use W A S D keys to move.</p>
@@ -419,16 +420,16 @@ document.getElementById("worldTitle").innerHTML =
   "🏰 Bobwarts Castle Builder 🏰";
 
 document.getElementById("challenge1").innerHTML =
-  "Build 4 castle towers";
+  "Template includes: A castle foundation";
 
 document.getElementById("challenge2").innerHTML =
-  "Create walls and a grand entrance";
+  "Build 4 towers and castle walls";
 
 document.getElementById("challenge3").innerHTML =
-  "Add a dragon perch or magical feature";
+  "Add a grand entrance and magical features";
 
-  document.getElementById("challenge4").innerHTML =
-  "Reset the world and try a brand-new castle design";
+document.getElementById("challenge4").innerHTML =
+  "Reset the world and create a completely new castle";
 
 document.getElementById("moreChallenge").innerHTML =
   "Add windows, roof blocks, crystals, and a magical hidden room.";
@@ -474,16 +475,16 @@ for(let x = -4; x <= 4; x += 2){
   resetWorld();
 
 document.getElementById("challenge1").innerHTML =
-  "Build monkey bars";
+  "Template includes: A slide and swing set";
 
 document.getElementById("challenge2").innerHTML =
-  "Add a bigger, fancier slide";
+  "Build monkey bars and add a bigger, fancier slide";
 
 document.getElementById("challenge3").innerHTML =
-  "Create one new playground feature";
+  "Add at least one new playground feature";
 
 document.getElementById("challenge4").innerHTML =
-  "Reset the world and try a brand-new playground design";
+  "Reset the world and design a completely new playground";
 
 document.getElementById("moreChallenge").innerHTML =
   "Add safety features, signs, lights, colors, and a special Bobwarts magical area.";
@@ -647,21 +648,21 @@ function buildHabitat(){
   document.getElementById("missionText").innerHTML =
     "<b>Mission:</b> Create a magical creature habitat!";
 
-  document.getElementById("challenge1").innerHTML =
-    "Build a safe shelter";
+document.getElementById("challenge1").innerHTML =
+  "Template includes: Trees, water, and a shelter";
 
-  document.getElementById("challenge2").innerHTML =
-    "Add trees, water, and food areas";
+document.getElementById("challenge2").innerHTML =
+  "Build additional homes and creature areas";
 
-  document.getElementById("challenge3").innerHTML =
-    "Create a special magical feature";
+document.getElementById("challenge3").innerHTML =
+  "Add magical features and decorations";
 
-  document.getElementById("challenge4").innerHTML =
-    "Reset the world and try a brand-new habitat design";
+document.getElementById("challenge4").innerHTML =
+  "Reset the world and create a new habitat";
 
-  document.getElementById("moreChallenge").innerHTML =
-    "Add paths, hiding places, crystals, signs, and different zones for your creature.";
-
+document.getElementById("moreChallenge").innerHTML =
+  "Create different habitat zones, add bridges, caves, waterfalls, or design a habitat for a magical creature.";
+  
   // Trees
   addTree();
   addTree();
@@ -707,20 +708,20 @@ function buildDragonLair(){
   document.getElementById("missionText").innerHTML =
     "<b>Mission:</b> Design a home for a magical dragon!";
 
-  document.getElementById("challenge1").innerHTML =
-    "Build a dragon cave or nest";
+document.getElementById("challenge1").innerHTML =
+  "Template includes: Lava, crystals, and a cave starter";
 
-  document.getElementById("challenge2").innerHTML =
-    "Add treasure or magical crystals";
+document.getElementById("challenge2").innerHTML =
+  "Build a dragon nest and resting area";
 
-  document.getElementById("challenge3").innerHTML =
-    "Create a place for dragons to fly and rest";
+document.getElementById("challenge3").innerHTML =
+  "Add treasure and magical dragon features";
 
-  document.getElementById("challenge4").innerHTML =
-    "Reset the world and design a different dragon sanctuary";
+document.getElementById("challenge4").innerHTML =
+  "Reset the world and create a new dragon sanctuary";
 
-  document.getElementById("moreChallenge").innerHTML =
-    "Add lava, waterfalls, towers, bridges, or a dragon training arena.";
+document.getElementById("moreChallenge").innerHTML =
+  "Add waterfalls, bridges, towers, flying platforms, or create homes for multiple dragons.";
 
   // Lava pool
   for(let x = -4; x <= 0; x += 2){
@@ -779,6 +780,90 @@ function buildDragonLair(){
       blocks.push(stone);
     }
   }
+
+  checkBadge();
+}
+
+function buildFutureCity(){
+
+  resetWorld();
+
+  document.getElementById("worldTitle").innerHTML =
+    "🏙️ Bobwarts Future City Builder 🏙️";
+
+  document.getElementById("missionText").innerHTML =
+    "<b>Mission:</b> Design a city of the future!";
+
+  document.getElementById("challenge1").innerHTML =
+    "Build at least 3 tall buildings";
+
+  document.getElementById("challenge2").innerHTML =
+    "Add roads, paths, or transportation";
+
+  document.getElementById("challenge3").innerHTML =
+    "Create one clean energy feature";
+
+  document.getElementById("challenge4").innerHTML =
+    "Reset the world and try a brand-new city design";
+
+  document.getElementById("moreChallenge").innerHTML =
+    "Add parks, water systems, lights, bridges, or a special Bobwarts technology tower.";
+
+  // Tall buildings
+  const buildingSpots = [
+    [-6, -4],
+    [0, -4],
+    [6, -4]
+  ];
+
+  buildingSpots.forEach(spot => {
+    for(let y = 0; y < 6; y++){
+      const building = new THREE.Mesh(
+        new THREE.BoxGeometry(),
+        new THREE.MeshLambertMaterial({color:0x808080})
+      );
+
+      building.position.set(spot[0], y, spot[1]);
+      scene.add(building);
+      blocks.push(building);
+    }
+  });
+
+  // Road
+  for(let x = -10; x <= 10; x += 2){
+    const road = new THREE.Mesh(
+      new THREE.BoxGeometry(),
+      new THREE.MeshLambertMaterial({color:0x222222})
+    );
+
+    road.position.set(x, 0, 4);
+    scene.add(road);
+    blocks.push(road);
+  }
+
+  // Park
+  for(let x = -8; x <= -4; x += 2){
+    for(let z = 6; z <= 10; z += 2){
+      const grass = new THREE.Mesh(
+        new THREE.BoxGeometry(),
+        new THREE.MeshLambertMaterial({color:0x228B22})
+      );
+
+      grass.position.set(x, 0, z);
+      scene.add(grass);
+      blocks.push(grass);
+    }
+  }
+
+  // Solar energy feature
+  const solar = new THREE.Mesh(
+    new THREE.BoxGeometry(4, 0.3, 2),
+    new THREE.MeshLambertMaterial({color:0x1E90FF})
+  );
+
+  solar.position.set(6, 1, 8);
+  scene.add(solar);
+  blocks.push(solar);
 
   checkBadge();
 }
