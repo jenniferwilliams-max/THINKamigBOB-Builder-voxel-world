@@ -160,7 +160,6 @@ Choose a world to begin your adventure.
 </div>
   
 <input type="file" id="loadFile" style="display:none" accept=".json">
-<p>Use W A S D keys to move.</p>
 
 <h2>🏰 Bobwarts Build World</h2>
                             
@@ -405,11 +404,6 @@ checkBadge();
 function animate(){
 
   requestAnimationFrame(animate);
-
-  if(moveForward) camera.position.z -= 0.2;
-  if(moveBackward) camera.position.z += 0.2;
-  if(moveLeft) camera.position.x -= 0.2;
-  if(moveRight) camera.position.x += 0.2;
 
   camera.lookAt(0,0,0);
 
