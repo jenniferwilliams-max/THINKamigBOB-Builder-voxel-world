@@ -105,6 +105,7 @@ Choose a world to begin your adventure.
 <button onclick="addTree()">🌲 Add Tree</button>
 <button onclick="addPond()">🌊 Add Pond</button>
 <button onclick="addRocks()">🪨 Add Rocks</button>
+<button onclick="addBuilding()">🏢 Add Building</button>
  
 <input type="file" id="loadFile" style="display:none" accept=".json">
 <p>Use W A S D keys to move.</p>
@@ -474,6 +475,29 @@ function addRocks(){
 
   checkBadge();
 }
+
+function addBuilding(){
+
+  const x = -8 + Math.random() * 16;
+  const z = -8 + Math.random() * 16;
+
+  const height = 4 + Math.floor(Math.random() * 4);
+
+  for(let y = 0; y < height; y++){
+
+    const building = new THREE.Mesh(
+      new THREE.BoxGeometry(),
+      new THREE.MeshLambertMaterial({color:0x808080})
+    );
+
+    building.position.set(x, y, z);
+
+    scene.add(building);
+    blocks.push(building);
+  }
+
+  checkBadge();
+}  
   
 function buildCastle(){
 
