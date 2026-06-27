@@ -423,8 +423,8 @@ let isDragging = false;
 let previousMouseX = 0;
 let mouseMoved = false;
 let cameraAngle = 0;
-let cameraDistance = 18;
-let cameraHeight = 8;
+let cameraDistance = 24;
+let cameraHeight = 10;
 
 function updateCamera(){
 
@@ -1254,11 +1254,11 @@ animate();
 
 function setView(view){
 
-  if(view === "home"){
-    cameraAngle = 0;
-    cameraDistance = 18;
-    cameraHeight = 8;
-  }
+if(view === "home"){
+  cameraAngle = 0;
+  cameraDistance = 24;
+  cameraHeight = 10;
+}
 
   if(view === "top"){
     cameraAngle = 0;
