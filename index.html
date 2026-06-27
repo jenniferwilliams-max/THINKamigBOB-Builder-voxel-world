@@ -273,6 +273,7 @@ camera.lookAt(0, 0, 0);
 
 let isDragging = false;
 let previousMouseX = 0;
+let mouseMoved = false;
 let cameraAngle = 0;
 let cameraDistance = 18;
 let cameraHeight = 8;
@@ -292,6 +293,7 @@ function updateCamera(){
 
 document.addEventListener('mousedown', (event)=>{
   isDragging = true;
+  mouseMoved = false;
   previousMouseX = event.clientX;
 });
 
@@ -307,6 +309,7 @@ document.addEventListener('mousemove', (event)=>{
       event.clientX - previousMouseX;
 
     cameraAngle += changeX * 0.01;
+    mouseMoved = true;
 
     previousMouseX = event.clientX;
 
@@ -322,6 +325,8 @@ const raycaster = new THREE.Raycaster();
 const mouse = new THREE.Vector2();
 
 document.addEventListener('click', (event)=>{
+
+  if(mouseMoved) return;
 
   mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
   mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
