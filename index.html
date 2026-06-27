@@ -69,6 +69,16 @@ select {
 
   box-shadow: 0 0 15px gold;
 }   
+
+#starterWorlds{
+  display:block;
+  margin-top:8px;
+}
+
+#toolbox{
+  display:block;
+  margin-top:8px;
+}
     
   </style>
 </head>
@@ -97,15 +107,25 @@ Choose a world to begin your adventure.
 <button onclick="saveImage()">📸 Save Screenshot</button>
 <button onclick="document.getElementById('loadFile').click()">📂 Load World</button>
 <button onclick="resetWorld()">🔄 Reset World</button>
+
+<button onclick="toggleStarterWorlds()">
+🌍 Bobwarts Starter Worlds
+</button>
+
+<div id="starterWorlds">  
+  
 <button onclick="buildCastle()">🏰 Build Castle</button>
 <button onclick="buildPlayground()">🛝 Build Playground</button>  
 <button onclick="buildHabitat()">🌳 Build Habitat</button>
 <button onclick="buildDragonLair()">🐉 Dragon Lair</button>
 <button onclick="buildFutureCity()">🏙️ Future City</button>
+  
+</div>  
 
 <button onclick="toggleToolbox()">🧰 Builder Toolbox</button>
 
-<div id="toolboxSection">  
+<div id="toolbox">
+  
 <button onclick="addTree()">🌲 Add Tree</button>
 <button onclick="addPond()">🌊 Add Pond</button>
 <button onclick="addRocks()">🪨 Add Rocks</button>
@@ -114,7 +134,21 @@ Choose a world to begin your adventure.
 <button onclick="addVolcano()">🌋 Add Volcano</button>  
 <button onclick="addRainbowBridge()">🌈 Add Rainbow Bridge</button>
 <button onclick="addCrystalCluster()">🔮 Add Crystal Cluster</button>
+  
 </div>
+
+function toggleToolbox(){
+
+  const section =
+    document.getElementById("toolbox");
+
+  if(section.style.display === "none"){
+    section.style.display = "block";
+  } else {
+    section.style.display = "none";
+  }
+
+}
   
 <input type="file" id="loadFile" style="display:none" accept=".json">
 <p>Use W A S D keys to move.</p>
@@ -1215,6 +1249,19 @@ function checkBadge(){
 checkBadge();
 animate(); 
 
+function toggleStarterWorlds(){
+
+  const section =
+    document.getElementById("starterWorlds");
+
+  if(section.style.display === "none"){
+    section.style.display = "block";
+  } else {
+    section.style.display = "none";
+  }
+
+}
+  
 window.addEventListener('resize', ()=>{
   camera.aspect = window.innerWidth/window.innerHeight;
   camera.updateProjectionMatrix();
