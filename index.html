@@ -136,47 +136,80 @@
 
 <button onclick="showDirections()">
 ❓ How to Play
-</button>  
+</button>
 
-  <p style="font-size:12px; margin-top:0;">
-    Choose a world to begin your adventure.
-  </p>
+<p style="font-size:12px; margin-top:0;">
+  Choose a world to begin your adventure.
+</p>
 
+<button id="starterButton" onclick="toggleStarterWorlds()">
+  🌍 Bobwarts Starter Worlds ▼
+</button>
+
+<div id="starterWorlds">
+  <button onclick="buildCastle()">🏰 Build Castle</button>
+  <button onclick="buildPlayground()">🛝 Build Playground</button>
+  <button onclick="buildHabitat()">🌳 Build Habitat</button>
+  <button onclick="buildDragonLair()">🐉 Dragon Lair</button>
+  <button onclick="buildFutureCity()">🏙️ Future City</button>
+</div>
+
+<button id="toolboxButton" onclick="toggleToolbox()">
+  🧰 Builder Toolbox ▶
+</button>
+
+<div id="toolbox">
+  <button onclick="expandWorld()">🌎 Expand Building Space</button>
+  <button onclick="addTree()">🌲 Add Tree</button>
+  <button onclick="addPond()">🌊 Add Pond</button>
+  <button onclick="addRocks()">🪨 Add Rocks</button>
+  <button onclick="addBuilding()">🏢 Add Building</button>
+  <button onclick="addPortal()">✨ Add Magic Portal</button>
+  <button onclick="addVolcano()">🌋 Add Volcano</button>
+  <button onclick="addRainbowBridge()">🌈 Add Rainbow Bridge</button>
+  <button onclick="addCrystalCluster()">🔮 Add Crystal Cluster</button>
+</div>
+
+<p><b>🎨 Choose Your Building Block:</b></p>
+
+<select id="blockColor">
+  <option value="0x654321">🟫 Door Brown</option>
+  <option value="0x87CEFA">🟦 Window Blue</option>
+  <option value="0x222222">⬛ Roof Black</option>
+  <option value="0xcccccc">⬜ Stone Gray</option>
+  <option value="0x8B4513">🟫 Wood Brown</option>
+  <option value="0xFFD700">🟨 Gold</option>
+  <option value="0xB22222">🟥 Brick Red</option>
+  <option value="0x228B22">🟩 Forest Green</option>
+  <option value="0x6A0DAD">🟪 Wizard Purple</option>
+  <option value="0xFFFFFF">⬜ Snow</option>
+  <option value="0x000000">⬛ Obsidian</option>
+  <option value="0x1E90FF">🟦 Water</option>
+  <option value="0xFFA500">🟧 Lava</option>
+  <option value="0x808080">⬜ Stone Brick</option>
+  <option value="0x00FFFF">🩵 Crystal Cyan</option>
+  <option value="0xFF00FF">😈 Magic Magenta</option>
+  <option value="0x7FFFD4">🧃 Glow Crystal</option>
+  <option value="0x9400D3">🔮 Dark Magic</option>
+  <option value="0xF5F5DC">🌕 Moonstone</option>
+  <option value="0xADFF2F">🍋‍🟩 Potion Green</option>
+</select>
+
+<button id="toolsButton" onclick="toggleTools()">
+  ⚙️ Building Tools ▶
+</button>
+
+<div id="buildingTools" style="display:none;">
   <button onclick="saveWorld()">💾 Save World</button>
   <button onclick="saveImage()">📸 Save Screenshot</button>
   <button onclick="document.getElementById('loadFile').click()">📂 Load World</button>
   <button onclick="resetWorld()">🔄 Reset World</button>
+</div>
 
-  <button id="starterButton" onclick="toggleStarterWorlds()">
-    🌍 Bobwarts Starter Worlds ▼
-  </button>
-
-  <div id="starterWorlds">
-    <button onclick="buildCastle()">🏰 Build Castle</button>
-    <button onclick="buildPlayground()">🛝 Build Playground</button>
-    <button onclick="buildHabitat()">🌳 Build Habitat</button>
-    <button onclick="buildDragonLair()">🐉 Dragon Lair</button>
-    <button onclick="buildFutureCity()">🏙️ Future City</button>
-  </div>
-
-  <button id="toolboxButton" onclick="toggleToolbox()">
-    🧰 Builder Toolbox ▶
-  </button>
-
-  <div id="toolbox">
-    <button onclick="expandWorld()">🌎 Expand Building Space</button>
-    <button onclick="addTree()">🌲 Add Tree</button>
-    <button onclick="addPond()">🌊 Add Pond</button>
-    <button onclick="addRocks()">🪨 Add Rocks</button>
-    <button onclick="addBuilding()">🏢 Add Building</button>
-    <button onclick="addPortal()">✨ Add Magic Portal</button>
-    <button onclick="addVolcano()">🌋 Add Volcano</button>
-    <button onclick="addRainbowBridge()">🌈 Add Rainbow Bridge</button>
-    <button onclick="addCrystalCluster()">🔮 Add Crystal Cluster</button>
-  </div>
-
-  <input type="file" id="loadFile" style="display:none" accept=".json">
-
+<input type="file" id="loadFile"
+       style="display:none"
+       accept=".json">
+  
   <h2>🏰 Bobwarts Build World</h2>
 
   <p id="missionText">
@@ -1301,9 +1334,33 @@ function toggleToolbox(){
   }
 }
 
+function toggleTools(){
+
+  const section =
+    document.getElementById("buildingTools");
+
+  const button =
+    document.getElementById("toolsButton");
+
+  if(section.style.display === "none"){
+
+    section.style.display = "block";
+
+    button.innerHTML =
+      "⚙️ Building Tools ▼";
+
+  } else {
+
+    section.style.display = "none";
+
+    button.innerHTML =
+      "⚙️ Building Tools ▶";
+  }
+}
+
 checkBadge();
 animate();
-
+  
 function setView(view){
 
 if(view === "home"){
