@@ -67,6 +67,20 @@
       width: 100%;
     }
 
+    .viewButton {
+  background: #1E90FF;
+  color: white;
+  border: 2px solid #87CEFA;
+  width: 30%;
+  font-size: 14px;
+  font-weight: bold;
+  margin: 3px;
+}
+
+.viewButton:hover {
+  background: #63B8FF;
+}
+
     #worldTitle {
       position: absolute;
       top: 10px;
@@ -109,15 +123,15 @@
 
 <p><b>View:</b></p>
 
-<button onclick="setView('home')">🏠 Home</button>
-<button onclick="setView('top')">⬆️ Top</button>
-<button onclick="setView('front')">Front</button>
-<button onclick="setView('back')">Back</button>
-<button onclick="setView('left')">Left</button>
-<button onclick="setView('right')">Right</button>
+<button class="viewButton" onclick="setView('home')">🏠 Home</button>
+<button class="viewButton" onclick="setView('top')">⬆️ Top</button>
+<button class="viewButton" onclick="setView('front')">Front</button>
+<button class="viewButton" onclick="setView('back')">Back</button>
+<button class="viewButton" onclick="setView('left')">Left</button>
+<button class="viewButton" onclick="setView('right')">Right</button>
 
-<button onclick="zoomIn()">🔍+</button>
-<button onclick="zoomOut()">🔍-</button>
+<button class="viewButton" onclick="zoomIn()">🔍+</button>
+<button class="viewButton" onclick="zoomOut()">🔍-</button>
 
 <button onclick="showDirections()">
 ❓ How to Play
