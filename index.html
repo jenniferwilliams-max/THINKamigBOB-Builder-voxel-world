@@ -575,6 +575,16 @@ function toggleDigMode(){
       : "⛏️ Dig Mode: OFF";
 }
   
+function toggleDigMode(){
+
+  digMode = !digMode;
+
+  document.getElementById("digButton").innerHTML =
+    digMode
+      ? "⛏️ Dig Mode: ON"
+      : "⛏️ Dig Mode: OFF";
+}  
+  
 function checkBadge(){
 
   if(blocks.length >= 80){
