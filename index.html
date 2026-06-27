@@ -269,14 +269,18 @@ function addBlock(x, y, z, color, geometry = new THREE.BoxGeometry()){
 
  function setGroundColor(color){
   ground.material.color.set(color);
-} 
+}
 
 function setSkyColor(color){
   scene.background = new THREE.Color(color);
 }
-  
+
 function buildStarterGrid(){
-  // no starter blocks needed
+  for(let x = -5; x <= 5; x += 1){
+    for(let z = -5; z <= 5; z += 1){
+      addBlock(x, 0, z, 0xcccccc);
+    }
+  }
 }
 
 buildStarterGrid();
@@ -480,7 +484,7 @@ function resetWorld(){
     scene.remove(blocks[i]);
   }
 
-blocks.length = 0;
+ blocks.length = 0;
 
 setGroundColor(0x55aa55); // default grass
 setSkyColor(0x87CEEB);    // default blue sky
@@ -674,8 +678,8 @@ function buildCastle(){
 
 resetWorld();
 setGroundColor(0x999999);
-setSkyColor(0x87CEEB);
-  
+setSkyColor(0x87CEEB); 
+
   document.getElementById("worldTitle").innerHTML =
     "🏰 Bobwarts Castle Builder 🏰";
 
@@ -734,6 +738,7 @@ resetWorld();
 setGroundColor(0xDEB887);
 setSkyColor(0xB0E2FF);
   
+
   document.getElementById("worldTitle").innerHTML =
     "🛝 Bobwarts Playground Builder 🛝";
 
@@ -964,6 +969,32 @@ setSkyColor(0x191970);
   checkBadge();
 }
   
+
+function saveWorld(){
+
+  const worldData = [];
+
+  blocks.forEach(block => {
+    worldData.push({
+      x: block.position.x,
+      y: block.position.y,
+      z: block.position.z,
+      color: block.material.color.getHex(),
+      sx: block.geometry.parameters.width || 1,
+      sy: block.geometry.parameters.height || 1,
+      sz: block.geometry.parameters.depth || 1
+    });
+  });
+
+  const dataStr = JSON.stringify(worldData);
+  const blob = new Blob([dataStr], {type:'application/json'});
+
+  const link = document.createElement('a');
+  link.href = URL.createObjectURL(blob);
+  link.download = 'bobwarts-world.json';
+  link.click();
+}
+
 document.getElementById('loadFile').addEventListener('change', function(event){
 
   const file = event.target.files[0];
