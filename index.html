@@ -59,6 +59,7 @@ select {
 <button onclick="resetWorld()">🔄 Reset World</button>
 <button onclick="addTree()">🌲 Add Tree</button>
 <button onclick="buildCastle()">🏰 Build Castle</button>
+<button onclick="buildPlayground()">🛝 Build Playground</button>  
 <button onclick="document.getElementById('loadFile').click()">📂 Load World</button>
 
 <input type="file" id="loadFile" style="display:none" accept=".json">
@@ -418,7 +419,68 @@ function buildCastle(){
 
   checkBadge();
 }
+function buildPlayground(){
 
+  resetWorld();
+
+  // Slide tower
+  for(let y = 0; y < 4; y++){
+    const block = new THREE.Mesh(
+      new THREE.BoxGeometry(),
+      new THREE.MeshLambertMaterial({color:0xFFD700})
+    );
+
+    block.position.set(-6, y, -4);
+    scene.add(block);
+    blocks.push(block);
+  }
+
+  // Slide ramp
+  for(let i = 0; i < 4; i++){
+    const block = new THREE.Mesh(
+      new THREE.BoxGeometry(),
+      new THREE.MeshLambertMaterial({color:0x1E90FF})
+    );
+
+    block.position.set(-6 + i, 3 - i, -2);
+    scene.add(block);
+    blocks.push(block);
+  }
+
+  // Swing poles
+  for(let y = 0; y < 4; y++){
+    const leftPole = new THREE.Mesh(
+      new THREE.BoxGeometry(),
+      new THREE.MeshLambertMaterial({color:0x8B4513})
+    );
+
+    leftPole.position.set(6, y, -4);
+    scene.add(leftPole);
+    blocks.push(leftPole);
+
+    const rightPole = new THREE.Mesh(
+      new THREE.BoxGeometry(),
+      new THREE.MeshLambertMaterial({color:0x8B4513})
+    );
+
+    rightPole.position.set(10, y, -4);
+    scene.add(rightPole);
+    blocks.push(rightPole);
+  }
+
+  // Swing seat
+  const seat = new THREE.Mesh(
+    new THREE.BoxGeometry(3, 0.5, 1),
+    new THREE.MeshLambertMaterial({color:0x222222})
+  );
+
+  seat.position.set(8, 1, -4);
+  scene.add(seat);
+  blocks.push(seat);
+
+  checkBadge();
+}
+  
 function saveWorld(){
 
   const worldData = [];
