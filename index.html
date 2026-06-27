@@ -269,6 +269,55 @@ scene.add(ambient);
 camera.position.set(0, 8, 15);
 camera.lookAt(0, 0, 0);
 
+// ADD EVERYTHING BELOW THIS LINE
+
+let isDragging = false;
+let previousMouseX = 0;
+let cameraAngle = 0;
+let cameraDistance = 18;
+let cameraHeight = 8;
+
+function updateCamera(){
+
+  camera.position.x =
+    Math.sin(cameraAngle) * cameraDistance;
+
+  camera.position.z =
+    Math.cos(cameraAngle) * cameraDistance;
+
+  camera.position.y = cameraHeight;
+
+  camera.lookAt(0,0,0);
+}
+
+document.addEventListener('mousedown', (event)=>{
+  isDragging = true;
+  previousMouseX = event.clientX;
+});
+
+document.addEventListener('mouseup', ()=>{
+  isDragging = false;
+});
+
+document.addEventListener('mousemove', (event)=>{
+
+  if(isDragging){
+
+    const changeX =
+      event.clientX - previousMouseX;
+
+    cameraAngle += changeX * 0.01;
+
+    previousMouseX = event.clientX;
+
+    updateCamera();
+  }
+});
+
+updateCamera();
+
+// STOP ADDING HERE
+
 const raycaster = new THREE.Raycaster();
 const mouse = new THREE.Vector2();
 
