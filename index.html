@@ -651,22 +651,47 @@ function buildCastle(){
     "<b>Mission:</b> Build a Wizard Castle!";
 
   document.getElementById("challenge1").innerHTML =
-    "Template includes: A castle foundation";
+    "Template includes: Foundation, walls, doorway, and tower markers";
 
   document.getElementById("challenge2").innerHTML =
-    "Build 4 towers and castle walls";
+    "Build 4 tall towers and finish the castle walls";
 
   document.getElementById("challenge3").innerHTML =
-    "Add a grand entrance and magical features";
+    "Add a grand entrance, roof blocks, and magical features";
 
   document.getElementById("challenge4").innerHTML =
     "Reset the world and create a completely new castle";
 
   document.getElementById("moreChallenge").innerHTML =
-    "Add windows, roof blocks, crystals, and a magical hidden room.";
+    "Add windows, flags, crystals, secret rooms, bridges, or a dragon perch.";
 
-  addBlock(0, 1, 0, 0xaaaaaa, new THREE.BoxGeometry(9, 1, 9));
-  addBlock(0, 1.7, 0, 0xcccccc, new THREE.BoxGeometry(7, 0.5, 7));
+  // Castle floor
+  addBlock(0, 0.7, 0, 0xaaaaaa, new THREE.BoxGeometry(9, 0.4, 9));
+
+  // Back wall
+  addBlock(0, 1.8, -4, 0xcccccc, new THREE.BoxGeometry(9, 2, 0.6));
+
+  // Left wall
+  addBlock(-4, 1.8, 0, 0xcccccc, new THREE.BoxGeometry(0.6, 2, 9));
+
+  // Right wall
+  addBlock(4, 1.8, 0, 0xcccccc, new THREE.BoxGeometry(0.6, 2, 9));
+
+  // Front wall pieces with doorway gap
+  addBlock(-2.8, 1.8, 4, 0xcccccc, new THREE.BoxGeometry(2.5, 2, 0.6));
+  addBlock(2.8, 1.8, 4, 0xcccccc, new THREE.BoxGeometry(2.5, 2, 0.6));
+
+  // Door
+  addBlock(0, 1.1, 4.1, 0x654321, new THREE.BoxGeometry(1.5, 1.8, 0.4));
+
+  // Tower starter markers
+  addBlock(-4, 1, -4, 0xFFD700);
+  addBlock(4, 1, -4, 0xFFD700);
+  addBlock(-4, 1, 4, 0xFFD700);
+  addBlock(4, 1, 4, 0xFFD700);
+
+  // Small flag
+  addBlock(0, 3.2, -4, 0x6A0DAD, new THREE.BoxGeometry(2, 0.8, 0.3));
 
   checkBadge();
 }
