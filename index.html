@@ -81,6 +81,9 @@
 }
 
 .viewButton:hover {
+  background: #4169E1;
+}
+
 .blockHeader {
   background: #6A0DAD;
   color: white;
@@ -88,10 +91,19 @@
   border-radius: 8px;
   padding: 8px;
   margin-top: 12px;
+  margin-bottom: 8px;
   font-weight: bold;
   text-align: center;
-} 
+}
 
+#blockColor {
+  font-size: 16px;
+  font-weight: bold;
+  padding: 8px;
+  border: 2px solid #6A0DAD;
+  margin-bottom: 10px;
+}
+    
     #worldTitle {
       position: absolute;
       top: 10px;
@@ -127,10 +139,28 @@
 </div>
 
 <div id="info">
-  <p><b>Student Name:</b></p>
-  <input id="studentName"
-         placeholder="Enter your name"
-         style="width:100%; padding:5px; border-radius:6px;">
+
+<button onclick="showDirections()">
+❓ How to Play
+</button>
+
+<p><b>Student Name:</b></p>
+<input id="studentName"
+       placeholder="Enter your name"
+       style="width:100%; padding:5px; border-radius:6px;">
+
+<button id="toolsButton" onclick="toggleTools()">
+  ⚙️ Building Tools ▶
+</button>
+
+<div id="buildingTools" style="display:none;">
+
+<div id="buildingTools" style="display:none;">
+  <button onclick="saveWorld()">💾 Save World</button>
+  <button onclick="saveImage()">📸 Save Screenshot</button>
+  <button onclick="document.getElementById('loadFile').click()">📂 Load World</button>
+  <button onclick="resetWorld()">🔄 Reset World</button>
+</div>
 
 <p><b>View:</b></p>
 
@@ -144,9 +174,32 @@
 <button class="viewButton" onclick="zoomIn()">🔍+</button>
 <button class="viewButton" onclick="zoomOut()">🔍-</button>
 
-<button onclick="showDirections()">
-❓ How to Play
-</button>
+<div class="blockHeader">
+  🎨 Choose Your Building Block
+</div>  
+
+  <select id="blockColor">
+  <option value="0x654321">🟫 Door Brown</option>
+  <option value="0x87CEFA">🟦 Window Blue</option>
+  <option value="0x222222">⬛ Roof Black</option>
+  <option value="0xcccccc">⬜ Stone Gray</option>
+  <option value="0x8B4513">🟫 Wood Brown</option>
+  <option value="0xFFD700">🟨 Gold</option>
+  <option value="0xB22222">🟥 Brick Red</option>
+  <option value="0x228B22">🟩 Forest Green</option>
+  <option value="0x6A0DAD">🟪 Wizard Purple</option>
+  <option value="0xFFFFFF">⬜ Snow</option>
+  <option value="0x000000">⬛ Obsidian</option>
+  <option value="0x1E90FF">🟦 Water</option>
+  <option value="0xFFA500">🟧 Lava</option>
+  <option value="0x808080">⬜ Stone Brick</option>
+  <option value="0x00FFFF">🩵 Crystal Cyan</option>
+  <option value="0xFF00FF">😈 Magic Magenta</option>
+  <option value="0x7FFFD4">🧃 Glow Crystal</option>
+  <option value="0x9400D3">🔮 Dark Magic</option>
+  <option value="0xF5F5DC">🌕 Moonstone</option>
+  <option value="0xADFF2F">🍋‍🟩 Potion Green</option>
+</select>
 
 <p style="font-size:12px; margin-top:0;">
   Choose a world to begin your adventure.
@@ -178,44 +231,6 @@
   <button onclick="addVolcano()">🌋 Add Volcano</button>
   <button onclick="addRainbowBridge()">🌈 Add Rainbow Bridge</button>
   <button onclick="addCrystalCluster()">🔮 Add Crystal Cluster</button>
-</div>
-
-<div class="blockHeader">
-  🎨 Choose Your Building Block
-</div>
-
-<select id="blockColor">
-  <option value="0x654321">🟫 Door Brown</option>
-  <option value="0x87CEFA">🟦 Window Blue</option>
-  <option value="0x222222">⬛ Roof Black</option>
-  <option value="0xcccccc">⬜ Stone Gray</option>
-  <option value="0x8B4513">🟫 Wood Brown</option>
-  <option value="0xFFD700">🟨 Gold</option>
-  <option value="0xB22222">🟥 Brick Red</option>
-  <option value="0x228B22">🟩 Forest Green</option>
-  <option value="0x6A0DAD">🟪 Wizard Purple</option>
-  <option value="0xFFFFFF">⬜ Snow</option>
-  <option value="0x000000">⬛ Obsidian</option>
-  <option value="0x1E90FF">🟦 Water</option>
-  <option value="0xFFA500">🟧 Lava</option>
-  <option value="0x808080">⬜ Stone Brick</option>
-  <option value="0x00FFFF">🩵 Crystal Cyan</option>
-  <option value="0xFF00FF">😈 Magic Magenta</option>
-  <option value="0x7FFFD4">🧃 Glow Crystal</option>
-  <option value="0x9400D3">🔮 Dark Magic</option>
-  <option value="0xF5F5DC">🌕 Moonstone</option>
-  <option value="0xADFF2F">🍋‍🟩 Potion Green</option>
-</select>
-
-<button id="toolsButton" onclick="toggleTools()">
-  ⚙️ Building Tools ▶
-</button>
-
-<div id="buildingTools" style="display:none;">
-  <button onclick="saveWorld()">💾 Save World</button>
-  <button onclick="saveImage()">📸 Save Screenshot</button>
-  <button onclick="document.getElementById('loadFile').click()">📂 Load World</button>
-  <button onclick="resetWorld()">🔄 Reset World</button>
 </div>
 
 <input type="file" id="loadFile"
@@ -1427,7 +1442,7 @@ function showDirections(){
 
 5. Right-click a block to remove it.
 
-6. Choose different block colors from the Block Type menu.
+6. Choose different blocks and colors from the 🎨 Choose Your Building Block menu.
 
 7. Use the Builder Toolbox to add trees, ponds, portals, and more.
 
