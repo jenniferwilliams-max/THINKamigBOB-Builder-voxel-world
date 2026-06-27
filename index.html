@@ -665,11 +665,8 @@ function buildCastle(){
   document.getElementById("moreChallenge").innerHTML =
     "Add windows, roof blocks, crystals, and a magical hidden room.";
 
-  for(let x = -4; x <= 4; x += 1){
-    for(let z = -4; z <= 4; z += 1){
-      addBlock(x, 1, z, 0xaaaaaa);
-    }
-  }
+  addBlock(0, 1, 0, 0xaaaaaa, new THREE.BoxGeometry(9, 1, 9));
+  addBlock(0, 1.7, 0, 0xcccccc, new THREE.BoxGeometry(7, 0.5, 7));
 
   checkBadge();
 }
@@ -801,36 +798,14 @@ function buildDragonLair(){
   document.getElementById("moreChallenge").innerHTML =
     "Add waterfalls, bridges, towers, flying platforms, or create homes for multiple dragons.";
 
-  for(let x = -4; x <= 0; x += 1){
-    for(let z = -4; z <= 0; z += 1){
-      addBlock(x, 1, z, 0xFF4500);
-    }
-  }
+  addBlock(-4, 1, -3, 0xFF4500, new THREE.BoxGeometry(5, 0.5, 4));
+  addBlock(5, 1, 5, 0x777777, new THREE.BoxGeometry(1, 4, 6));
 
-  const crystalColors = [
-    0x00FFFF,
-    0xFF00FF,
-    0xADFF2F
-  ];
-
-  for(let i = 0; i < 6; i++){
-    addBlock(
-      4 + Math.random() * 6,
-      1,
-      -2 + Math.random() * 6,
-      crystalColors[i % 3]
-    );
-  }
-
-  for(let x = 4; x <= 8; x += 1){
-    for(let y = 1; y < 4; y++){
-      addBlock(x, y, 6, 0x777777);
-    }
-  }
+  addCrystalCluster();
 
   checkBadge();
 }
-
+  
 function buildFutureCity(){
 
   resetWorld();
@@ -856,86 +831,17 @@ function buildFutureCity(){
   document.getElementById("moreChallenge").innerHTML =
     "Add bridges, trains, electric vehicles, parks, lights, or create a futuristic Bobwarts technology center.";
 
-  const buildingSpots = [
-    [-6, -4],
-    [0, -4],
-    [6, -4]
-  ];
+  addBlock(-6, 3, -4, 0x808080, new THREE.BoxGeometry(2, 6, 2));
+  addBlock(0, 4, -4, 0x808080, new THREE.BoxGeometry(2, 8, 2));
+  addBlock(6, 3, -4, 0x808080, new THREE.BoxGeometry(2, 6, 2));
 
-  buildingSpots.forEach(spot => {
-    for(let y = 1; y < 7; y++){
-      addBlock(spot[0], y, spot[1], 0x808080);
-    }
-  });
-
-  for(let x = -10; x <= 10; x += 1){
-    addBlock(x, 1, 4, 0x222222);
-  }
-
-  for(let x = -8; x <= -4; x += 1){
-    for(let z = 6; z <= 10; z += 1){
-      addBlock(x, 1, z, 0x228B22);
-    }
-  }
-
-  addBlock(6, 2, 8, 0x1E90FF, new THREE.BoxGeometry(4, 0.3, 2));
+  addBlock(0, 1, 4, 0x222222, new THREE.BoxGeometry(18, 0.5, 2));
+  addBlock(-6, 1, 8, 0x228B22, new THREE.BoxGeometry(5, 0.5, 5));
+  addBlock(6, 1.3, 8, 0x1E90FF, new THREE.BoxGeometry(4, 0.3, 2));
 
   checkBadge();
 }
-
-function saveWorld(){
-
-  const worldData = [];
-
-  blocks.forEach(block => {
-    worldData.push({
-      x: block.position.x,
-      y: block.position.y,
-      z: block.position.z,
-      color: block.material.color.getHex(),
-      sx: block.geometry.parameters.width || 1,
-      sy: block.geometry.parameters.height || 1,
-      sz: block.geometry.parameters.depth || 1
-    });
-  });
-
-  const dataStr = JSON.stringify(worldData);
-
-  const blob = new Blob([dataStr], {type:'application/json'});
-
-  const link = document.createElement('a');
-  link.href = URL.createObjectURL(blob);
-  link.download = 'bobwarts-world.json';
-  link.click();
-}
-
-document.getElementById('loadFile').addEventListener('change', function(event){
-
-  const file = event.target.files[0];
-
-  if(!file) return;
-
-  const reader = new FileReader();
-
-  reader.onload = function(e){
-
-    resetWorld();
-
-    const worldData = JSON.parse(e.target.result);
-
-    worldData.forEach(data => {
-      addBlock(
-        data.x,
-        data.y,
-        data.z,
-        data.color,
-        new THREE.BoxGeometry(data.sx || 1, data.sy || 1, data.sz || 1)
-      );
-    });
-
-    checkBadge();
-  };
-
+  
   reader.readAsText(file);
 });
 
