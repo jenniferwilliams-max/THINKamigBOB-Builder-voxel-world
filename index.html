@@ -27,6 +27,7 @@
       max-width: 300px;
       max-height: 85vh;
       overflow-y: auto;
+      touch-action: pan-y;
     }
 
     button {
@@ -492,6 +493,31 @@ document.addEventListener('wheel', (event) => {
 
   updateCamera();
 
+// Two-finger touchpad zoom on Chromebook
+document.addEventListener('wheel', (event) => {
+
+  event.preventDefault();
+
+  if(event.deltaY < 0){
+    cameraDistance -= 0.5;
+  }
+
+  if(event.deltaY > 0){
+    cameraDistance += 0.5;
+  }
+
+  if(cameraDistance < 6){
+    cameraDistance = 6;
+  }
+
+  if(cameraDistance > 50){
+    cameraDistance = 50;
+  }
+
+  updateCamera();
+
+}, { passive: false });
+  
 }, { passive: false });
 
 const raycaster = new THREE.Raycaster();
