@@ -148,6 +148,7 @@ Choose a world to begin your adventure.
 </button>
 
 <div id="toolbox">
+<button onclick="expandWorld()">🌎 Expand Building Space</button>  
 <button onclick="addTree()">🌲 Add Tree</button>
 <button onclick="addPond()">🌊 Add Pond</button>
 <button onclick="addRocks()">🪨 Add Rocks</button>
@@ -719,6 +720,34 @@ function addCrystalCluster(){
 
   checkBadge();
 }
+
+function expandWorld(){
+
+  for(let x = -12; x <= 12; x += 2){
+    for(let z = -12; z <= 12; z += 2){
+
+      const alreadyExists = blocks.some(block =>
+        block.position.x === x &&
+        block.position.z === z &&
+        block.position.y === 0
+      );
+
+      if(!alreadyExists){
+        const cube = new THREE.Mesh(
+          new THREE.BoxGeometry(),
+          new THREE.MeshLambertMaterial({color:0xcccccc})
+        );
+
+        cube.position.set(x, 0, z);
+
+        scene.add(cube);
+        blocks.push(cube);
+      }
+    }
+  }
+
+  checkBadge();
+}  
   
 function buildCastle(){
 
