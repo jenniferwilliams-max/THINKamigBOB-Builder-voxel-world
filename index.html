@@ -229,6 +229,7 @@
   <button onclick="buildWeatherWorld()">🌦️ Grade 3: Weather Station</button>
   <button onclick="buildEnergyCity()">⚡ Grade 4: Energy City</button>
   <button onclick="buildSpaceColony()">🚀 Grade 5: Moon Colony</button>
+  <button onclick="buildEngineeringWorld()">🏗️ Grade 6: Engineering Challenge</button>
 </div>
 
 <button id="toolboxButton" onclick="toggleToolbox()">
@@ -280,6 +281,12 @@
 <button onclick="addRover()">🤖 Add Rover</button>
 <button onclick="addSolarArray()">🔋 Add Solar Array</button>
 <button onclick="addGreenhouse()">🌱 Add Space Greenhouse</button>
+
+<p><b>🏗️ Engineering Tools</b></p>
+<button onclick="addBridgeBeam()">🌉 Add Bridge Beam</button>
+<button onclick="addSupportColumn()">🏛️ Add Support Column</button>
+<button onclick="addRamp()">📐 Add Ramp</button>
+<button onclick="addTestTower()">🗼 Add Test Tower</button>
 
 </div>
   
@@ -1995,6 +2002,63 @@ function buildWeatherWorld(){
 
   checkBadge();
 }  
+
+function buildEngineeringWorld(){
+
+  resetWorld();
+
+  cameraDistance = 26;
+  cameraHeight = 5;
+  updateCamera();
+
+  setGroundColor(0x777777);
+  setSkyColor(0x87CEEB);
+  addMovingClouds();
+
+  document.getElementById("worldTitle").innerHTML =
+    "🏗️ Grade 6: Engineering Challenge 🏗️";
+
+  document.getElementById("missionText").innerHTML =
+    "<b>Mission:</b> Design and improve structures that solve engineering problems!";
+
+  document.getElementById("challenge1").innerHTML =
+    "Starter world includes: bridge test zone, tower base, ramp, and obstacle area";
+
+  document.getElementById("challenge2").innerHTML =
+    "Build a bridge that crosses the gap";
+
+  document.getElementById("challenge3").innerHTML =
+    "Create a tall, stable tower with supports";
+
+  document.getElementById("challenge4").innerHTML =
+    "Improve your design after testing it";
+
+  document.getElementById("moreChallenge").innerHTML =
+    "Add trusses, braces, ramps, rescue paths, support beams, or a testing station.";
+
+  // Bridge test zone: two platforms with a gap
+  addBlock(-6, 0.7, -3, 0x555555, new THREE.BoxGeometry(5, 0.4, 5));
+  addBlock(6, 0.7, -3, 0x555555, new THREE.BoxGeometry(5, 0.4, 5));
+
+  // Gap marker / water below
+  addBlock(0, 0.3, -3, 0x1E90FF, new THREE.BoxGeometry(6, 0.2, 5));
+
+  // Tower base
+  addBlock(-6, 0.7, 6, 0xCCCCCC, new THREE.BoxGeometry(4, 0.4, 4));
+  addBlock(-6, 1.5, 6, 0xFFD700, new THREE.BoxGeometry(1, 1, 1));
+
+  // Ramp challenge
+  addBlock(5, 0.7, 6, 0x8B4513, new THREE.BoxGeometry(5, 0.4, 2));
+  addBlock(7, 1.2, 6, 0x8B4513, new THREE.BoxGeometry(3, 0.4, 2));
+  addBlock(8, 1.7, 6, 0x8B4513, new THREE.BoxGeometry(2, 0.4, 2));
+
+  // Obstacle blocks
+  addBlock(0, 1, 5, 0xB22222, new THREE.BoxGeometry(1, 2, 1));
+  addBlock(2, 1, 5, 0xB22222, new THREE.BoxGeometry(1, 2, 1));
+  addBlock(-2, 1, 5, 0xB22222, new THREE.BoxGeometry(1, 2, 1));
+
+  checkBadge();
+}
   
  function saveWorld(){
 
