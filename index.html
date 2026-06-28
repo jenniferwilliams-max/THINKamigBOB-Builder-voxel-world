@@ -1108,20 +1108,24 @@ function addCrystalCluster(){
 
 function addRocket(){
 
-  addBlock(0, 1, 0, 0xFFFFFF, new THREE.BoxGeometry(1.5,4,1.5));
-  addBlock(0, 3.5, 0, 0xB22222, new THREE.BoxGeometry(2,1,2));
+  const spot = randomSpot();
+  
+  addBlock(spot.x, 1, spot.z, 0xFFFFFF, new THREE.BoxGeometry(1.5,4,1.5));
+  addBlock(spot.x, 3.5, spot.z, 0xB22222, new THREE.BoxGeometry(2,1,2));
 
   checkBadge();
 }
 
 function addSatellite(){
 
-  addBlock(0, 8, 0, 0x777777, new THREE.BoxGeometry(1,1,1));
+  const spot = randomSpot();
 
-  addBlock(-2, 8, 0, 0x1E90FF,
+  addBlock(spot.x, 8, spot.z, 0x777777, new THREE.BoxGeometry(1,1,1));
+
+  addBlock(spot.x, 8, spot.z, 0x1E90FF,
     new THREE.BoxGeometry(2,0.2,1));
 
-  addBlock(2, 8, 0, 0x1E90FF,
+  addBlock(spot.x, 8, spot.z, 0x1E90FF,
     new THREE.BoxGeometry(2,0.2,1));
 
   checkBadge();
@@ -1233,11 +1237,13 @@ function addWindTurbine(){
 
 function addSolarPanels(){
 
-  addBlock(0, 1, 0,
+  const spot = randomSpot();
+
+  addBlock(spot.x, 1, spot.z,
     0x1E90FF,
     new THREE.BoxGeometry(6,0.2,3));
 
-  addBlock(0,0.5,0,
+  addBlock(spot.x,0.5,spot.z,
     0x777777,
     new THREE.BoxGeometry(0.4,1,0.4));
 
@@ -1246,15 +1252,17 @@ function addSolarPanels(){
 
 function addPowerLine(){
 
-  addBlock(-2,2.5,0,
+const spot = randomSpot();
+  
+  addBlock(spot.x,2.5,spot.z,
     0x8B4513,
     new THREE.BoxGeometry(0.4,5,0.4));
 
-  addBlock(2,2.5,0,
+  addBlock(spot.z,2.5,spot.z,
     0x8B4513,
     new THREE.BoxGeometry(0.4,5,0.4));
 
-  addBlock(0,5,0,
+  addBlock(spot.x,5,spot.z,
     0x000000,
     new THREE.BoxGeometry(5,0.2,0.2));
 
@@ -1263,11 +1271,13 @@ function addPowerLine(){
 
 function addBattery(){
 
-  addBlock(0,1.5,0,
+  const spot = randomSpot();
+
+  addBlock(spot.x,1.5,spot.z,
     0x228B22,
     new THREE.BoxGeometry(2,3,1));
 
-  addBlock(0,3.2,0,
+  addBlock(spot.x,3.2,spot.z,
     0xFFD700,
     new THREE.BoxGeometry(1,0.3,1));
 
@@ -1276,18 +1286,20 @@ function addBattery(){
 
 function addElectricCar(){
 
-  addBlock(0,1,0,
+  const spot = randomSpot();
+  
+  addBlock(spot.x,1,spot.z,
     0xB22222,
     new THREE.BoxGeometry(3,1,2));
 
-  addBlock(0,1.8,0,
+  addBlock(spot.x,1.8,spot.z,
     0x87CEFA,
     new THREE.BoxGeometry(2,0.8,1.5));
 
-  addBlock(-1,0.5,1,0x222222);
-  addBlock(1,0.5,1,0x222222);
-  addBlock(-1,0.5,-1,0x222222);
-  addBlock(1,0.5,-1,0x222222);
+  addBlock(spot.x,0.5,spot.z,0x222222);
+  addBlock(spot.x,0.5,spot.z,0x222222);
+  addBlock(spot.x,0.5,spot.z,0x222222);
+  addBlock(spot.x,0.5,spot.z,0x222222);
 
   checkBadge();
 }
