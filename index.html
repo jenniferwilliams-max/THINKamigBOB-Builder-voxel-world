@@ -253,6 +253,13 @@
 <button onclick="addPond()">🌊 Add Pond</button>
 <button onclick="addRocks()">🪨 Add Rocks</button>
 
+<p><b>🌦️ Weather Tools</b></p>
+<button onclick="addRainGauge()">🌧️ Add Rain Gauge</button>
+<button onclick="addWeatherBalloon()">🎈 Add Weather Balloon</button>
+<button onclick="addTornadoShelter()">🌪️ Add Tornado Shelter</button>
+<button onclick="addLightningRod()">⚡ Add Lightning Rod</button>
+<button onclick="addThermometer()">🌡️ Add Thermometer</button>
+
 <p><b>🏗️ Buildings & Magic</b></p>
 <button onclick="addBuilding()">🏢 Add Building</button>
 <button onclick="addPortal()">✨ Add Magic Portal</button>
@@ -1300,6 +1307,93 @@ function addElectricCar(){
   addBlock(spot.x,0.5,spot.z,0x222222);
   addBlock(spot.x,0.5,spot.z,0x222222);
   addBlock(spot.x,0.5,spot.z,0x222222);
+
+  checkBadge();
+}
+
+function addRainGauge(){
+
+  const spot = randomSpot();
+
+  addBlock(spot.x, 1.5, spot.z,
+    0x87CEFA,
+    new THREE.CylinderGeometry(0.6, 0.6, 3, 16));
+
+  addBlock(spot.x, 0.2, spot.z,
+    0x777777,
+    new THREE.BoxGeometry(1.5, 0.4, 1.5));
+
+  checkBadge();
+}
+
+function addWeatherBalloon(){
+
+  const spot = randomSpot();
+
+  addBlock(spot.x, 6, spot.z,
+    0xFF0000,
+    new THREE.SphereGeometry(1.5, 16, 16));
+
+  addBlock(spot.x, 3.5, spot.z,
+    0xFFFFFF,
+    new THREE.BoxGeometry(0.2, 4, 0.2));
+
+  addBlock(spot.x, 1.5, spot.z,
+    0xCCCCCC,
+    new THREE.BoxGeometry(1.5, 1, 1.5));
+
+  checkBadge();
+}
+
+function addTornadoShelter(){
+
+  const spot = randomSpot();
+
+  addBlock(spot.x, 1, spot.z,
+    0x777777,
+    new THREE.BoxGeometry(4, 2, 4));
+
+  addBlock(spot.x, 2.2, spot.z,
+    0x444444,
+    new THREE.BoxGeometry(4.5, 0.4, 4.5));
+
+  addBlock(spot.x, 1, spot.z + 2.1,
+    0x654321,
+    new THREE.BoxGeometry(1.2, 1.5, 0.3));
+
+  checkBadge();
+}
+
+function addLightningRod(){
+
+  const spot = randomSpot();
+
+  addBlock(spot.x, 3, spot.z,
+    0xCCCCCC,
+    new THREE.BoxGeometry(0.3, 6, 0.3));
+
+  addBlock(spot.x, 6.2, spot.z,
+    0xFFD700,
+    new THREE.BoxGeometry(1, 0.3, 1));
+
+  checkBadge();
+}
+
+function addThermometer(){
+
+  const spot = randomSpot();
+
+  addBlock(spot.x, 2, spot.z,
+    0xFFFFFF,
+    new THREE.BoxGeometry(0.6, 4, 0.6));
+
+  addBlock(spot.x, 0.5, spot.z,
+    0xFF0000,
+    new THREE.SphereGeometry(0.8, 16, 16));
+
+  addBlock(spot.x, 2, spot.z,
+    0xFF0000,
+    new THREE.BoxGeometry(0.2, 3, 0.2));
 
   checkBadge();
 }
