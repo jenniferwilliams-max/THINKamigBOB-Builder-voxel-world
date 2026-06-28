@@ -226,8 +226,9 @@
   <button onclick="buildHabitat()">🌳 Habitat Builder</button>
   <button onclick="buildDragonLair()">🐉 Dragon Lair</button>
   <button onclick="buildFutureCity()">🏙️ Future City</button>
-  <button onclick="buildSpaceColony()">🚀 Grade 5: Moon Colony</button>
+  <button onclick="buildWeatherWorld()">🌦️ Grade 3: Weather Station</button>
   <button onclick="buildEnergyCity()">⚡ Grade 4: Energy City</button>
+  <button onclick="buildSpaceColony()">🚀 Grade 5: Moon Colony</button>
 </div>
 
 <button id="toolboxButton" onclick="toggleToolbox()">
@@ -1822,6 +1823,84 @@ spinningTurbines.push(turbineSpinner);
 
   checkBadge();
 }
+
+function buildWeatherWorld(){
+
+  resetWorld();
+
+  cameraDistance = 24;
+  cameraHeight = 5;
+  updateCamera();
+
+  setGroundColor(0x55aa55);
+  setSkyColor(0x87CEEB);
+
+  addMovingClouds();
+
+  document.getElementById("worldTitle").innerHTML =
+    "🌦️ Grade 3: Bobwarts Weather Station 🌦️";
+
+  document.getElementById("missionText").innerHTML =
+    "<b>Mission:</b> Build a weather station and study weather patterns!";
+
+  document.getElementById("challenge1").innerHTML =
+    "Starter world includes: weather station, rain gauge, wind vane, and observation tower";
+
+  document.getElementById("challenge2").innerHTML =
+    "Build tools that collect weather data";
+
+  document.getElementById("challenge3").innerHTML =
+    "Create a safe shelter for severe weather";
+
+  document.getElementById("challenge4").innerHTML =
+    "Design your own weather inventions";
+
+  document.getElementById("moreChallenge").innerHTML =
+    "Add clouds, lightning detectors, tornado shelters, weather balloons, or a forecast center.";
+
+  // Main weather station building
+  addBlock(0, 1.5, 0,
+    0x87CEFA,
+    new THREE.BoxGeometry(5,3,5));
+
+  addBlock(0, 3.5, 0,
+    0x444444,
+    new THREE.BoxGeometry(6,0.5,6));
+
+  // Observation tower
+  addBlock(-6, 3, -3,
+    0xCCCCCC,
+    new THREE.BoxGeometry(2,6,2));
+
+  addBlock(-6, 6.5, -3,
+    0x1E90FF,
+    new THREE.BoxGeometry(3,1,3));
+
+  // Rain gauge
+  addBlock(6, 1.5, -4,
+    0x87CEFA,
+    new THREE.CylinderGeometry(0.8,0.8,3,16));
+
+  // Wind vane
+  addBlock(5, 2.5, 5,
+    0xDDDDDD,
+    new THREE.BoxGeometry(0.3,5,0.3));
+
+  addBlock(5, 5, 5,
+    0xFFD700,
+    new THREE.BoxGeometry(3,0.2,0.2));
+
+  // Small weather shelter
+  addBlock(-4, 1.2, 5,
+    0xB22222,
+    new THREE.BoxGeometry(3,2,3));
+
+  addBlock(-4, 2.5, 5,
+    0x222222,
+    new THREE.BoxGeometry(3.5,0.5,3.5));
+
+  checkBadge();
+}  
   
  function saveWorld(){
 
