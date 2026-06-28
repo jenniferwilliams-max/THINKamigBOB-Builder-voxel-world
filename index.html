@@ -154,8 +154,6 @@
 </button>
 
 <div id="buildingTools" style="display:none;">
-
-<div id="buildingTools" style="display:none;">
   <button onclick="saveWorld()">💾 Save World</button>
   <button onclick="saveImage()">📸 Save Screenshot</button>
   <button onclick="document.getElementById('loadFile').click()">📂 Load World</button>
@@ -460,8 +458,8 @@ let isDragging = false;
 let previousMouseX = 0;
 let mouseMoved = false;
 let cameraAngle = 0;
-let cameraDistance = 22;
-let cameraHeight = 9;
+let cameraDistance = 24;
+let cameraHeight = 5;
 
 function updateCamera(){
 
@@ -895,9 +893,9 @@ function buildCastle(){
 
 resetWorld();
 
-  cameraDistance = 22;
-  cameraHeight = 9;
-  updateCamera();  
+cameraDistance = 24;
+cameraHeight = 5;
+updateCamera();
   
 setGroundColor(0x999999);
 setSkyColor(0x87CEEB);
@@ -959,9 +957,9 @@ function buildPlayground(){
 
 resetWorld();
 
-  cameraDistance = 22;
-  cameraHeight = 9;
-  updateCamera();
+cameraDistance = 24;
+cameraHeight = 5;
+updateCamera();
   
 setGroundColor(0xDEB887);
 setSkyColor(0xB0E2FF);
@@ -1035,10 +1033,10 @@ addMovingClouds();
 function buildHabitat(){
 
 resetWorld();
-
-  cameraDistance = 22;
-  cameraHeight = 9;
-  updateCamera();
+  
+cameraDistance = 24;
+cameraHeight = 5;
+updateCamera();
   
 setGroundColor(0x55aa55);
 setSkyColor(0x87CEEB);
@@ -1098,9 +1096,9 @@ function buildDragonLair(){
 
 resetWorld();
 
-  cameraDistance = 22;
-  cameraHeight = 9;
-  updateCamera();
+cameraDistance = 24;
+cameraHeight = 5;
+updateCamera();
   
 setGroundColor(0x333333);
 setSkyColor(0xFF8C00);
@@ -1163,8 +1161,8 @@ setSkyColor(0x191970);
 addStars();
 addMoon();
 
-cameraDistance = 24;
-cameraHeight = 10;
+cameraDistance = 26;
+cameraHeight = 5;
 updateCamera();
   
   document.getElementById("worldTitle").innerHTML =
@@ -1374,7 +1372,7 @@ function setView(view){
 if(view === "home"){
   cameraAngle = 0;
   cameraDistance = 24;
-  cameraHeight = 10;
+  cameraHeight = 5;
 }
 
   if(view === "top"){
