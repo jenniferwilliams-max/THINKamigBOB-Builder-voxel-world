@@ -1599,10 +1599,30 @@ function buildEnergyCity(){
   addBlock(2, 1, -5, 0x1E90FF, new THREE.BoxGeometry(5, 0.2, 3));
   addBlock(2, 0.5, -5, 0x777777, new THREE.BoxGeometry(0.4, 1, 0.4));
 
-  // Wind turbine
-  addBlock(7, 2.5, -3, 0xFFFFFF, new THREE.BoxGeometry(0.4, 5, 0.4));
-  addBlock(7, 5.2, -3, 0xCCCCCC, new THREE.BoxGeometry(3, 0.3, 0.3));
-  addBlock(7, 5.2, -3, 0xCCCCCC, new THREE.BoxGeometry(0.3, 3, 0.3));
+// Wind turbine tower
+addBlock(7, 2.5, -3,
+  0xEEEEEE,
+  new THREE.BoxGeometry(0.5,5,0.5));
+
+// Turbine hub
+addBlock(7, 5.5, -3,
+  0x999999,
+  new THREE.BoxGeometry(0.7,0.7,0.7));
+
+// Blade 1
+addBlock(8.3, 5.5, -3,
+  0xFFFFFF,
+  new THREE.BoxGeometry(2,0.2,0.2));
+
+// Blade 2
+addBlock(7, 6.8, -3,
+  0xFFFFFF,
+  new THREE.BoxGeometry(0.2,2,0.2));
+
+// Blade 3
+addBlock(6.2, 4.7, -3,
+  0xFFFFFF,
+  new THREE.BoxGeometry(1.5,0.2,0.2));
 
   // Homes
   addBlock(-2, 1.2, 5, 0xB22222, new THREE.BoxGeometry(3, 2, 3));
