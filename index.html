@@ -532,6 +532,7 @@ document.addEventListener('mousemove', (event)=>{
 });
 
 // Two-finger touchpad zoom on Chromebook
+
 document.addEventListener('wheel', (event) => {
 
   // Allow scrolling inside the menu panel
@@ -560,6 +561,35 @@ document.addEventListener('wheel', (event) => {
   updateCamera();
 
 }, { passive: false });
+
+// Up/Down arrow camera controls
+document.addEventListener('keydown', (event)=>{
+
+  // Up arrow = higher view
+  if(event.key === "ArrowUp"){
+
+    cameraHeight += 2;
+
+    if(cameraHeight > 20){
+      cameraHeight = 20;
+    }
+
+    updateCamera();
+  }
+
+  // Down arrow = lower view
+  if(event.key === "ArrowDown"){
+
+    cameraHeight -= 2;
+
+    if(cameraHeight < 2){
+      cameraHeight = 2;
+    }
+
+    updateCamera();
+  }
+
+});
   
 const raycaster = new THREE.Raycaster();
 const mouse = new THREE.Vector2();
@@ -1559,19 +1589,21 @@ function showDirections(){
 
 2. Click and drag to rotate the world.
 
-3. Use 🔍+ and 🔍- to zoom.
+3. Use 🔍+ and 🔍- or two-finger scroll to zoom. 
 
-4. Left-click on a block or the ground to build.
+4  Use ⬆️ and ⬇️ arrow keys to change your view.
 
-5. Right-click a block to remove it.
+5. Left-click on a block or the ground to build.
 
-6. Choose different blocks and colors from the 🎨 Choose Your Building Block menu.
+6. Right-click a block to remove it.
 
-7. Use the Builder Toolbox to add trees, ponds, portals, and more.
+7. Choose different blocks and colors from the 🎨 Choose Your Building Block menu.
 
-8. Complete the Challenge and earn badges!
+8. Use the Builder Toolbox to add trees, ponds, portals, and more.
 
-9. Save your world or take a screenshot when finished.
+9. Complete the Challenge and earn badges!
+
+10. Save your world or take a screenshot when finished.
 
 Have fun building!`
   );
