@@ -783,6 +783,10 @@ function animate(){
     0.3 + Math.random() * 0.7;
 });
 
+spinningTurbines.forEach(turbine => {
+  turbine.rotation.z += 0.03;
+});
+  
   atmosphereObjects.forEach(object => {
     if(object.userData.type === "cloud"){
       object.position.x += 0.01;
