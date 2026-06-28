@@ -1467,10 +1467,80 @@ function buildSpaceColony(){
 
   checkBadge();
 }
-  
-  reader.readAsText(file);
-});
 
+ function saveWorld(){
+
+  const worldData = [];
+
+  blocks.forEach(block => {
+    worldData.push({
+      x: block.position.x,
+      y: block.position.y,
+      z: block.position.z,
+      color: block.material.color.getHex(),
+      sx: block.geometry.parameters.width || 1,
+      sy: block.geometry.parameters.height || 1,
+      sz: block.geometry.parameters.depth || 1
+    });
+  });
+
+  const dataStr = JSON.stringify(worldData);
+
+  const blob = new Blob(
+    [dataStr],
+    {type:'application/json'}
+  );
+
+  const link = document.createElement('a');
+
+  link.href =
+    URL.createObjectURL(blob);
+
+  link.download =
+    'bobwarts-world.json';
+
+  link.click();
+}
+
+document.getElementById('loadFile')
+.addEventListener('change', function(event){
+
+  const file = event.target.files[0];
+
+  if(!file) return;
+
+  const reader = new FileReader();
+
+  reader.onload = function(e){
+
+    resetWorld();
+
+    const worldData =
+      JSON.parse(e.target.result);
+
+    worldData.forEach(data => {
+
+      addBlock(
+        data.x,
+        data.y,
+        data.z,
+        data.color,
+
+        new THREE.BoxGeometry(
+          data.sx || 1,
+          data.sy || 1,
+          data.sz || 1
+        )
+      );
+
+    });
+
+    checkBadge();
+  };
+
+  reader.readAsText(file);
+}); 
+  
 function checkBadge(){
 
   if(blocks.length >= 80){
