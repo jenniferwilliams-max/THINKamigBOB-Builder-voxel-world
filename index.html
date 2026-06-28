@@ -1610,47 +1610,55 @@ addBlock(7, 2.5, -3,
   new THREE.BoxGeometry(0.5, 5, 0.5)
 );
 
-// Turbine blade group centered on the hub
-const turbineBlades = new THREE.Group();
+// Blade spinner centered on the hub
+const turbineSpinner = new THREE.Group();
 
 // Hub
 const hub = new THREE.Mesh(
   new THREE.BoxGeometry(0.7, 0.7, 0.7),
   new THREE.MeshLambertMaterial({color:0x999999})
 );
-turbineBlades.add(hub);
+turbineSpinner.add(hub);
 
-// Blade 1
+// Blade 1 pivot
+const bladePivot1 = new THREE.Group();
 const blade1 = new THREE.Mesh(
   new THREE.BoxGeometry(2.8, 0.2, 0.2),
   new THREE.MeshLambertMaterial({color:0xFFFFFF})
 );
 blade1.position.x = 1.4;
-turbineBlades.add(blade1);
+bladePivot1.add(blade1);
+turbineSpinner.add(bladePivot1);
 
-// Blade 2
+// Blade 2 pivot
+const bladePivot2 = new THREE.Group();
+bladePivot2.rotation.z = Math.PI * 2 / 3;
+
 const blade2 = new THREE.Mesh(
   new THREE.BoxGeometry(2.8, 0.2, 0.2),
   new THREE.MeshLambertMaterial({color:0xFFFFFF})
 );
 blade2.position.x = 1.4;
-blade2.rotation.z = Math.PI * 2 / 3;
-turbineBlades.add(blade2);
+bladePivot2.add(blade2);
+turbineSpinner.add(bladePivot2);
 
-// Blade 3
+// Blade 3 pivot
+const bladePivot3 = new THREE.Group();
+bladePivot3.rotation.z = Math.PI * 4 / 3;
+
 const blade3 = new THREE.Mesh(
   new THREE.BoxGeometry(2.8, 0.2, 0.2),
   new THREE.MeshLambertMaterial({color:0xFFFFFF})
 );
 blade3.position.x = 1.4;
-blade3.rotation.z = Math.PI * 4 / 3;
-turbineBlades.add(blade3);
+bladePivot3.add(blade3);
+turbineSpinner.add(bladePivot3);
 
-// Place blade group at the top of the tower
-turbineBlades.position.set(7, 5.5, -3);
+// Place spinner at top of tower
+turbineSpinner.position.set(7, 5.5, -3);
 
-scene.add(turbineBlades);
-spinningTurbines.push(turbineBlades);
+scene.add(turbineSpinner);
+spinningTurbines.push(turbineSpinner);
   
   // Homes
   addBlock(-2, 1.2, 5, 0xB22222, new THREE.BoxGeometry(3, 2, 3));
