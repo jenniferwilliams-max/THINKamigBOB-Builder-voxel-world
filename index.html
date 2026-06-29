@@ -242,10 +242,24 @@
 <div id="toolbox">
 
 <p><b>🔴 Move Tools</b></p>
-<button class="moveButton" onclick="startSelectMode()">🖱️ Select Structure</button>
-<button class="moveButton" onclick="startMoveSelected()">↔️ Move Selected</button>
 
-<p id="toolMessage" style="font-size:12px; font-weight:bold; color:#6A0DAD;">
+<button class="moveButton"
+        onclick="startSelectMode()">
+  🖱️ Select Structure
+</button>
+
+<button class="moveButton"
+        onclick="startMoveSelected()">
+  ↔️ Move Selected
+</button>
+
+<button class="moveButton"
+        onclick="deleteSelectedStructure()">
+  🗑️ Delete Structure
+</button>
+
+<p id="toolMessage"
+   style="font-size:12px; font-weight:bold; color:#6A0DAD;">
   Tool message will show here.
 </p>
 
@@ -1849,6 +1863,35 @@ function addLysosome(){
   addBlock(spot.x, 1, spot.z,
     0x8A2BE2,
     new THREE.SphereGeometry(0.8, 16, 16));
+
+  checkBadge();
+}
+
+function deleteSelectedStructure(){
+
+  if(selectedBlocks.length === 0){
+
+    document.getElementById("toolMessage").innerHTML =
+      "⚠️ Select a structure first.";
+
+    return;
+  }
+
+  selectedBlocks.forEach(block => {
+
+    scene.remove(block);
+
+    const index = blocks.indexOf(block);
+
+    if(index > -1){
+      blocks.splice(index, 1);
+    }
+  });
+
+  selectedBlocks = [];
+
+  document.getElementById("toolMessage").innerHTML =
+    "🗑️ Structure deleted.";
 
   checkBadge();
 }
