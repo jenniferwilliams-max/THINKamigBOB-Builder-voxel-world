@@ -597,6 +597,18 @@ document.addEventListener('mouseup', ()=>{
   }, 50);
 });
 
+document.addEventListener("keydown", (event) => {
+
+  // Undo
+  if ((event.ctrlKey || event.metaKey) &&
+      event.key.toLowerCase() === "z") {
+
+    event.preventDefault();
+    undoLast();
+  }
+
+});
+  
 document.addEventListener('mousemove', (event)=>{
 
   if(isDragging){
@@ -2927,13 +2939,15 @@ function showDirections(){
 
 6. Right-click a block to remove it.
 
-7. Choose different blocks and colors from the 🎨 Choose Your Building Block menu.
+7. <li>↩️ Press <b>Ctrl + Z</b> to undo your last build.</li>
 
-8. Use the Builder Toolbox to add trees, ponds, portals, and more.
+8. Choose different blocks and colors from the 🎨 Choose Your Building Block menu.
 
-9. Complete the Challenge and earn badges!
+9. Use the Builder Toolbox to add trees, ponds, portals, and more.
 
-10. Save your world or take a screenshot when finished.
+10. Complete the Challenge and earn badges!
+
+11. Save your world or take a screenshot when finished.
 
 Have fun building!`
   );
