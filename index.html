@@ -1004,8 +1004,13 @@ document.querySelectorAll("#challengeChecklist label")
 
 const infoPanel = document.getElementById("info");
 
+// Hide menu
 infoPanel.style.visibility = "hidden";
 infoPanel.style.opacity = "0";
+
+// Remove menu shadow
+infoPanel.style.boxShadow = "none";
+
 document.getElementById("worldTitle").style.display = "none";
 
 document.getElementById("evidenceTitle").innerHTML =
@@ -1024,8 +1029,12 @@ document.getElementById("evidencePanel").style.display =
 document.getElementById("evidencePanel").style.display =
   "none";
 
+// Restore menu
 infoPanel.style.visibility = "visible";
 infoPanel.style.opacity = "1";
+
+// Restore shadow
+infoPanel.style.boxShadow = "";
 
 document.getElementById("worldTitle").style.display = "block";
 
