@@ -142,11 +142,54 @@
       display: none;
       margin-top: 8px;
     }
+ 
+#missionPopup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.55);
+  z-index: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#missionPopupBox {
+  background: white;
+  border: 4px solid gold;
+  border-radius: 18px;
+  width: 60%;
+  max-width: 650px;
+  padding: 25px;
+  color: black;
+  box-shadow: 0 0 25px gold;
+  font-size: 18px;
+}
+
+#closeMissionPopup {
+  float: right;
+  background: #B22222;
+  color: white;
+  border: 2px solid gold;
+}
+    
   </style>
 </head>
 
 <body>
 
+<div id="missionPopup" style="display:none;">
+  <div id="missionPopupBox">
+    <button id="closeMissionPopup" onclick="closeMissionPopup()">✖</button>
+    <h2 id="popupTitle">Mission</h2>
+    <p id="popupMission"></p>
+    <ul id="popupChallenges"></ul>
+    <p id="popupMoreChallenge"></p>
+  </div>
+</div>
+  
 <div id="worldTitle">
   🏰 Bobwarts Build World 🏰
 </div>
@@ -1916,6 +1959,31 @@ function expandWorld(){
   checkBadge();
 }
 
+function showMissionPopup(){
+
+  document.getElementById("popupTitle").innerHTML =
+    document.getElementById("worldTitle").innerHTML;
+
+  document.getElementById("popupMission").innerHTML =
+    document.getElementById("missionText").innerHTML;
+
+  document.getElementById("popupChallenges").innerHTML =
+    "<li>" + document.getElementById("challenge1").innerHTML + "</li>" +
+    "<li>" + document.getElementById("challenge2").innerHTML + "</li>" +
+    "<li>" + document.getElementById("challenge3").innerHTML + "</li>" +
+    "<li>" + document.getElementById("challenge4").innerHTML + "</li>";
+
+  document.getElementById("popupMoreChallenge").innerHTML =
+    "<b>Want More Challenge?</b><br>" +
+    document.getElementById("moreChallenge").innerHTML;
+
+  document.getElementById("missionPopup").style.display = "flex";
+}
+
+function closeMissionPopup(){
+  document.getElementById("missionPopup").style.display = "none";
+}
+  
 function buildCastle(){
 
 resetWorld();
@@ -1977,7 +2045,8 @@ addMovingClouds();
   // Small flag
   addBlock(0, 3.2, -4, 0x6A0DAD, new THREE.BoxGeometry(2, 0.8, 0.3));
 
-  checkBadge();
+showMissionPopup();
+checkBadge();
 }
 
 function buildPlayground(){
@@ -2054,7 +2123,8 @@ addMovingClouds();
   addBlock(-8, 1, 5, 0x8B4513, new THREE.BoxGeometry(0.3, 2, 0.3));
   addBlock(-8, 2.5, 5, 0xFFFFFF, new THREE.BoxGeometry(2.5, 1, 0.3));
 
-  checkBadge();
+showMissionPopup();
+checkBadge();
 }
   
 function buildHabitat(){
@@ -2116,7 +2186,8 @@ addMovingClouds();
   // Food area
   addBlock(2, 0.8, 7, 0xADFF2F, new THREE.BoxGeometry(2, 0.4, 2));
 
-  checkBadge();
+showMissionPopup();
+checkBadge();
 }
   
 function buildDragonLair(){
@@ -2176,7 +2247,8 @@ addDragonSmoke();
   addBlock(3, 1.5, -4, 0xFF00FF, new THREE.BoxGeometry(1, 2, 1));
   addBlock(4, 1, -4, 0xADFF2F);
 
-  checkBadge();
+showMissionPopup();
+checkBadge();
 }
   
 function buildFutureCity(){
@@ -2239,7 +2311,8 @@ updateCamera();
   addBlock(3, 1.5, 8, 0xFFD700, new THREE.BoxGeometry(4, 2, 3));
   addBlock(3, 3, 8, 0x222222, new THREE.BoxGeometry(5, 0.4, 4));
 
-  checkBadge();
+showMissionPopup();
+checkBadge();
 }
   
 function buildSpaceColony(){
@@ -2301,7 +2374,8 @@ addEarth();
   addBlock(-1, 0.8, -1, 0x555555, new THREE.BoxGeometry(2, 0.2, 2));
   addBlock(6, 0.8, -6, 0x555555, new THREE.BoxGeometry(2.5, 0.2, 2.5));
 
-  checkBadge();
+showMissionPopup();
+checkBadge();
 }
 
 function buildEnergyCity(){
@@ -2413,7 +2487,8 @@ spinningTurbines.push(turbineSpinner);
   addBlock(1, 2.5, 1, 0x8B4513, new THREE.BoxGeometry(0.4, 5, 0.4));
   addBlock(-2, 5, 1, 0x000000, new THREE.BoxGeometry(6, 0.2, 0.2));
 
-  checkBadge();
+showMissionPopup();
+checkBadge();
 }
 
 function buildWeatherWorld(){
@@ -2491,7 +2566,8 @@ function buildWeatherWorld(){
     0x222222,
     new THREE.BoxGeometry(3.5,0.5,3.5));
 
-  checkBadge();
+showMissionPopup();
+checkBadge();
 }  
 
 function buildEngineeringWorld(){
@@ -2548,7 +2624,8 @@ function buildEngineeringWorld(){
   addBlock(2, 1, 5, 0xB22222, new THREE.BoxGeometry(1, 2, 1));
   addBlock(-2, 1, 5, 0xB22222, new THREE.BoxGeometry(1, 2, 1));
 
-  checkBadge();
+showMissionPopup();
+checkBadge();
 }
 
 let currentCellType = "animal";
@@ -2590,7 +2667,8 @@ function buildCellWorld(){
   document.getElementById("toolMessage").innerHTML =
     "🧬 Choose 🌱 Plant Cell or 🐾 Animal Cell from Cell Tools.";
 
-  checkBadge();
+showMissionPopup();
+checkBadge();
 }
   
  function saveWorld(){
