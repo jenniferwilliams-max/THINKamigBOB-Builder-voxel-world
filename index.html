@@ -277,12 +277,6 @@
 <button onclick="addBattery()">🔋 Add Battery</button>
 <button onclick="addElectricCar()">🚗 Add Electric Car</button>
 
-<p><b>🏗️ Engineering Tools</b></p>
-<button onclick="addBridgeBeam()">🌉 Add Bridge Beam</button>
-<button onclick="addSupportColumn()">🏛️ Add Support Column</button>
-<button onclick="addRamp()">📐 Add Ramp</button>
-<button onclick="addTestTower()">🗼 Add Test Tower</button>
-
 <p><b>🚀 Space Tools</b></p>
 <button onclick="addRocket()">🚀 Add Rocket</button>
 <button onclick="addSatellite()">🛰️ Add Satellite</button>
@@ -1564,13 +1558,12 @@ function addCellWall(){
 
 function addCellMembrane(){
 
-const cx = currentCellCenter.x;
-const cz = currentCellCenter.z;  
+  const cx = currentCellCenter.x;
+  const cz = currentCellCenter.z;  
 
   // ANIMAL CELL
   if(currentCellType === "animal"){
 
-    // Cytoplasm
     const cytoplasm = new THREE.Mesh(
       new THREE.CylinderGeometry(7, 7, 0.2, 40),
       new THREE.MeshLambertMaterial({
@@ -1583,13 +1576,12 @@ const cz = currentCellCenter.z;
     scene.add(cytoplasm);
     blocks.push(cytoplasm);
 
-    // Circular membrane
     for(let i = 0; i < 40; i++){
 
       const angle = i * (Math.PI * 2 / 40);
 
-const x = cx + Math.cos(angle) * 7;
-const z = cz + Math.sin(angle) * 7;
+      const x = cx + Math.cos(angle) * 7;
+      const z = cz + Math.sin(angle) * 7;
 
       addBlock(
         x,
@@ -1604,37 +1596,26 @@ const z = cz + Math.sin(angle) * 7;
   // PLANT CELL
   else{
 
-    // Cytoplasm
-addBlock(
-  cx, 0.3, cz,
-  0xCCFFCC,
-  new THREE.BoxGeometry(14,0.2,12)
-);
+    addBlock(
+      cx, 0.3, cz,
+      0xCCFFCC,
+      new THREE.BoxGeometry(14,0.2,12)
+    );
 
-addBlock(cx,0.9,cz-6,
-  0xFF69B4,
-  new THREE.BoxGeometry(14,0.5,0.5));
-
-addBlock(cx,0.9,cz+6,
-  0xFF69B4,
-  new THREE.BoxGeometry(14,0.5,0.5));
-
-addBlock(cx-7,0.9,cz,
-  0xFF69B4,
-  new THREE.BoxGeometry(0.5,0.5,12));
-
-addBlock(cx+7,0.9,cz,
-  0xFF69B4,
-  new THREE.BoxGeometry(0.5,0.5,12));
+    addBlock(cx,0.9,cz-6,
+      0xFF69B4,
       new THREE.BoxGeometry(14,0.5,0.5));
 
-    addBlock(0,0.9,6,0xFF69B4,
+    addBlock(cx,0.9,cz+6,
+      0xFF69B4,
       new THREE.BoxGeometry(14,0.5,0.5));
 
-    addBlock(-7,0.9,0,0xFF69B4,
+    addBlock(cx-7,0.9,cz,
+      0xFF69B4,
       new THREE.BoxGeometry(0.5,0.5,12));
 
-    addBlock(7,0.9,0,0xFF69B4,
+    addBlock(cx+7,0.9,cz,
+      0xFF69B4,
       new THREE.BoxGeometry(0.5,0.5,12));
   }
 
