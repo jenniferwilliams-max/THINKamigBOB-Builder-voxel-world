@@ -241,7 +241,7 @@
 <div id="info">
 
 <button onclick="showDirections()">
-❓ How to Play THINamigBOB Builder
+❓ How to Play THINKamigBOB Builder
 </button>
 
 <p><b>Student Name:</b></p>
@@ -250,7 +250,7 @@
        style="width:100%; padding:5px; border-radius:6px;">
 
 <button id="toolsButton" onclick="toggleTools()">
-  ⚙️ THINKamigGOB Building Tools ▶
+  ⚙️ THINKamigBOB Building Tools ▶
 </button>
 
 <div id="buildingTools" style="display:none;">
@@ -983,22 +983,33 @@ function saveImage(){
   document.getElementById("evidenceBadge").innerHTML =
     badge;
 
-  let checklistHTML = "";
+let checklistHTML = "";
 
-  document.querySelectorAll("#challengeChecklist label")
-    .forEach(label => {
-      checklistHTML += "<p>" + label.innerText + "</p>";
-    });
+document.querySelectorAll("#challengeChecklist label")
+  .forEach(label => {
+
+    const box = label.querySelector("input");
+    const text = label.querySelector("span").innerText;
+
+    if(box.checked){
+      checklistHTML += "<p>✅ " + text + "</p>";
+    } else {
+      checklistHTML += "<p>⬜ " + text + "</p>";
+    }
+
+  });
 
   document.getElementById("evidenceChecklist").innerHTML =
     checklistHTML;
 
 document.getElementById("info").style.display = "none";
-  
-document.getElementById("info").style.display = "block";  
-  
-  document.getElementById("evidencePanel").style.display =
-    "block";
+document.getElementById("worldTitle").style.display = "none";
+
+document.getElementById("evidenceTitle").innerHTML =
+  document.getElementById("worldTitle").innerText;
+
+document.getElementById("evidencePanel").style.display =
+  "block";
 
   setTimeout(() => {
 
@@ -1010,6 +1021,12 @@ document.getElementById("info").style.display = "block";
       document.getElementById("evidencePanel").style.display =
         "none";
 
+document.getElementById("info").style.display = "block";
+document.getElementById("worldTitle").style.display = "block";
+
+document.getElementById("evidenceTitle").innerHTML =
+  document.getElementById("worldTitle").innerText;      
+      
       const link = document.createElement("a");
 
 const now = new Date();
