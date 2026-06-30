@@ -491,6 +491,20 @@
        oninput="searchTools()"
        style="width:95%; padding:8px; border-radius:8px; margin:6px 0;">
 
+<button class="categoryButton"
+        onclick="toggleCategory('favoriteTools', this)">
+  ⭐ My Favorite Tools ▶
+</button>
+
+<div id="favoriteTools" class="toolCategory">
+
+  <p id="noFavoritesMessage"
+     style="font-size:12px; text-align:center;">
+    No favorites yet. Click a ☆ next to a tool to save it here.
+  </p>
+
+</div>
+  
 <hr>
 
 <p><b>🛠️ Builder Tools</b></p>
