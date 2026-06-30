@@ -16,43 +16,82 @@
       display: block;
     }
 
-#viewDice {
-  position: fixed;
+#viewCube{
 
-  top: 120px;
-  left: 400px;
+  position:fixed;
 
-  background: rgba(255,255,255,.95);
-  border: 3px solid #1E90FF;
-  border-radius: 18px;
+  top:120px;
+  left:380px;
 
-  padding: 10px;
+  width:180px;
+  height:180px;
 
-  z-index: 260;
+  background:rgba(255,255,255,.95);
 
-  text-align: center;
+  border:3px solid #1E90FF;
+  border-radius:20px;
 
-  box-shadow: 0 0 10px rgba(0,0,0,.25);
-}
-  background: rgba(255,255,255,0.92);
-  border: 3px solid #1E90FF;
-  border-radius: 14px;
-  padding: 8px;
-  z-index: 260;
-  text-align: center;
+  box-shadow:0 0 12px rgba(0,0,0,.25);
+
+  z-index:300;
 }
 
-#viewDice button {
-  width: 62px;
-  height: 48px;
-  font-size: 12px;
-  padding: 4px;
-  margin: 2px;
-  background: #1E90FF;
-  color: white;
-  border: 2px solid #87CEFA;
+.cubeFace{
+
+  position:absolute;
+
+  width:65px;
+  height:45px;
+
+  border:none;
+  border-radius:10px;
+
+  background:#FFD700;
+  color:black;
+
+  font-weight:bold;
+  font-size:14px;
 }
-    
+
+.cubeFace:hover{
+
+  background:#FFA500;
+  transform:scale(1.05);
+}
+
+.topFace{
+  top:10px;
+  left:57px;
+}
+
+.centerFace{
+  top:67px;
+  left:57px;
+
+  background:#1E90FF;
+  color:white;
+}
+
+.leftFace{
+  top:67px;
+  left:5px;
+}
+
+.rightFace{
+  top:67px;
+  right:5px;
+}
+
+.frontFace{
+  bottom:15px;
+  left:25px;
+}
+
+.backFace{
+  bottom:15px;
+  right:25px;
+}
+        
 #missionCard {
   position: fixed;
   top: 90px;
@@ -266,17 +305,38 @@
 
 <body>
 
-<div id="viewDice">
-  <button onclick="setView('top')">⬆️<br>Top</button>
+<div id="viewCube">
 
-  <div>
-    <button onclick="setView('left')">⬅️<br>Left</button>
-    <button onclick="setView('home')">🏠<br>Home</button>
-    <button onclick="setView('right')">➡️<br>Right</button>
-  </div>
+  <button class="cubeFace topFace"
+          onclick="setView('top')">
+    TOP
+  </button>
 
-  <button onclick="setView('front')">⬇️<br>Front</button>
-  <button onclick="setView('back')">🔁<br>Back</button>
+  <button class="cubeFace centerFace"
+          onclick="setView('home')">
+    HOME
+  </button>
+
+  <button class="cubeFace leftFace"
+          onclick="setView('left')">
+    LEFT
+  </button>
+
+  <button class="cubeFace rightFace"
+          onclick="setView('right')">
+    RIGHT
+  </button>
+
+  <button class="cubeFace frontFace"
+          onclick="setView('front')">
+    FRONT
+  </button>
+
+  <button class="cubeFace backFace"
+          onclick="setView('back')">
+    BACK
+  </button>
+
 </div>
   
 <div id="missionCard">
