@@ -983,81 +983,73 @@ function saveImage(){
   document.getElementById("evidenceBadge").innerHTML =
     badge;
 
-let checklistHTML = "";
+  let checklistHTML = "";
 
-document.querySelectorAll("#challengeChecklist label")
-  .forEach(label => {
+  document.querySelectorAll("#challengeChecklist label")
+    .forEach(label => {
 
-    const box = label.querySelector("input");
-    const text = label.querySelector("span").innerText;
+      const box = label.querySelector("input");
+      const text = label.querySelector("span").innerText;
 
-    if(box.checked){
-      checklistHTML += "<p>✅ " + text + "</p>";
-    } else {
-      checklistHTML += "<p>⬜ " + text + "</p>";
-    }
+      if(box.checked){
+        checklistHTML += "<p>✅ " + text + "</p>";
+      } else {
+        checklistHTML += "<p>⬜ " + text + "</p>";
+      }
 
-  });
+    });
 
   document.getElementById("evidenceChecklist").innerHTML =
     checklistHTML;
 
-const infoPanel = document.getElementById("info");
+  const infoPanel = document.getElementById("info");
 
-// Move menu completely off screen
-infoPanel.style.left = "-1000px";
+  document.getElementById("evidenceTitle").innerHTML =
+    document.getElementById("worldTitle").textContent;
 
-// Remove shadow while screenshot is taken
-infoPanel.style.boxShadow = "none";
+  infoPanel.style.left = "-1000px";
+  infoPanel.style.boxShadow = "none";
 
-// Hide title banner
-document.getElementById("worldTitle").style.display = "none";
+  document.getElementById("worldTitle").style.display = "none";
 
-document.getElementById("evidencePanel").style.display =
-  "block";
+  document.getElementById("evidencePanel").style.display =
+    "block";
 
   setTimeout(() => {
 
-html2canvas(document.body, {
-  useCORS: true,
-  scrollY: -window.scrollY,
-  }).then(canvas => {
+    html2canvas(document.body, {
+      useCORS: true,
+      scrollY: -window.scrollY,
+      ignoreElements: (element) => {
+        return (
+          element.id === "info" ||
+          element.id === "worldTitle"
+        );
+      }
+    }).then(canvas => {
 
-  ignoreElements: (element) => {
-    return (
-      element.id === "info" ||
-      element.id === "worldTitle"
-    );
-  }
+      document.getElementById("evidencePanel").style.display =
+        "none";
 
-html2canvas(...).then(canvas => {
+      infoPanel.style.left = "10px";
+      infoPanel.style.boxShadow = "";
 
-    document.getElementById("evidencePanel").style.display =
-      "none";
+      document.getElementById("worldTitle").style.display = "block";
 
-    // Put menu back where it belongs
-    infoPanel.style.left = "10px";
-
-    // Restore shadow
-    infoPanel.style.boxShadow = "";
-
-    // Show title again
-    document.getElementById("worldTitle").style.display = "block";
-          
       const link = document.createElement("a");
 
-const now = new Date();
+      const now = new Date();
 
-const dateStamp =
-  now.getFullYear() + "-" +
-  String(now.getMonth() + 1).padStart(2, "0") + "-" +
-  String(now.getDate()).padStart(2, "0");
+      const dateStamp =
+        now.getFullYear() + "-" +
+        String(now.getMonth() + 1).padStart(2, "0") + "-" +
+        String(now.getDate()).padStart(2, "0");
 
-link.download =
-  studentName +
-  "-THINKamigBOB-" +
-  dateStamp +
-  ".png";
+      link.download =
+        studentName +
+        "-THINKamigBOB-" +
+        dateStamp +
+        ".png";
 
       link.href = canvas.toDataURL("image/png");
 
