@@ -791,6 +791,8 @@ const viewCubeRenderer =
 
 viewCubeRenderer.setSize(120, 120);
 
+viewCubeRenderer.setClearColor(0x000000, 0);  
+
 const viewCubeGroup = new THREE.Group();
 
 const cubeMaterial = [
@@ -1112,11 +1114,13 @@ spinningTurbines.forEach(turbine => {
   });
 
   // Update mini view cube rotation
-viewCubeGroup.rotation.y = cameraAngle;
-viewCubeGroup.rotation.x = cameraHeight * 0.03;
+miniCube.rotation.y += 0.01;
+miniCube.rotation.x += 0.005;
 
-// Render mini cube
-viewCubeRenderer.render(viewCubeScene, viewCubeCamera);
+viewCubeRenderer.render(
+  viewCubeScene,
+  viewCubeCamera
+);
 
   camera.lookAt(0, 0, 0);
   renderer.render(scene, camera);
