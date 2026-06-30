@@ -967,7 +967,10 @@ document.addEventListener('wheel', (event) => {
   // Allow scrolling inside the menu panel
 if(
   event.target.closest("#info") ||
-  event.target.closest("#floatingToolbox")
+  event.target.closest("#floatingToolbox") ||
+  event.target.closest("#missionCard") ||
+  event.target.closest("#buildBar") ||
+  event.target.closest("#viewCubeBox")
 ){
   return;
 }
