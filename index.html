@@ -41,6 +41,32 @@
     margin-left:12px;
 
 }
+
+#stemCoach{
+
+  position:fixed;
+
+  top:300px;
+
+  right:20px;
+
+  width:300px;
+
+  background:white;
+
+  border:3px solid gold;
+
+  border-radius:18px;
+
+  padding:15px;
+
+  z-index:550;
+
+  max-height:300px;
+
+  overflow-y:auto;
+
+}
     
 #floatingToolbox{
   position:fixed;
@@ -430,6 +456,21 @@
       <label><input type="checkbox" onchange="syncChecklists()"> <span id="floatChallenge3">Build a dragon perch</span></label>
       <label><input type="checkbox" onchange="syncChecklists()"> <span id="floatChallenge4">Reset and try a new design</span></label>
     </div>
+
+    <div id="stemCoach">
+
+  <h2>🧙 Professor Bob's STEM Coach</h2>
+
+  <div id="vocabPanel">
+
+    <p><b>Welcome Builder!</b></p>
+
+    Click a building tool to learn STEM vocabulary,
+    interesting facts, and new challenges.
+
+  </div>
+
+</div>
    
     <p id="floatingBadge">
       🏅 Badge: Keep building!
@@ -544,14 +585,6 @@
 <button onclick="addRibosomes()">⚫ Add Ribosomes</button>
 <button onclick="addGolgi()">📦 Add Golgi Body</button>
 <button onclick="addLysosome()">🟣 Add Lysosome</button>
-
-  <hr>
-
-<h3>📖 STEM Vocabulary</h3>
-
-<div id="vocabPanel">
-Click a building tool to learn.
-</div>
   
 </div>
 
