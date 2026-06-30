@@ -3627,26 +3627,20 @@ function toggleStarterWorlds(){
 
 function toggleToolbox(){
 
-  const section =
-    document.getElementById("toolbox");
+  const toolbox = document.getElementById("toolbox");
+  const button = document.getElementById("toolboxButton");
 
-  const button =
-    document.getElementById("toolboxButton");
+  const isHidden =
+    window.getComputedStyle(toolbox).display === "none";
 
-  if(section.style.display === "none"){
-
-    section.style.display = "block";
-
-    button.innerHTML =
-      "🧰 Builder Toolbox ▼";
-
-  } else {
-
-    section.style.display = "none";
-
-    button.innerHTML =
-      "🧰 Builder Toolbox ▶";
+  if(isHidden){
+    toolbox.style.display = "block";
+    button.innerHTML = "🧰 THINKamigBOB Toolbox ▼";
+  }else{
+    toolbox.style.display = "none";
+    button.innerHTML = "🧰 THINKamigBOB Toolbox ▶";
   }
+
 }
 
 function toggleTools(){
