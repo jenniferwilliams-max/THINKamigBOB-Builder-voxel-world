@@ -18,8 +18,22 @@
 
 #viewDice {
   position: fixed;
-  top: 90px;
-  left: 20px;
+
+  top: 120px;
+  left: 400px;
+
+  background: rgba(255,255,255,.95);
+  border: 3px solid #1E90FF;
+  border-radius: 18px;
+
+  padding: 10px;
+
+  z-index: 260;
+
+  text-align: center;
+
+  box-shadow: 0 0 10px rgba(0,0,0,.25);
+}
   background: rgba(255,255,255,0.92);
   border: 3px solid #1E90FF;
   border-radius: 14px;
@@ -334,18 +348,6 @@
   <button onclick="document.getElementById('loadFile').click()">📂 Load World</button>
   <button onclick="resetWorld()">🔄 Reset World</button>
 </div>
-
-<p><b>View:</b></p>
-
-<button class="viewButton" onclick="setView('home')">🏠 Home</button>
-<button class="viewButton" onclick="setView('top')">⬆️ Top</button>
-<button class="viewButton" onclick="setView('front')">Front</button>
-<button class="viewButton" onclick="setView('back')">Back</button>
-<button class="viewButton" onclick="setView('left')">Left</button>
-<button class="viewButton" onclick="setView('right')">Right</button>
-
-<button class="viewButton" onclick="zoomIn()">🔍+</button>
-<button class="viewButton" onclick="zoomOut()">🔍-</button>
 
 <div class="blockHeader">
   🎨 Choose Your Building Block
