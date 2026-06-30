@@ -245,18 +245,19 @@
   border: 2px solid gold;
 }
 
-#viewCubeCanvas{
-  position: absolute;
-  top: 30px;
-  left: 50px;
-  width: 120px;
-  height: 120px;
+#viewCubeBox{
+  position:fixed;
+  top:120px;
+  left:380px;
+  width:220px;
+  height:240px;
+  z-index:300;
 }
 
 #viewCubeCanvas{
   position:absolute;
   top:30px;
-  left:30px;
+  left:50px;
   width:120px;
   height:120px;
   background:rgba(255,255,255,.95);
@@ -268,53 +269,29 @@
   position:absolute;
   width:55px;
   height:55px;
-
   background:#FFD700;
   border:none;
   border-radius:50%;
-
   font-weight:bold;
   font-size:12px;
-
   cursor:pointer;
-
   display:flex;
   align-items:center;
   justify-content:center;
-
   box-shadow:0 2px 4px rgba(0,0,0,.2);
 }
 
-.topBtn{
-  top: 0;
-  left: 75px;
-}
-
-.leftBtn{
-  top: 70px;
-  left: 0;
-}
-
-.rightBtn{
-  top: 70px;
-  right: 0;
-}
-
-.frontBtn{
-  top: 120px;
-  left: 40px;
-}
-
-.backBtn{
-  top: 120px;
-  right: 40px;
-}
+.topBtn{ top:0; left:75px; }
+.leftBtn{ top:70px; left:0; }
+.rightBtn{ top:70px; right:0; }
+.frontBtn{ top:120px; left:40px; }
+.backBtn{ top:120px; right:40px; }
 
 .homeBtn{
-  top: 175px;
-  left: 75px;
-  background: #1E90FF;
-  color: white;
+  top:175px;
+  left:75px;
+  background:#1E90FF;
+  color:white;
 }
         
   </style>
@@ -323,42 +300,15 @@
 <body>
 
 <div id="viewCubeBox">
+  <button class="viewBtn topBtn" onclick="setView('top')">TOP</button>
+  <button class="viewBtn leftBtn" onclick="setView('left')">LEFT</button>
 
-  <button class="viewBtn topBtn"
-          onclick="setView('top')">
-    TOP
-  </button>
+  <canvas id="viewCubeCanvas" width="120" height="120"></canvas>
 
-  <button class="viewBtn leftBtn"
-          onclick="setView('left')">
-    LEFT
-  </button>
-
-  <canvas id="viewCubeCanvas"
-          width="120"
-          height="120">
-  </canvas>
-
-  <button class="viewBtn rightBtn"
-          onclick="setView('right')">
-    RIGHT
-  </button>
-
-  <button class="viewBtn frontBtn"
-          onclick="setView('front')">
-    FRONT
-  </button>
-
-  <button class="viewBtn backBtn"
-          onclick="setView('back')">
-    BACK
-  </button>
-
-  <button class="viewBtn homeBtn"
-          onclick="setView('home')">
-    HOME
-  </button>
-
+  <button class="viewBtn rightBtn" onclick="setView('right')">RIGHT</button>
+  <button class="viewBtn frontBtn" onclick="setView('front')">FRONT</button>
+  <button class="viewBtn backBtn" onclick="setView('back')">BACK</button>
+  <button class="viewBtn homeBtn" onclick="setView('home')">HOME</button>
 </div>
 
 <div id="missionCard">
