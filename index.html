@@ -16,6 +16,30 @@
       display: block;
     }
 
+#floatingToolbox{
+  position:fixed;
+  bottom:90px;
+  right:20px;
+
+  width:300px;
+
+  background:rgba(255,255,255,.95);
+
+  border:3px solid gold;
+  border-radius:14px;
+
+  padding:10px;
+
+  z-index:300;
+
+  max-height:70vh;
+  overflow-y:auto;
+}
+
+#floatingToolbox button{
+  width:100%;
+}
+    
 #buildBar{
   position:fixed;
   bottom:15px;
@@ -383,75 +407,9 @@
   </div>
 
 </div>
+
+<div id="floatingToolbox">
   
-<div id="evidencePanel">
-  <h2 id="evidenceTitle">THINKamigBOB Builder Evidence</h2>
-  <p id="evidenceStudent"></p>
-  <p id="evidenceDate"></p>
-  <p id="evidenceBadge"></p>
-  <h3>✅ Completed Challenges</h3>
-  <div id="evidenceChecklist"></div>
-</div>
-  
-<div id="missionPopup" style="display:none;">
-  <div id="missionPopupBox">
-    <button id="closeMissionPopup" onclick="closeMissionPopup()">✖</button>
-    <h2 id="popupTitle">Mission</h2>
-    <p id="popupMission"></p>
-    <ul id="popupChallenges"></ul>
-    <p id="popupMoreChallenge"></p>
-  </div>
-</div>
-  
-<div id="worldTitle">
-  🧠 THINKamigBOB Builder 🧠
-</div>
-
-<div id="info">
-
-<button onclick="showDirections()">
-❓ How to Play THINKamigBOB Builder
-</button>
-
-<p><b>Student Name:</b></p>
-<input id="studentName"
-       placeholder="Enter your name"
-       style="width:100%; padding:5px; border-radius:6px;">
-
-<button id="toolsButton" onclick="toggleTools()">
-  ⚙️ THINKamigBOB Building Tools ▶
-</button>
-
-<div id="buildingTools" style="display:none;">
-  <button onclick="undoLast()">↩️ Undo Last Add</button>
-  <button onclick="saveWorld()">💾 Save World</button>
-  <button onclick="saveImage()">📸 Save Screenshot</button>
-  <button onclick="document.getElementById('loadFile').click()">📂 Load World</button>
-  <button onclick="resetWorld()">🔄 Reset World</button>
-</div>
-
-<p style="font-size:12px; margin-top:0;">
-  Choose a world to begin your adventure.
-</p>
-
-<button id="starterButton" onclick="toggleStarterWorlds()">
-  🌍 THINKamigBOB Starter Worlds ▼
-</button>
-
-<div id="starterWorlds">
-  <button onclick="buildCastle()">🏰 Castle Builder</button>
-  <button onclick="buildPlayground()">🛝 Playground Builder</button>
-  <button onclick="buildHabitat()">🌳 Habitat Builder</button>
-  <button onclick="buildDragonLair()">🐉 Dragon Lair</button>
-  <button onclick="buildFutureCity()">🏙️ Future City</button>
-  <button onclick="buildWeatherWorld()">🌦️ Grade 3: Weather Station</button>
-  <button onclick="buildEnergyCity()">⚡ Grade 4: Energy City</button>
-  <button onclick="buildSpaceColony()">🚀 Grade 5: Moon Colony</button>
-  <button onclick="buildEngineeringWorld()">🏗️ Grade 6: Engineering Challenge</button>
-  <button onclick="buildCellWorld()">🧬 Grade 6: Cell Builder Lab</button>
-  
-</div>
-
 <button id="toolboxButton" onclick="toggleToolbox()">
   🧰 THINKamigBOB Toolbox ▶
 </button>
@@ -541,7 +499,77 @@
 <button onclick="addLysosome()">🟣 Add Lysosome</button>
 
 </div>
+
+</div>
   
+<div id="evidencePanel">
+  <h2 id="evidenceTitle">THINKamigBOB Builder Evidence</h2>
+  <p id="evidenceStudent"></p>
+  <p id="evidenceDate"></p>
+  <p id="evidenceBadge"></p>
+  <h3>✅ Completed Challenges</h3>
+  <div id="evidenceChecklist"></div>
+</div>
+  
+<div id="missionPopup" style="display:none;">
+  <div id="missionPopupBox">
+    <button id="closeMissionPopup" onclick="closeMissionPopup()">✖</button>
+    <h2 id="popupTitle">Mission</h2>
+    <p id="popupMission"></p>
+    <ul id="popupChallenges"></ul>
+    <p id="popupMoreChallenge"></p>
+  </div>
+</div>
+  
+<div id="worldTitle">
+  🧠 THINKamigBOB Builder 🧠
+</div>
+
+<div id="info">
+
+<button onclick="showDirections()">
+❓ How to Play THINKamigBOB Builder
+</button>
+
+<p><b>Student Name:</b></p>
+<input id="studentName"
+       placeholder="Enter your name"
+       style="width:100%; padding:5px; border-radius:6px;">
+
+<button id="toolsButton" onclick="toggleTools()">
+  ⚙️ THINKamigBOB Building Tools ▶
+</button>
+
+<div id="buildingTools" style="display:none;">
+  <button onclick="undoLast()">↩️ Undo Last Add</button>
+  <button onclick="saveWorld()">💾 Save World</button>
+  <button onclick="saveImage()">📸 Save Screenshot</button>
+  <button onclick="document.getElementById('loadFile').click()">📂 Load World</button>
+  <button onclick="resetWorld()">🔄 Reset World</button>
+</div>
+
+<p style="font-size:12px; margin-top:0;">
+  Choose a world to begin your adventure.
+</p>
+
+<button id="starterButton" onclick="toggleStarterWorlds()">
+  🌍 THINKamigBOB Starter Worlds ▼
+</button>
+
+<div id="starterWorlds">
+  <button onclick="buildCastle()">🏰 Castle Builder</button>
+  <button onclick="buildPlayground()">🛝 Playground Builder</button>
+  <button onclick="buildHabitat()">🌳 Habitat Builder</button>
+  <button onclick="buildDragonLair()">🐉 Dragon Lair</button>
+  <button onclick="buildFutureCity()">🏙️ Future City</button>
+  <button onclick="buildWeatherWorld()">🌦️ Grade 3: Weather Station</button>
+  <button onclick="buildEnergyCity()">⚡ Grade 4: Energy City</button>
+  <button onclick="buildSpaceColony()">🚀 Grade 5: Moon Colony</button>
+  <button onclick="buildEngineeringWorld()">🏗️ Grade 6: Engineering Challenge</button>
+  <button onclick="buildCellWorld()">🧬 Grade 6: Cell Builder Lab</button>
+  
+</div>
+
 <input type="file" id="loadFile"
        style="display:none"
        accept=".json">
