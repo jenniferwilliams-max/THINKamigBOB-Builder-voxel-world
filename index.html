@@ -245,13 +245,12 @@
   border: 2px solid gold;
 }
 
-#viewCubeBox{
-  position:fixed;
-  top:120px;
-  left:380px;
-  width:180px;
-  height:220px;
-  z-index:300;
+#viewCubeCanvas{
+  position: absolute;
+  top: 30px;
+  left: 50px;
+  width: 120px;
+  height: 120px;
 }
 
 #viewCubeCanvas{
@@ -267,46 +266,57 @@
 
 .viewBtn{
   position:absolute;
+  width:55px;
+  height:55px;
+
   background:#FFD700;
   border:none;
-  border-radius:8px;
+  border-radius:50%;
+
   font-weight:bold;
-  padding:6px 10px;
+  font-size:12px;
+
   cursor:pointer;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
   box-shadow:0 2px 4px rgba(0,0,0,.2);
 }
 
 .topBtn{
-  top:0;
-  left:60px;
+  top: 0;
+  left: 75px;
 }
 
 .leftBtn{
-  top:65px;
-  left:0;
+  top: 70px;
+  left: 0;
 }
 
 .rightBtn{
-  top:65px;
-  right:0;
+  top: 70px;
+  right: 0;
 }
 
 .frontBtn{
-  top:115px;
-  left:20px;
+  top: 120px;
+  left: 40px;
 }
 
 .backBtn{
-  top:115px;
-  right:20px;
+  top: 120px;
+  right: 40px;
 }
+
 .homeBtn{
-  top:145px;
-  left:58px;
-  background:#1E90FF;
-  color:white;
+  top: 175px;
+  left: 75px;
+  background: #1E90FF;
+  color: white;
 }
-    
+        
   </style>
 </head>
 
