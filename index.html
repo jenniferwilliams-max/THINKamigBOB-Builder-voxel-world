@@ -476,44 +476,46 @@
 
 #viewCubeBox{
   position:fixed;
-  top:20px;
-  left:390px;
-  width:180px;
+  top:18px;
+  left:360px;
+  width:255px;
   z-index:300;
-  background:rgba(255,255,255,.58);
+  background:rgba(20,20,20,.62);
   backdrop-filter:blur(8px);
-  border:2px solid rgba(255,215,0,.85);
-  border-radius:18px;
-  padding:8px;
+  border:2px solid rgba(255,215,0,.95);
+  border-radius:20px;
+  padding:10px;
   text-align:center;
-  box-shadow:0 0 14px rgba(0,0,0,.25);
+  box-shadow:0 0 18px rgba(0,0,0,.45);
 }
 
 #viewCubeTitle{
-  font-size:12px;
+  font-size:14px;
   font-weight:bold;
-  color:#111;
-  margin-bottom:4px;
+  color:gold;
+  margin-bottom:5px;
 }
 
 #viewCubeCanvas{
-  width:120px;
-  height:120px;
+  width:180px;
+  height:180px;
   background:transparent;
   border:none;
   border-radius:18px;
   display:block;
   margin:0 auto 6px auto;
+  cursor:grab;
+}
+
+#viewCubeCanvas:active{
+  cursor:grabbing;
 }
 
 #viewDiceHint{
-  font-size:11px;
-  color:#111;
+  font-size:12px;
+  color:white;
   margin-top:3px;
-}
-
-#viewCubeCanvas{
-  cursor:pointer;
+  line-height:1.3;
 }
 
 </style>
@@ -566,8 +568,8 @@
   
 <div id="viewCubeBox">
   <div id="viewCubeTitle">3D View Dice</div>
-  <canvas id="viewCubeCanvas" width="120" height="120"></canvas>
-  <div id="viewDiceHint">Click a cube face • Double-click for HOME</div>
+  <canvas id="viewCubeCanvas" width="180" height="180"></canvas>
+  <div id="viewDiceHint">Drag to rotate view • Click a face • Double-click HOME</div>
 </div>
 
 <div id="missionCard">
@@ -2403,7 +2405,7 @@ const viewCubeScene = new THREE.Scene();
 const viewCubeCamera =
   new THREE.PerspectiveCamera(45, 1, 0.1, 100);
 
-viewCubeCamera.position.set(3, 3, 5);
+viewCubeCamera.position.set(3.2, 3.2, 5.4);
 viewCubeCamera.lookAt(0, 0, 0);
 
 const viewCubeRenderer =
@@ -2412,7 +2414,7 @@ const viewCubeRenderer =
     alpha: true
   });
 
-viewCubeRenderer.setSize(120, 120);
+viewCubeRenderer.setSize(180, 180);
 
 viewCubeRenderer.setClearColor(0x000000, 0);  
 
@@ -2420,45 +2422,54 @@ const viewCubeGroup = new THREE.Group();
 
 function createViewDiceFace(label, background, textColor = "#111111"){
   const canvas = document.createElement("canvas");
-  canvas.width = 256;
-  canvas.height = 256;
+  canvas.width = 512;
+  canvas.height = 512;
 
   const ctx = canvas.getContext("2d");
 
-  const gradient = ctx.createLinearGradient(0, 0, 256, 256);
+  const gradient = ctx.createLinearGradient(0, 0, 512, 512);
   gradient.addColorStop(0, background);
-  gradient.addColorStop(1, "#ffffff");
+  gradient.addColorStop(0.65, background);
+  gradient.addColorStop(1, "#f7d86b");
 
   ctx.fillStyle = gradient;
-  ctx.fillRect(0, 0, 256, 256);
+  ctx.fillRect(0, 0, 512, 512);
 
-  ctx.strokeStyle = "rgba(0,0,0,.35)";
-  ctx.lineWidth = 10;
-  ctx.strokeRect(12, 12, 232, 232);
+  ctx.strokeStyle = "rgba(0,0,0,.75)";
+  ctx.lineWidth = 20;
+  ctx.strokeRect(20, 20, 472, 472);
+
+  ctx.fillStyle = "rgba(255,255,255,.25)";
+  ctx.fillRect(42, 42, 428, 60);
+
+  ctx.shadowColor = "rgba(0,0,0,.65)";
+  ctx.shadowBlur = 8;
+  ctx.shadowOffsetX = 3;
+  ctx.shadowOffsetY = 3;
 
   ctx.fillStyle = textColor;
-  ctx.font = "bold 42px Arial";
+  ctx.font = "bold 72px Arial";
   ctx.textAlign = "center";
   ctx.textBaseline = "middle";
-  ctx.fillText(label, 128, 128);
+  ctx.fillText(label, 256, 256);
 
   const texture = new THREE.CanvasTexture(canvas);
-  texture.anisotropy = 4;
+  texture.anisotropy = 8;
   return texture;
 }
 
 const cubeMaterial = [
-  new THREE.MeshLambertMaterial({ map:createViewDiceFace("RIGHT", "#FFD700") }),
-  new THREE.MeshLambertMaterial({ map:createViewDiceFace("LEFT", "#D4AF37") }),
-  new THREE.MeshLambertMaterial({ map:createViewDiceFace("TOP", "#FFFFFF") }),
-  new THREE.MeshLambertMaterial({ map:createViewDiceFace("BOTTOM", "#CCCCCC") }),
-  new THREE.MeshLambertMaterial({ map:createViewDiceFace("FRONT", "#1E90FF", "#ffffff") }),
-  new THREE.MeshLambertMaterial({ map:createViewDiceFace("BACK", "#87CEFA") })
+  new THREE.MeshLambertMaterial({ map:createViewDiceFace("RIGHT", "#E0A800", "#111111") }),
+  new THREE.MeshLambertMaterial({ map:createViewDiceFace("LEFT", "#B88900", "#111111") }),
+  new THREE.MeshLambertMaterial({ map:createViewDiceFace("TOP", "#F4F0D0", "#111111") }),
+  new THREE.MeshLambertMaterial({ map:createViewDiceFace("BOTTOM", "#888888", "#111111") }),
+  new THREE.MeshLambertMaterial({ map:createViewDiceFace("FRONT", "#0B5CAD", "#ffffff") }),
+  new THREE.MeshLambertMaterial({ map:createViewDiceFace("BACK", "#3E9EDB", "#111111") })
 ];
 
 const miniCube =
   new THREE.Mesh(
-    new THREE.BoxGeometry(1.8, 1.8, 1.8),
+    new THREE.BoxGeometry(2.25, 2.25, 2.25),
     cubeMaterial
   );
 
@@ -2494,6 +2505,11 @@ function viewFromDiceFace(materialIndex){
 }
 
 viewCubeCanvas.addEventListener("click", function(event){
+  if(viewDiceMoved){
+    viewDiceMoved = false;
+    return;
+  }
+
   const rect = viewCubeCanvas.getBoundingClientRect();
 
   viewDiceMouse.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
@@ -2512,6 +2528,51 @@ viewCubeCanvas.addEventListener("click", function(event){
 viewCubeCanvas.addEventListener("dblclick", function(){
   setView("home");
 });
+
+let viewDiceDragging = false;
+let viewDiceMoved = false;
+let viewDiceLastX = 0;
+let viewDiceLastY = 0;
+
+viewCubeCanvas.addEventListener("mousedown", function(event){
+  viewDiceDragging = true;
+  viewDiceMoved = false;
+  viewDiceLastX = event.clientX;
+  viewDiceLastY = event.clientY;
+});
+
+document.addEventListener("mousemove", function(event){
+  if(!viewDiceDragging){
+    return;
+  }
+
+  const dx = event.clientX - viewDiceLastX;
+  const dy = event.clientY - viewDiceLastY;
+
+  if(Math.abs(dx) > 2 || Math.abs(dy) > 2){
+    viewDiceMoved = true;
+  }
+
+  cameraAngle += dx * 0.01;
+  cameraHeight -= dy * 0.05;
+
+  if(cameraHeight < 2){ cameraHeight = 2; }
+  if(cameraHeight > 30){ cameraHeight = 30; }
+
+  viewDiceLastX = event.clientX;
+  viewDiceLastY = event.clientY;
+
+  updateCamera();
+});
+
+document.addEventListener("mouseup", function(){
+  viewDiceDragging = false;
+});
+
+function updateViewDice(){
+  miniCube.rotation.y = -cameraAngle;
+  miniCube.rotation.x = Math.max(-0.7, Math.min(0.9, (cameraHeight - 8) / 22));
+}
 
 
   
@@ -2849,9 +2910,8 @@ spinningTurbines.forEach(turbine => {
     }
   });
 
-  // Update mini view cube rotation
-miniCube.rotation.y += 0.01;
-miniCube.rotation.x += 0.005;
+  // Update view dice to match the camera instead of spinning automatically
+updateViewDice();
 
 viewCubeRenderer.render(
   viewCubeScene,
@@ -4305,7 +4365,7 @@ addMovingClouds();
   addBlock(2, 0.8, 7, 0xADFF2F, new THREE.BoxGeometry(2, 0.4, 2));
 
 showMissionPopup();
-;
+checkBadge();
 }
   
 function buildDragonLair(){
@@ -4367,7 +4427,7 @@ addDragonSmoke();
   addBlock(4, 1, -4, 0xADFF2F);
 
 showMissionPopup();
-;
+checkBadge();
 }
   
 function buildFutureCity(){
