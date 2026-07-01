@@ -216,22 +216,66 @@
     
 #buildBar{
   position:fixed;
-  bottom:15px;
+  bottom:10px;
   left:50%;
   transform:translateX(-50%);
   background:rgba(255,255,255,.95);
   border:3px solid gold;
   border-radius:14px;
-  padding:10px 15px;
+  padding:8px 12px;
   z-index:300;
   text-align:center;
-  min-width:620px;
-  max-width:86vw;
+  min-width:900px;
+  max-width:96vw;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  flex-wrap:wrap;
 }
 
 #buildBar select{
   width:230px;
   font-size:15px;
+}
+
+
+#bottomBuildTools{
+  display:flex;
+  align-items:center;
+  gap:4px;
+  flex-wrap:wrap;
+}
+
+#bottomBuildTools button{
+  margin:2px;
+  padding:7px 9px;
+  font-size:13px;
+  white-space:nowrap;
+}
+
+#studentProjectBar{
+  position:absolute;
+  top:72px;
+  left:56%;
+  transform:translateX(-50%);
+  background:rgba(255,255,255,.88);
+  border:2px solid gold;
+  border-radius:12px;
+  padding:6px 10px;
+  z-index:145;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-size:13px;
+  box-shadow:0 0 8px rgba(0,0,0,.25);
+}
+
+#studentProjectBar input{
+  width:130px;
+  padding:4px 6px;
+  border-radius:6px;
+  border:1px solid #999;
 }
     
 #viewCubeButtons {
@@ -441,7 +485,7 @@
     #worldTitle {
       position: absolute;
       top: 10px;
-      left: 50%;
+      left: 56%;
       transform: translateX(-50%);
       background: rgba(0,0,0,0.7);
       color: gold;
@@ -570,6 +614,14 @@
   <option value="0xF5F5DC">🌕 Moonstone</option>
   <option value="0xADFF2F">🍋‍🟩 Potion Green</option>
 </select>
+
+  <div id="bottomBuildTools">
+    <button onclick="undoLast()">↩️ Undo</button>
+    <button onclick="saveWorld()">💾 Save</button>
+    <button onclick="saveImage()">📸 Screenshot</button>
+    <button onclick="document.getElementById('loadFile').click()">📂 Load</button>
+    <button onclick="resetWorld()">🔄 Reset</button>
+  </div>
 
   <div id="voiceControls">
     <button class="voiceButton" onclick="playThinkerBob()">▶️ Play</button>
@@ -1223,28 +1275,20 @@
   🧠 THINKamigBOB Builder 🧠
 </div>
 
+<div id="studentProjectBar">
+  <label><b>Student:</b>
+    <input id="studentName" placeholder="Name">
+  </label>
+  <label><b>Project:</b>
+    <input id="projectName" placeholder="Optional title">
+  </label>
+</div>
+
 <div id="info">
 
 <button onclick="showDirections()">
 ❓ How to Play THINKamigBOB Builder
 </button>
-
-<p><b>Student Name:</b></p>
-<input id="studentName"
-       placeholder="Enter your name"
-       style="width:100%; padding:5px; border-radius:6px;">
-
-<button id="toolsButton" onclick="toggleTools()">
-  ⚙️ THINKamigBOB Building Tools ▶
-</button>
-
-<div id="buildingTools" style="display:none;">
-  <button onclick="undoLast()">↩️ Undo Last Add</button>
-  <button onclick="saveWorld()">💾 Save World</button>
-  <button onclick="saveImage()">📸 Save Screenshot</button>
-  <button onclick="document.getElementById('loadFile').click()">📂 Load World</button>
-  <button onclick="resetWorld()">🔄 Reset World</button>
-</div>
 
 <p style="font-size:12px; margin-top:0;">
   Choose a world to begin your adventure.
@@ -2716,6 +2760,7 @@ if(
   event.target.closest("#missionCard") ||
   event.target.closest("#stemCoach") ||
   event.target.closest("#buildBar") ||
+  event.target.closest("#studentProjectBar") ||
   event.target.closest("#viewCubeBox")
 ){
   return;
@@ -2796,6 +2841,7 @@ function clickedUI(event){
     event.target.closest("#floatingToolbox") ||
     event.target.closest("#toolbox") ||
     event.target.closest("#buildBar") ||
+    event.target.closest("#studentProjectBar") ||
     event.target.closest("#blockColor") ||
     event.target.closest("#missionCard") ||
     event.target.closest("#stemCoach") ||
@@ -2809,6 +2855,7 @@ function clickedUI(event){
   "floatingToolbox",
   "toolbox",
   "buildBar",
+  "studentProjectBar",
   "missionCard",
   "stemCoach",
   "viewCubeBox"
@@ -2985,6 +3032,9 @@ function saveImage(){
   const studentName =
     document.getElementById("studentName").value || "Student";
 
+  const projectName =
+    document.getElementById("projectName")?.value || "THINKamigBOB Build";
+
   const today = new Date().toLocaleDateString();
 
   const badge =
@@ -3021,7 +3071,7 @@ function saveImage(){
   const infoPanel = document.getElementById("info");
 
   document.getElementById("evidenceTitle").innerHTML =
-    document.getElementById("worldTitle").textContent;
+    projectName + " — " + document.getElementById("worldTitle").textContent;
 
   infoPanel.style.left = "-1000px";
   infoPanel.style.boxShadow = "none";
@@ -4937,6 +4987,8 @@ checkBadge();
   const saveData = {
     app: "THINKamigBOB Builder",
     version: 2,
+    projectName: document.getElementById("projectName")?.value || "",
+    studentName: document.getElementById("studentName")?.value || "",
     blocks: worldData,
     favorites: favoriteData
   };
@@ -4953,8 +5005,14 @@ checkBadge();
   link.href =
     URL.createObjectURL(blob);
 
+  const projectFileName =
+    (document.getElementById("projectName")?.value || "thinkamigbob-world")
+      .replace(/[^a-z0-9-_]+/gi, "-")
+      .replace(/-+/g, "-")
+      .replace(/^-|-$/g, "") || "thinkamigbob-world";
+
   link.download =
-    'thinkamigbob-world.json';
+    projectFileName + '.json';
 
   link.click();
 }
@@ -4984,6 +5042,19 @@ document.getElementById('loadFile')
       Array.isArray(loadedData)
         ? []
         : loadedData.favorites || [];
+
+    if(!Array.isArray(loadedData)){
+      const projectInput = document.getElementById("projectName");
+      const studentInput = document.getElementById("studentName");
+
+      if(projectInput){
+        projectInput.value = loadedData.projectName || "";
+      }
+
+      if(studentInput){
+        studentInput.value = loadedData.studentName || "";
+      }
+    }
 
     worldData.forEach(data => {
 
