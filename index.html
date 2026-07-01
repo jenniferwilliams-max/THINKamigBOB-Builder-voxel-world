@@ -505,11 +505,6 @@
 
 <div id="toolbox">
 
-<input id="toolSearch"
-       placeholder="🔎 Search tools..."
-       oninput="searchTools()"
-       style="width:95%; padding:8px; border-radius:8px; margin:6px 0;">
-
 <button class="categoryButton"
         onclick="toggleCategory('favoriteTools', this)">
   ⭐ My Favorite Tools ▶
@@ -918,46 +913,6 @@ function toggleCategory(id, button){
 
   }
 
-}
-
-function searchTools(){
-
-  const searchText =
-    document.getElementById("toolSearch").value.toLowerCase();
-
-  const categories =
-    document.querySelectorAll(".toolCategory");
-
-  categories.forEach(category => {
-
-    let foundMatch = false;
-
-    const buttons =
-      category.querySelectorAll("button");
-
-    buttons.forEach(button => {
-
-      const text =
-        button.innerText.toLowerCase();
-
-      if(searchText === "" || text.includes(searchText)){
-        button.style.display = "block";
-        foundMatch = true;
-      } else {
-        button.style.display = "none";
-      }
-
-    });
-
-    if(searchText === ""){
-      category.style.display = "none";
-    } else if(foundMatch){
-      category.style.display = "block";
-    } else {
-      category.style.display = "none";
-    }
-
-  });
 }
 
 const TOOL_INFO = {
