@@ -561,14 +561,63 @@
 </button>  
 
 <div id="buildingMagicTools" class="toolCategory">
-  
-<button onclick="addBuilding()">🏢 Add Building</button>
-<button onclick="addPortal()">✨ Add Magic Portal</button>
-<button onclick="addVolcano()">🌋 Add Volcano</button>
-<button onclick="addRainbowBridge()">🌈 Add Rainbow Bridge</button>
-<button onclick="addCrystalCluster()">🔮 Add Crystal Cluster</button>
 
-  </div>
+<div class="toolRow">
+  <button onclick="addBuilding(); showToolInfo('building');">
+    🏢 Add Building
+  </button>
+
+  <button class="favoriteStar"
+          onclick="toggleFavorite('building', '🏢 Add Building', 'addBuilding(); showToolInfo(\'building\');', this)">
+    ☆
+  </button>
+</div>
+
+<div class="toolRow">
+  <button onclick="addPortal(); showToolInfo('portal');">
+    ✨ Add Magic Portal
+  </button>
+
+  <button class="favoriteStar"
+          onclick="toggleFavorite('portal', '✨ Add Magic Portal', 'addPortal(); showToolInfo(\'portal\');', this)">
+    ☆
+  </button>
+</div>
+
+<div class="toolRow">
+  <button onclick="addVolcano(); showToolInfo('volcano');">
+    🌋 Add Volcano
+  </button>
+
+  <button class="favoriteStar"
+          onclick="toggleFavorite('volcano', '🌋 Add Volcano', 'addVolcano(); showToolInfo(\'volcano\');', this)">
+    ☆
+  </button>
+</div>
+
+<div class="toolRow">
+  <button onclick="addRainbowBridge(); showToolInfo('rainbowBridge');">
+    🌈 Add Rainbow Bridge
+  </button>
+
+  <button class="favoriteStar"
+          onclick="toggleFavorite('rainbowBridge', '🌈 Add Rainbow Bridge', 'addRainbowBridge(); showToolInfo(\'rainbowBridge\');', this)">
+    ☆
+  </button>
+</div>
+
+<div class="toolRow">
+  <button onclick="addCrystalCluster(); showToolInfo('crystalCluster');">
+    🔮 Add Crystal Cluster
+  </button>
+
+  <button class="favoriteStar"
+          onclick="toggleFavorite('crystalCluster', '🔮 Add Crystal Cluster', 'addCrystalCluster(); showToolInfo(\'crystalCluster\');', this)">
+    ☆
+  </button>
+</div>
+
+</div>
   
 <button class="categoryButton"
         onclick="toggleCategory('natureTools', this)">
@@ -588,13 +637,27 @@
   </button>
 </div>
 
-<button onclick="addPond(); showToolInfo('pond');">
-🌊 Add Pond
-</button>
+<div class="toolRow">
+  <button onclick="addPond(); showToolInfo('pond');">
+    🌊 Add Pond
+  </button>
 
-<button onclick="addRocks(); showToolInfo('rocks');">
-🪨 Add Rocks
-</button>
+  <button class="favoriteStar"
+          onclick="toggleFavorite('pond', '🌊 Add Pond', 'addPond(); showToolInfo(\'pond\');', this)">
+    ☆
+  </button>
+</div>
+
+<div class="toolRow">
+  <button onclick="addRocks(); showToolInfo('rocks');">
+    🪨 Add Rocks
+  </button>
+
+  <button class="favoriteStar"
+          onclick="toggleFavorite('rocks', '🪨 Add Rocks', 'addRocks(); showToolInfo(\'rocks\');', this)">
+    ☆
+  </button>
+</div>
 
 </div>
 
@@ -604,12 +667,61 @@
 </button>
        
 <div id="weatherTools" class="toolCategory">
-  
-  <button onclick="addRainGauge();">🌧️ Add Rain Gauge</button>
-  <button onclick="addWeatherBalloon();">🎈 Add Weather Balloon</button>
-  <button onclick="addTornadoShelter();">🌪️ Add Tornado Shelter</button>
-  <button onclick="addLightningRod();">⚡ Add Lightning Rod</button>
-  <button onclick="addThermometer();">🌡️ Add Thermometer</button>
+
+<div class="toolRow">
+  <button onclick="addRainGauge(); showToolInfo('rainGauge');">
+    🌧️ Add Rain Gauge
+  </button>
+
+  <button class="favoriteStar"
+          onclick="toggleFavorite('rainGauge', '🌧️ Add Rain Gauge', 'addRainGauge(); showToolInfo(\'rainGauge\');', this)">
+    ☆
+  </button>
+</div>
+
+<div class="toolRow">
+  <button onclick="addWeatherBalloon(); showToolInfo('weatherBalloon');">
+    🎈 Add Weather Balloon
+  </button>
+
+  <button class="favoriteStar"
+          onclick="toggleFavorite('weatherBalloon', '🎈 Add Weather Balloon', 'addWeatherBalloon(); showToolInfo(\'weatherBalloon\');', this)">
+    ☆
+  </button>
+</div>
+
+<div class="toolRow">
+  <button onclick="addTornadoShelter(); showToolInfo('tornadoShelter');">
+    🌪️ Add Tornado Shelter
+  </button>
+
+  <button class="favoriteStar"
+          onclick="toggleFavorite('tornadoShelter', '🌪️ Add Tornado Shelter', 'addTornadoShelter(); showToolInfo(\'tornadoShelter\');', this)">
+    ☆
+  </button>
+</div>
+
+<div class="toolRow">
+  <button onclick="addLightningRod(); showToolInfo('lightningRod');">
+    ⚡ Add Lightning Rod
+  </button>
+
+  <button class="favoriteStar"
+          onclick="toggleFavorite('lightningRod', '⚡ Add Lightning Rod', 'addLightningRod(); showToolInfo(\'lightningRod\');', this)">
+    ☆
+  </button>
+</div>
+
+<div class="toolRow">
+  <button onclick="addThermometer(); showToolInfo('thermometer');">
+    🌡️ Add Thermometer
+  </button>
+
+  <button class="favoriteStar"
+          onclick="toggleFavorite('thermometer', '🌡️ Add Thermometer', 'addThermometer(); showToolInfo(\'thermometer\');', this)">
+    ☆
+  </button>
+</div>
 
 </div>
 
@@ -620,25 +732,60 @@
 
 <div id="energyTools" class="toolCategory">
 
-  <button onclick="addWindTurbine()">
+<div class="toolRow">
+  <button onclick="addWindTurbine(); showToolInfo('windTurbine');">
     🌬️ Add Wind Turbine
   </button>
 
-  <button onclick="addSolarPanels()">
+  <button class="favoriteStar"
+          onclick="toggleFavorite('windTurbine', '🌬️ Add Wind Turbine', 'addWindTurbine(); showToolInfo(\'windTurbine\');', this)">
+    ☆
+  </button>
+</div>
+
+<div class="toolRow">
+  <button onclick="addSolarPanels(); showToolInfo('solarPanels');">
     ☀️ Add Solar Panels
   </button>
 
-  <button onclick="addPowerLine()">
+  <button class="favoriteStar"
+          onclick="toggleFavorite('solarPanels', '☀️ Add Solar Panels', 'addSolarPanels(); showToolInfo(\'solarPanels\');', this)">
+    ☆
+  </button>
+</div>
+
+<div class="toolRow">
+  <button onclick="addPowerLine(); showToolInfo('powerLine');">
     ⚡ Add Power Line
   </button>
 
-  <button onclick="addBattery()">
+  <button class="favoriteStar"
+          onclick="toggleFavorite('powerLine', '⚡ Add Power Line', 'addPowerLine(); showToolInfo(\'powerLine\');', this)">
+    ☆
+  </button>
+</div>
+
+<div class="toolRow">
+  <button onclick="addBattery(); showToolInfo('battery');">
     🔋 Add Battery
   </button>
 
-  <button onclick="addElectricCar()">
+  <button class="favoriteStar"
+          onclick="toggleFavorite('battery', '🔋 Add Battery', 'addBattery(); showToolInfo(\'battery\');', this)">
+    ☆
+  </button>
+</div>
+
+<div class="toolRow">
+  <button onclick="addElectricCar(); showToolInfo('electricCar');">
     🚗 Add Electric Car
   </button>
+
+  <button class="favoriteStar"
+          onclick="toggleFavorite('electricCar', '🚗 Add Electric Car', 'addElectricCar(); showToolInfo(\'electricCar\');', this)">
+    ☆
+  </button>
+</div>
 
 </div>
 <button class="categoryButton"
@@ -648,11 +795,60 @@
 
 <div id="spaceTools" class="toolCategory">
 
-  <button onclick="addRocket()">🚀 Add Rocket</button>
-  <button onclick="addSatellite()">🛰️ Add Satellite</button>
-  <button onclick="addRover()">🤖 Add Rover</button>
-  <button onclick="addSolarArray()">🔋 Add Solar Array</button>
-  <button onclick="addGreenhouse()">🌱 Add Space Greenhouse</button>
+<div class="toolRow">
+  <button onclick="addRocket(); showToolInfo('rocket');">
+    🚀 Add Rocket
+  </button>
+
+  <button class="favoriteStar"
+          onclick="toggleFavorite('rocket', '🚀 Add Rocket', 'addRocket(); showToolInfo(\'rocket\');', this)">
+    ☆
+  </button>
+</div>
+
+<div class="toolRow">
+  <button onclick="addSatellite(); showToolInfo('satellite');">
+    🛰️ Add Satellite
+  </button>
+
+  <button class="favoriteStar"
+          onclick="toggleFavorite('satellite', '🛰️ Add Satellite', 'addSatellite(); showToolInfo(\'satellite\');', this)">
+    ☆
+  </button>
+</div>
+
+<div class="toolRow">
+  <button onclick="addRover(); showToolInfo('rover');">
+    🤖 Add Rover
+  </button>
+
+  <button class="favoriteStar"
+          onclick="toggleFavorite('rover', '🤖 Add Rover', 'addRover(); showToolInfo(\'rover\');', this)">
+    ☆
+  </button>
+</div>
+
+<div class="toolRow">
+  <button onclick="addSolarArray(); showToolInfo('solarArray');">
+    🔋 Add Solar Array
+  </button>
+
+  <button class="favoriteStar"
+          onclick="toggleFavorite('solarArray', '🔋 Add Solar Array', 'addSolarArray(); showToolInfo(\'solarArray\');', this)">
+    ☆
+  </button>
+</div>
+
+<div class="toolRow">
+  <button onclick="addGreenhouse(); showToolInfo('greenhouse');">
+    🌱 Add Space Greenhouse
+  </button>
+
+  <button class="favoriteStar"
+          onclick="toggleFavorite('greenhouse', '🌱 Add Space Greenhouse', 'addGreenhouse(); showToolInfo(\'greenhouse\');', this)">
+    ☆
+  </button>
+</div>
 
 </div>
 
@@ -663,10 +859,49 @@
 
 <div id="engineeringTools" class="toolCategory">
 
-  <button onclick="addBridgeBeam()">🌉 Add Bridge Beam</button>
-  <button onclick="addSupportColumn()">🏛️ Add Support Column</button>
-  <button onclick="addRamp()">📐 Add Ramp</button>
-  <button onclick="addTestTower()">🗼 Add Test Tower</button>
+<div class="toolRow">
+  <button onclick="addBridgeBeam(); showToolInfo('bridgeBeam');">
+    🌉 Add Bridge Beam
+  </button>
+
+  <button class="favoriteStar"
+          onclick="toggleFavorite('bridgeBeam', '🌉 Add Bridge Beam', 'addBridgeBeam(); showToolInfo(\'bridgeBeam\');', this)">
+    ☆
+  </button>
+</div>
+
+<div class="toolRow">
+  <button onclick="addSupportColumn(); showToolInfo('supportColumn');">
+    🏛️ Add Support Column
+  </button>
+
+  <button class="favoriteStar"
+          onclick="toggleFavorite('supportColumn', '🏛️ Add Support Column', 'addSupportColumn(); showToolInfo(\'supportColumn\');', this)">
+    ☆
+  </button>
+</div>
+
+<div class="toolRow">
+  <button onclick="addRamp(); showToolInfo('ramp');">
+    📐 Add Ramp
+  </button>
+
+  <button class="favoriteStar"
+          onclick="toggleFavorite('ramp', '📐 Add Ramp', 'addRamp(); showToolInfo(\'ramp\');', this)">
+    ☆
+  </button>
+</div>
+
+<div class="toolRow">
+  <button onclick="addTestTower(); showToolInfo('testTower');">
+    🗼 Add Test Tower
+  </button>
+
+  <button class="favoriteStar"
+          onclick="toggleFavorite('testTower', '🗼 Add Test Tower', 'addTestTower(); showToolInfo(\'testTower\');', this)">
+    ☆
+  </button>
+</div>
 
 </div>
 
@@ -677,22 +912,158 @@
 
 <div id="cellTools" class="toolCategory">
 
-  <button onclick="buildPlantCell()">🌱 Start Plant Cell</button>
-  <button onclick="buildAnimalCell()">🐾 Start Animal Cell</button>
+<div class="toolRow">
+  <button onclick="buildPlantCell(); showToolInfo('plantCell');">
+    🌱 Start Plant Cell
+  </button>
 
-  <button onclick="addCellWall()">🧱 Add Cell Wall</button>
-  <button onclick="addCellMembrane()">⭕ Add Cell Membrane</button>
-  <button onclick="addNucleus()">🔵 Add Nucleus</button>
-  <button onclick="addDNA()">🧬 Add DNA</button>
-  <button onclick="addMitochondria()">⚡ Add Mitochondria</button>
-  <button onclick="addChloroplast()">🟢 Add Chloroplast</button>
-  <button onclick="addVacuoleSmall()">💧 Add Small Vacuole</button>
-  <button onclick="addVacuoleLarge()">💦 Add Large Vacuole</button>
-  <button onclick="addER()">〰️ Endoplasmic Reticulum</button>
-  <button onclick="addRibosomes()">⚫ Add Ribosomes</button>
-  <button onclick="addGolgi()">📦 Add Golgi Body</button>
-  <button onclick="addLysosome()">🟣 Add Lysosome</button>
+  <button class="favoriteStar"
+          onclick="toggleFavorite('plantCell', '🌱 Start Plant Cell', 'buildPlantCell(); showToolInfo(\'plantCell\');', this)">
+    ☆
+  </button>
+</div>
 
+<div class="toolRow">
+  <button onclick="buildAnimalCell(); showToolInfo('animalCell');">
+    🐾 Start Animal Cell
+  </button>
+
+  <button class="favoriteStar"
+          onclick="toggleFavorite('animalCell', '🐾 Start Animal Cell', 'buildAnimalCell(); showToolInfo(\'animalCell\');', this)">
+    ☆
+  </button>
+</div>
+
+<div class="toolRow">
+  <button onclick="addCellWall(); showToolInfo('cellWall');">
+    🧱 Add Cell Wall
+  </button>
+
+  <button class="favoriteStar"
+          onclick="toggleFavorite('cellWall', '🧱 Add Cell Wall', 'addCellWall(); showToolInfo(\'cellWall\');', this)">
+    ☆
+  </button>
+</div>
+
+<div class="toolRow">
+  <button onclick="addCellMembrane(); showToolInfo('cellMembrane');">
+    ⭕ Add Cell Membrane
+  </button>
+
+  <button class="favoriteStar"
+          onclick="toggleFavorite('cellMembrane', '⭕ Add Cell Membrane', 'addCellMembrane(); showToolInfo(\'cellMembrane\');', this)">
+    ☆
+  </button>
+</div>
+
+<div class="toolRow">
+  <button onclick="addNucleus(); showToolInfo('nucleus');">
+    🔵 Add Nucleus
+  </button>
+
+  <button class="favoriteStar"
+          onclick="toggleFavorite('nucleus', '🔵 Add Nucleus', 'addNucleus(); showToolInfo(\'nucleus\');', this)">
+    ☆
+  </button>
+</div>
+
+<div class="toolRow">
+  <button onclick="addDNA(); showToolInfo('dna');">
+    🧬 Add DNA
+  </button>
+
+  <button class="favoriteStar"
+          onclick="toggleFavorite('dna', '🧬 Add DNA', 'addDNA(); showToolInfo(\'dna\');', this)">
+    ☆
+  </button>
+</div>
+
+<div class="toolRow">
+  <button onclick="addMitochondria(); showToolInfo('mitochondria');">
+    ⚡ Add Mitochondria
+  </button>
+
+  <button class="favoriteStar"
+          onclick="toggleFavorite('mitochondria', '⚡ Add Mitochondria', 'addMitochondria(); showToolInfo(\'mitochondria\');', this)">
+    ☆
+  </button>
+</div>
+
+<div class="toolRow">
+  <button onclick="addChloroplast(); showToolInfo('chloroplast');">
+    🟢 Add Chloroplast
+  </button>
+
+  <button class="favoriteStar"
+          onclick="toggleFavorite('chloroplast', '🟢 Add Chloroplast', 'addChloroplast(); showToolInfo(\'chloroplast\');', this)">
+    ☆
+  </button>
+</div>
+
+<div class="toolRow">
+  <button onclick="addVacuoleSmall(); showToolInfo('vacuoleSmall');">
+    💧 Add Small Vacuole
+  </button>
+
+  <button class="favoriteStar"
+          onclick="toggleFavorite('vacuoleSmall', '💧 Add Small Vacuole', 'addVacuoleSmall(); showToolInfo(\'vacuoleSmall\');', this)">
+    ☆
+  </button>
+</div>
+
+<div class="toolRow">
+  <button onclick="addVacuoleLarge(); showToolInfo('vacuoleLarge');">
+    💦 Add Large Vacuole
+  </button>
+
+  <button class="favoriteStar"
+          onclick="toggleFavorite('vacuoleLarge', '💦 Add Large Vacuole', 'addVacuoleLarge(); showToolInfo(\'vacuoleLarge\');', this)">
+    ☆
+  </button>
+</div>
+
+<div class="toolRow">
+  <button onclick="addER(); showToolInfo('endoplasmicReticulum');">
+    〰️ Endoplasmic Reticulum
+  </button>
+
+  <button class="favoriteStar"
+          onclick="toggleFavorite('endoplasmicReticulum', '〰️ Endoplasmic Reticulum', 'addER(); showToolInfo(\'endoplasmicReticulum\');', this)">
+    ☆
+  </button>
+</div>
+
+<div class="toolRow">
+  <button onclick="addRibosomes(); showToolInfo('ribosomes');">
+    ⚫ Add Ribosomes
+  </button>
+
+  <button class="favoriteStar"
+          onclick="toggleFavorite('ribosomes', '⚫ Add Ribosomes', 'addRibosomes(); showToolInfo(\'ribosomes\');', this)">
+    ☆
+  </button>
+</div>
+
+<div class="toolRow">
+  <button onclick="addGolgi(); showToolInfo('golgi');">
+    📦 Add Golgi Body
+  </button>
+
+  <button class="favoriteStar"
+          onclick="toggleFavorite('golgi', '📦 Add Golgi Body', 'addGolgi(); showToolInfo(\'golgi\');', this)">
+    ☆
+  </button>
+</div>
+
+<div class="toolRow">
+  <button onclick="addLysosome(); showToolInfo('lysosome');">
+    🟣 Add Lysosome
+  </button>
+
+  <button class="favoriteStar"
+          onclick="toggleFavorite('lysosome', '🟣 Add Lysosome', 'addLysosome(); showToolInfo(\'lysosome\');', this)">
+    ☆
+  </button>
 </div>
 
 </div>
@@ -925,44 +1296,332 @@ function toggleCategory(id, button){
 
 const TOOL_INFO = {
 
+  building:{
+    title:'🏢 Building',
+    vocabulary:['Structure', 'Foundation', 'Stories', 'Design'],
+    fact:'Buildings need strong bases so they can stand safely.',
+    question:'How can you make your building stable and useful?',
+    challenge:'Build a building with a clear entrance, windows, and a roof.'
+  },
+
+  portal:{
+    title:'✨ Magic Portal',
+    vocabulary:['Model', 'Gateway', 'Energy', 'Imagination'],
+    fact:'A portal is a creative model that can represent moving from one place or idea to another.',
+    question:'What could your portal connect in your world?',
+    challenge:'Build a portal with a path leading to it.'
+  },
+
+  volcano:{
+    title:'🌋 Volcano',
+    vocabulary:['Eruption', 'Lava', 'Magma', 'Landform'],
+    fact:'Volcanoes can build new land when lava cools and hardens.',
+    question:'How could a volcano change the land around it?',
+    challenge:'Build a volcano with a safety zone around it.'
+  },
+
+  rainbowBridge:{
+    title:'🌈 Rainbow Bridge',
+    vocabulary:['Span', 'Structure', 'Pattern', 'Balance'],
+    fact:'Bridges help people cross gaps like rivers, roads, or valleys.',
+    question:'What makes a bridge strong enough to cross?',
+    challenge:'Build a bridge that connects two parts of your world.'
+  },
+
+  crystalCluster:{
+    title:'🔮 Crystal Cluster',
+    vocabulary:['Crystal', 'Mineral', 'Pattern', 'Cluster'],
+    fact:'Crystals often grow in repeating patterns.',
+    question:'What patterns do you notice in your crystal design?',
+    challenge:'Build a crystal cave or science display.'
+  },
+
   tree:{
-    title:"🌲 Tree",
-    vocabulary:[
-      "Producer",
-      "Photosynthesis",
-      "Habitat",
-      "Roots",
-      "Leaves"
-    ],
-    fact:"Trees make oxygen for people and animals.",
-    question:"Why are trees called producers?",
-    challenge:"Build a forest with at least five trees."
+    title:'🌲 Tree',
+    vocabulary:['Producer', 'Photosynthesis', 'Habitat', 'Roots', 'Leaves'],
+    fact:'Trees make oxygen for people and animals.',
+    question:'Why are trees called producers?',
+    challenge:'Build a forest with at least five trees.'
   },
 
   pond:{
-    title:"🌊 Pond",
-    vocabulary:[
-      "Habitat",
-      "Ecosystem",
-      "Freshwater",
-      "Water Source"
-    ],
-    fact:"Ponds can provide water, food, and shelter for many living things.",
-    question:"How can a pond help animals in a habitat?",
-    challenge:"Build a pond habitat with trees, rocks, and animals nearby."
+    title:'🌊 Pond',
+    vocabulary:['Habitat', 'Ecosystem', 'Freshwater', 'Water Source'],
+    fact:'Ponds can provide water, food, and shelter for many living things.',
+    question:'How can a pond help animals in a habitat?',
+    challenge:'Build a pond habitat with trees, rocks, and animals nearby.'
   },
 
   rocks:{
-    title:"🪨 Rocks",
-    vocabulary:[
-      "Erosion",
-      "Weathering",
-      "Sediment",
-      "Landform"
-    ],
-    fact:"Rocks can be broken down by wind, water, ice, and plant roots.",
-    question:"How could rocks change the shape of your land?",
-    challenge:"Use rocks to create a path, mountain, shelter, or barrier."
+    title:'🪨 Rocks',
+    vocabulary:['Erosion', 'Weathering', 'Sediment', 'Landform'],
+    fact:'Rocks can be broken down by wind, water, ice, and plant roots.',
+    question:'How could rocks change the shape of your land?',
+    challenge:'Use rocks to create a path, mountain, shelter, or barrier.'
+  },
+
+  rainGauge:{
+    title:'🌧️ Rain Gauge',
+    vocabulary:['Precipitation', 'Rainfall', 'Measurement', 'Weather Data'],
+    fact:'A rain gauge measures how much rain falls in one place.',
+    question:'Why would weather scientists measure rainfall over time?',
+    challenge:'Build a weather station with a rain gauge and thermometer.'
+  },
+
+  weatherBalloon:{
+    title:'🎈 Weather Balloon',
+    vocabulary:['Atmosphere', 'Air Pressure', 'Temperature', 'Weather Data'],
+    fact:'Weather balloons collect information high above Earth.',
+    question:'Why is weather data from high in the atmosphere useful?',
+    challenge:'Add a weather balloon above your station.'
+  },
+
+  tornadoShelter:{
+    title:'🌪️ Tornado Shelter',
+    vocabulary:['Severe Weather', 'Safety', 'Shelter', 'Structure'],
+    fact:'A tornado shelter protects people from strong winds and flying debris.',
+    question:'What features would make a shelter safer?',
+    challenge:'Build a safe shelter near your weather station.'
+  },
+
+  lightningRod:{
+    title:'⚡ Lightning Rod',
+    vocabulary:['Electricity', 'Lightning', 'Conductor', 'Safety'],
+    fact:'Lightning rods help direct lightning safely into the ground.',
+    question:'Why should tall buildings have lightning protection?',
+    challenge:'Add a lightning rod to protect an important building.'
+  },
+
+  thermometer:{
+    title:'🌡️ Thermometer',
+    vocabulary:['Temperature', 'Degrees', 'Weather', 'Data'],
+    fact:'A thermometer measures how hot or cold the air is.',
+    question:'Where should a thermometer be placed for a fair reading?',
+    challenge:'Place a thermometer where it could measure outdoor temperature.'
+  },
+
+  windTurbine:{
+    title:'🌬️ Wind Turbine',
+    vocabulary:['Renewable Energy', 'Turbine', 'Generator', 'Motion'],
+    fact:'Wind turbines change moving air into electrical energy.',
+    question:'Where would wind turbines work best in your world?',
+    challenge:'Build a wind farm and add a battery nearby.'
+  },
+
+  solarPanels:{
+    title:'☀️ Solar Panels',
+    vocabulary:['Solar Energy', 'Sunlight', 'Electricity', 'Renewable Resource'],
+    fact:'Solar panels change sunlight into electricity.',
+    question:'Where should solar panels be placed to get the most sunlight?',
+    challenge:'Add solar panels to power a building.'
+  },
+
+  powerLine:{
+    title:'⚡ Power Line',
+    vocabulary:['Electricity', 'Circuit', 'Energy Transfer', 'Grid'],
+    fact:'Power lines move electricity from one place to another.',
+    question:'How will energy travel through your city?',
+    challenge:'Connect an energy source to a building with power lines.'
+  },
+
+  battery:{
+    title:'🔋 Battery',
+    vocabulary:['Stored Energy', 'Charge', 'Circuit', 'Electricity'],
+    fact:'Batteries store energy so it can be used later.',
+    question:'Why might renewable energy systems need batteries?',
+    challenge:'Add a battery to store solar or wind energy.'
+  },
+
+  electricCar:{
+    title:'🚗 Electric Car',
+    vocabulary:['Electric Motor', 'Battery', 'Transportation', 'Energy'],
+    fact:'Electric cars use stored electrical energy instead of gasoline.',
+    question:'What does an electric city need to support electric cars?',
+    challenge:'Build a road or charging area for electric cars.'
+  },
+
+  rocket:{
+    title:'🚀 Rocket',
+    vocabulary:['Thrust', 'Fuel', 'Launch', 'Orbit'],
+    fact:'Rockets move by pushing gas downward, which pushes the rocket upward.',
+    question:'What does a rocket need to launch safely?',
+    challenge:'Build a rocket with a launch pad.'
+  },
+
+  satellite:{
+    title:'🛰️ Satellite',
+    vocabulary:['Orbit', 'Signal', 'Communication', 'Data'],
+    fact:'Satellites can help with communication, weather, maps, and science data.',
+    question:'What information could your satellite collect?',
+    challenge:'Place a satellite above your space colony.'
+  },
+
+  rover:{
+    title:'🤖 Rover',
+    vocabulary:['Robot', 'Explore', 'Sensor', 'Terrain'],
+    fact:'Rovers help scientists explore places that are hard for humans to visit.',
+    question:'What should a rover be able to sense or collect?',
+    challenge:'Build a rover path across rough terrain.'
+  },
+
+  solarArray:{
+    title:'🔋 Solar Array',
+    vocabulary:['Solar Energy', 'Array', 'Power', 'Renewable Resource'],
+    fact:'A solar array is a group of solar panels working together.',
+    question:'Why might a space colony need many solar panels?',
+    challenge:'Build a solar array to power your colony.'
+  },
+
+  greenhouse:{
+    title:'🌱 Space Greenhouse',
+    vocabulary:['Greenhouse', 'Plants', 'Oxygen', 'Food Supply'],
+    fact:'A greenhouse could help grow food in a space colony.',
+    question:'What do plants need to survive in space?',
+    challenge:'Build a greenhouse near your colony base.'
+  },
+
+  bridgeBeam:{
+    title:'🌉 Bridge Beam',
+    vocabulary:['Beam', 'Span', 'Load', 'Support'],
+    fact:'Bridge beams help carry weight across a gap.',
+    question:'How can beams make a bridge stronger?',
+    challenge:'Build a bridge with beams and supports.'
+  },
+
+  supportColumn:{
+    title:'🏛️ Support Column',
+    vocabulary:['Column', 'Support', 'Load', 'Compression'],
+    fact:'Columns carry weight from above down to the ground.',
+    question:'Where should columns go to make a structure stable?',
+    challenge:'Add support columns under a tall structure.'
+  },
+
+  ramp:{
+    title:'📐 Ramp',
+    vocabulary:['Inclined Plane', 'Slope', 'Accessibility', 'Force'],
+    fact:'A ramp is a simple machine that makes it easier to move up or down.',
+    question:'How can a ramp make your design more accessible?',
+    challenge:'Add a ramp that helps someone reach a building.'
+  },
+
+  testTower:{
+    title:'🗼 Test Tower',
+    vocabulary:['Stability', 'Height', 'Base', 'Balance'],
+    fact:'Tall towers need strong bases to avoid tipping.',
+    question:'How can you make a tall tower more stable?',
+    challenge:'Build a tall tower and add supports to strengthen it.'
+  },
+
+  plantCell:{
+    title:'🌱 Plant Cell',
+    vocabulary:['Cell', 'Cell Wall', 'Chloroplast', 'Vacuole'],
+    fact:'Plant cells have cell walls and chloroplasts that animal cells do not have.',
+    question:'What parts help a plant cell make and store food?',
+    challenge:'Start a plant cell and add its main organelles.'
+  },
+
+  animalCell:{
+    title:'🐾 Animal Cell',
+    vocabulary:['Cell', 'Cell Membrane', 'Nucleus', 'Cytoplasm'],
+    fact:'Animal cells do not have cell walls or chloroplasts.',
+    question:'How is an animal cell different from a plant cell?',
+    challenge:'Start an animal cell and add its main organelles.'
+  },
+
+  cellWall:{
+    title:'🧱 Cell Wall',
+    vocabulary:['Cell Wall', 'Support', 'Protection', 'Plant Cell'],
+    fact:'The cell wall gives plant cells structure and protection.',
+    question:'Why do plant cells need extra support?',
+    challenge:'Add a cell wall around your plant cell.'
+  },
+
+  cellMembrane:{
+    title:'⭕ Cell Membrane',
+    vocabulary:['Cell Membrane', 'Boundary', 'Selective', 'Cell'],
+    fact:'The cell membrane controls what enters and leaves the cell.',
+    question:'Why does a cell need a boundary?',
+    challenge:'Add a cell membrane before adding organelles.'
+  },
+
+  nucleus:{
+    title:'🔵 Nucleus',
+    vocabulary:['Nucleus', 'DNA', 'Control Center', 'Organelle'],
+    fact:'The nucleus holds DNA and helps control the cell.',
+    question:'Why is the nucleus often called the control center?',
+    challenge:'Add a nucleus near the center of your cell.'
+  },
+
+  dna:{
+    title:'🧬 DNA',
+    vocabulary:['DNA', 'Genes', 'Instructions', 'Nucleus'],
+    fact:'DNA contains instructions for living things.',
+    question:'Why do cells need instructions?',
+    challenge:'Add DNA inside the nucleus.'
+  },
+
+  mitochondria:{
+    title:'⚡ Mitochondria',
+    vocabulary:['Mitochondria', 'Energy', 'Cellular Respiration', 'Organelle'],
+    fact:'Mitochondria help release energy from food for the cell.',
+    question:'Why do cells need energy?',
+    challenge:'Add mitochondria to power your cell.'
+  },
+
+  chloroplast:{
+    title:'🟢 Chloroplast',
+    vocabulary:['Chloroplast', 'Photosynthesis', 'Sunlight', 'Glucose'],
+    fact:'Chloroplasts help plant cells make food using sunlight.',
+    question:'Why do animal cells not have chloroplasts?',
+    challenge:'Add chloroplasts to your plant cell.'
+  },
+
+  vacuoleSmall:{
+    title:'💧 Small Vacuole',
+    vocabulary:['Vacuole', 'Storage', 'Water', 'Waste'],
+    fact:'Vacuoles store materials like water, food, or waste.',
+    question:'What might a cell need to store?',
+    challenge:'Add small vacuoles to your animal cell.'
+  },
+
+  vacuoleLarge:{
+    title:'💦 Large Vacuole',
+    vocabulary:['Central Vacuole', 'Storage', 'Water', 'Plant Cell'],
+    fact:'Plant cells often have one large central vacuole that stores water.',
+    question:'How does stored water help a plant?',
+    challenge:'Add a large vacuole to your plant cell.'
+  },
+
+  endoplasmicReticulum:{
+    title:'〰️ Endoplasmic Reticulum',
+    vocabulary:['Endoplasmic Reticulum', 'Transport', 'Protein', 'Membrane'],
+    fact:'The endoplasmic reticulum helps move materials through the cell.',
+    question:'Why does a cell need a transport system?',
+    challenge:'Add ER near the nucleus.'
+  },
+
+  ribosomes:{
+    title:'⚫ Ribosomes',
+    vocabulary:['Ribosomes', 'Protein', 'Build', 'Organelle'],
+    fact:'Ribosomes build proteins that cells need.',
+    question:'Why are proteins important to cells?',
+    challenge:'Add ribosomes around the cell.'
+  },
+
+  golgi:{
+    title:'📦 Golgi Body',
+    vocabulary:['Golgi Body', 'Package', 'Ship', 'Protein'],
+    fact:'The Golgi body packages and ships materials in the cell.',
+    question:'How is the Golgi body like a shipping center?',
+    challenge:'Add a Golgi body near the ER.'
+  },
+
+  lysosome:{
+    title:'🟣 Lysosome',
+    vocabulary:['Lysosome', 'Break Down', 'Waste', 'Recycle'],
+    fact:'Lysosomes help break down waste and old cell parts.',
+    question:'Why does a cell need to recycle materials?',
+    challenge:'Add lysosomes to help clean up the cell.'
   }
 
 };
