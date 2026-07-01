@@ -250,40 +250,57 @@
   right:20px;
   width:300px;
   z-index:600;
+  color:white;
+  font-size:14px;
+  line-height:1.35;
+  text-shadow:
+    0 2px 4px rgba(0,0,0,.95),
+    0 0 8px rgba(0,0,0,.85);
 }
 
-#missionToggle {
-  width: 100%;
-  background: black;
-  color: gold;
-  border: 2px solid gold;
+#missionTitle{
+  color:gold;
+  font-size:18px;
+  font-weight:bold;
+  margin-bottom:6px;
+  text-shadow:
+    0 2px 4px rgba(0,0,0,.95),
+    0 0 8px rgba(0,0,0,.85);
+}
+
+#missionToggle{
+  display:none;
 }
 
 #missionContent{
-  margin-top:8px;
-  background:rgba(35,35,35,.45);
-  backdrop-filter:blur(8px);
-  border:2px solid rgba(255,215,0,.65);
-  border-radius:14px;
-  color:white;
-  padding:10px;
-  box-shadow:0 0 12px rgba(0,0,0,.35);
+  margin-top:0;
+  background:transparent;
+  border:none;
+  padding:0;
+  box-shadow:none;
 }
 
-#floatingChecklist label,
+#floatingChecklist label{
+  display:block;
+  margin:4px 0;
+  color:white;
+  text-shadow:
+    0 2px 4px rgba(0,0,0,.95),
+    0 0 8px rgba(0,0,0,.85);
+}
+
+#floatingChecklist input{
+  transform:scale(.95);
+  margin-right:4px;
+}
+
 #floatingBadge{
-  color:white;
-  text-shadow:0 1px 3px rgba(0,0,0,.85);
-}
-
-#floatingChecklist label {
-  display: block;
-  margin: 6px 0;
-}
-
-#floatingBadge {
-  font-weight: bold;
-  color: #6A0DAD;
+  margin-top:6px;
+  font-weight:bold;
+  color:gold;
+  text-shadow:
+    0 2px 4px rgba(0,0,0,.95),
+    0 0 8px rgba(0,0,0,.85);
 }
     
 #evidencePanel {
@@ -574,10 +591,7 @@
 
 <div id="missionCard">
 
-  <button id="missionToggle"
-          onclick="toggleMissionCard()">
-    ⭐ Mission Tracker ▼
-  </button>
+  <div id="missionTitle">⭐ Mission Tracker</div>
 
   <div id="missionContent">
 
