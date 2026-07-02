@@ -1829,6 +1829,10 @@ input{
           <div class="startTip">🎨 Use the color bar to create your own designs.</div>
           <div class="startTip">🤔 THINKer BOB can read and teach vocabulary.</div>
         </div>
+        <label id="startAutoReadLabel" class="startAutoReadOption">
+          <input type="checkbox" id="startAutoReadToggle" onchange="syncAutoReadFromStart()">
+          🔊 Auto-read STEM Coach
+        </label>
         <button id="startBuildingButton" onclick="startSelectedWorld()">▶ START BUILDING</button>
       </div>
       <div class="startPanel">
@@ -1852,7 +1856,7 @@ input{
 
 
 <div id="buildBar">
-  <b>🎨 Building Block:</b>
+  
   
   <select id="blockColor">
   <option value="0x654321">🟫 Door Brown</option>
@@ -1876,7 +1880,7 @@ input{
   <option value="0xF5F5DC">🌕 Moonstone</option>
   <option value="0xADFF2F">🍋‍🟩 Potion Green</option>
 </select>
-  <span id="creatorPrompt">Create with blocks:</span>
+  <span id="creatorPrompt">Create with blocks</span>
   <div id="colorSwatchBar" aria-label="Building block colors"></div>
 
   <div id="bottomBuildTools">
@@ -1885,7 +1889,7 @@ input{
     <button onclick="saveImage()">📸 Screenshot</button>
     <button onclick="document.getElementById('loadFile').click()">📂 Load</button>
     <button onclick="resetWorld()">🔄 Reset</button>
-    <button onclick="showStartScreen()">🌎 Missions</button>
+    <button id="returnMissionsButton" onclick="showStartScreen()">🌎 Return to Missions</button>
   </div>
 
   <div id="voiceControls">
@@ -7325,6 +7329,281 @@ function buildColorSwatches(){
 }
 window.addEventListener('load', buildColorSwatches);
 
+</script>
+
+
+
+<style id="v22AutoReadBadgePatch">
+  #buildBar > b{ display:none !important; }
+  #creatorPrompt{
+    font-size:18px !important;
+    font-weight:900 !important;
+    color:#B7F34A !important;
+    text-shadow:0 2px 8px rgba(0,0,0,.8), 0 0 12px rgba(183,243,74,.35);
+    white-space:nowrap;
+    margin-right:4px;
+  }
+  #blockColor{ display:none !important; }
+  #returnMissionsButton{
+    font-size:17px !important;
+    padding:12px 18px !important;
+    min-height:46px !important;
+    background:linear-gradient(180deg, #B7F34A, #36D8FF) !important;
+    color:#04111D !important;
+    border:3px solid #ffffff !important;
+    border-bottom:5px solid rgba(2,24,38,.55) !important;
+    border-radius:18px !important;
+    box-shadow:0 0 18px rgba(183,243,74,.58), 0 10px 24px rgba(0,0,0,.28) !important;
+    transform:translateY(-2px);
+  }
+  #returnMissionsButton:hover{
+    filter:brightness(1.08) saturate(1.12) !important;
+    transform:translateY(-4px) scale(1.02) !important;
+  }
+  .startAutoReadOption{
+    display:flex;
+    gap:8px;
+    align-items:center;
+    justify-content:center;
+    margin:14px auto 8px auto;
+    padding:10px 14px;
+    border-radius:999px;
+    background:rgba(7,24,39,.45);
+    border:1px solid rgba(54,216,255,.45);
+    color:#F5FBFF;
+    font-weight:800;
+    box-shadow:0 0 16px rgba(54,216,255,.16);
+    width:max-content;
+    max-width:100%;
+  }
+  .startAutoReadOption input{ transform:scale(1.25); }
+  #badgeMessage, #floatingBadge{
+    display:block !important;
+    width:max-content;
+    max-width:285px;
+    padding:10px 14px !important;
+    margin-top:10px !important;
+    border-radius:18px !important;
+    color:#04111D !important;
+    background:linear-gradient(135deg, #FFE779, #B7F34A 60%, #36D8FF) !important;
+    border:2px solid rgba(255,255,255,.9) !important;
+    box-shadow:0 0 18px rgba(255,231,121,.65), 0 9px 20px rgba(0,0,0,.28) !important;
+    font-size:16px !important;
+    font-weight:900 !important;
+    text-shadow:none !important;
+    cursor:pointer;
+    animation:badgePulse 2.8s ease-in-out infinite;
+  }
+  #badgeMessage::after, #floatingBadge::after{
+    content:"  ✨ Click";
+    font-size:11px;
+    opacity:.85;
+    margin-left:4px;
+  }
+  @keyframes badgePulse{
+    0%,100%{ filter:brightness(1); transform:translateY(0); }
+    50%{ filter:brightness(1.12); transform:translateY(-1px); }
+  }
+  #badgePopup{
+    position:fixed;
+    inset:0;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index:1200;
+    background:rgba(0,0,0,.45);
+    backdrop-filter:blur(5px);
+  }
+  #badgePopupBox{
+    width:min(520px, 90vw);
+    padding:26px;
+    border-radius:28px;
+    text-align:center;
+    background:linear-gradient(180deg, rgba(245,251,255,.96), rgba(224,244,255,.94));
+    border:3px solid #B7F34A;
+    box-shadow:0 0 32px rgba(183,243,74,.65), 0 20px 60px rgba(0,0,0,.4);
+    color:#04111D;
+    font-family:"Lexend", sans-serif;
+  }
+  #badgePopupBox h2{
+    font-size:34px;
+    margin:4px 0 10px;
+    color:#071827;
+  }
+  #badgePopupText{
+    font-size:20px;
+    font-weight:800;
+    margin:12px 0 18px;
+  }
+  #badgePopupBox button{
+    font-size:18px;
+    padding:12px 24px;
+    border-radius:18px;
+  }
+</style>
+
+<div id="badgePopup" onclick="closeBadgePopup()">
+  <div id="badgePopupBox" onclick="event.stopPropagation()">
+    <h2>🏅 Badge Progress</h2>
+    <div id="badgePopupText">Keep building to earn your next badge!</div>
+    <button onclick="closeBadgePopup()">Awesome!</button>
+  </div>
+</div>
+
+<script id="v22AutoReadBadgePatchScript">
+(function(){
+  function byId(id){ return document.getElementById(id); }
+
+  window.syncAutoReadFromStart = function(){
+    const start = byId('startAutoReadToggle');
+    const bottom = byId('autoReadToggle');
+    if(bottom && start){ bottom.checked = start.checked; }
+    if(typeof saveVoiceSettings === 'function') saveVoiceSettings();
+  };
+
+  window.syncAutoReadToStart = function(){
+    const start = byId('startAutoReadToggle');
+    const bottom = byId('autoReadToggle');
+    const saved = localStorage.getItem('thinkerBobAutoRead') === 'true';
+    if(bottom) bottom.checked = saved;
+    if(start) start.checked = saved;
+  };
+
+  const originalSaveVoiceSettings = window.saveVoiceSettings;
+  window.saveVoiceSettings = function(){
+    const bottom = byId('autoReadToggle');
+    const start = byId('startAutoReadToggle');
+    if(bottom && start){ start.checked = bottom.checked; }
+    if(start && !bottom){ localStorage.setItem('thinkerBobAutoRead', start.checked ? 'true' : 'false'); }
+    if(originalSaveVoiceSettings) originalSaveVoiceSettings();
+    if(bottom){ localStorage.setItem('thinkerBobAutoRead', bottom.checked ? 'true' : 'false'); }
+    if(start){ start.checked = localStorage.getItem('thinkerBobAutoRead') === 'true'; }
+  };
+
+  const originalLoadVoiceSettings = window.loadVoiceSettings;
+  window.loadVoiceSettings = function(){
+    if(originalLoadVoiceSettings) originalLoadVoiceSettings();
+    syncAutoReadToStart();
+  };
+
+  window.isAutoReadOn = function(){
+    const bottom = byId('autoReadToggle');
+    const start = byId('startAutoReadToggle');
+    return !!((bottom && bottom.checked) || (start && start.checked));
+  };
+
+  window.populateVoiceChoices = function(){
+    if(!('speechSynthesis' in window)) return;
+    window.availableVoices = window.speechSynthesis.getVoices();
+    const voiceSelect = byId('voiceSelect');
+    if(!voiceSelect) return;
+    const savedVoice = localStorage.getItem('thinkerBobVoice') || '';
+    voiceSelect.innerHTML = '';
+    const voices = window.availableVoices || [];
+    const english = voices.filter(v => (v.lang || '').toLowerCase().startsWith('en-us'));
+    const spanish = voices.filter(v => (v.lang || '').toLowerCase().startsWith('es'));
+    const choices = [];
+    if(english[2]) choices.push({label:'English Voice 3', voice:english[2]});
+    if(english[3]) choices.push({label:'English Voice 4 (Default)', voice:english[3]});
+    if(!english[2] && english[0]) choices.push({label:'English Voice 1', voice:english[0]});
+    if(!english[3] && english[1]) choices.push({label:'English Voice 2', voice:english[1]});
+    if(spanish[0]) choices.push({label:'Spanish / Español', voice:spanish[0]});
+    if(spanish[1]) choices.push({label:'Spanish Voice 2 / Español', voice:spanish[1]});
+    if(choices.length === 0 && voices[0]) choices.push({label:'Default Voice', voice:voices[0]});
+    choices.forEach(choice => {
+      const option = document.createElement('option');
+      option.value = choice.voice.name;
+      option.textContent = choice.label + ': ' + choice.voice.name;
+      voiceSelect.appendChild(option);
+    });
+    if(savedVoice && Array.from(voiceSelect.options).some(option => option.value === savedVoice)){
+      voiceSelect.value = savedVoice;
+    }else{
+      const def = Array.from(voiceSelect.options).find(o => o.textContent.includes('Voice 4')) || voiceSelect.options[0];
+      if(def){ voiceSelect.value = def.value; localStorage.setItem('thinkerBobVoice', def.value); }
+    }
+  };
+
+  // Override selected voice lookup so Spanish/English patched choices work.
+  window.getSelectedVoice = function(){
+    const voiceSelect = byId('voiceSelect');
+    if(!voiceSelect || !voiceSelect.value) return null;
+    const voices = window.availableVoices || (window.speechSynthesis ? window.speechSynthesis.getVoices() : []);
+    return voices.find(v => v.name === voiceSelect.value) || null;
+  };
+
+  // Restore toolbox auto-read behavior with a resilient showToolInfo override.
+  window.showToolInfo = function(toolId){
+    const info = window.TOOL_INFO ? window.TOOL_INFO[toolId] : (typeof TOOL_INFO !== 'undefined' ? TOOL_INFO[toolId] : null);
+    if(!info) return;
+    const panel = byId('thinkerBobPanel');
+    if(!panel) return;
+    const vocabHtml = (typeof makeVocabButtons === 'function')
+      ? makeVocabButtons(toolId, info.vocabulary)
+      : info.vocabulary.map(w => '<button class="vocabButton">' + w + '</button>').join(' ');
+    panel.innerHTML = `
+      <h3>${info.title}</h3>
+      <p><b>📚 Vocabulary</b><br>${vocabHtml}</p>
+      <div id="vocabDetailBox">Click a vocabulary word to learn what it means and how it connects to your build.</div>
+      <p><b>💡 STEM Fact</b><br>${info.fact}</p>
+      <p><b>❓ Think About It</b><br>${info.question || 'What do you notice as you build?'}</p>
+      <p><b>🎯 Builder Challenge</b><br>${info.challenge}</p>
+    `;
+    window.currentThinkerBobSpeech = (typeof buildThinkerBobSpeech === 'function')
+      ? buildThinkerBobSpeech(info)
+      : [info.title, info.fact, info.question || '', info.challenge].join(' ');
+    if(typeof renderReaderText === 'function') renderReaderText(window.currentThinkerBobSpeech);
+    if(window.isAutoReadOn && window.isAutoReadOn()){
+      setTimeout(function(){ if(window.isAutoReadOn()) playThinkerBob(); }, 80);
+    }
+  };
+
+  window.showBadgePopup = function(){
+    const pop = byId('badgePopup');
+    const txt = byId('badgePopupText');
+    const badge = byId('badgeMessage');
+    const blocksCount = (typeof blocks !== 'undefined' && blocks) ? blocks.length : 0;
+    if(txt){
+      txt.innerHTML = (badge ? badge.innerText : 'Badge: Keep building!') + '<br><br>You have placed <b>' + blocksCount + '</b> building pieces. Keep creating to level up!';
+    }
+    if(pop) pop.style.display = 'flex';
+    if(typeof speakText === 'function') speakText('Badge progress. ' + (badge ? badge.innerText : 'Keep building.') + ' You have placed ' + blocksCount + ' building pieces.');
+  };
+  window.closeBadgePopup = function(){ const pop = byId('badgePopup'); if(pop) pop.style.display = 'none'; };
+
+  function setupBadgeClicks(){
+    ['badgeMessage','floatingBadge'].forEach(id => {
+      const el = byId(id);
+      if(el && !el.dataset.badgeClickReady){
+        el.dataset.badgeClickReady = 'true';
+        el.setAttribute('role','button');
+        el.setAttribute('tabindex','0');
+        el.onclick = showBadgePopup;
+        el.onkeydown = function(e){ if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); showBadgePopup(); } };
+      }
+    });
+  }
+
+  // Patch the bottom return button if older HTML is still present.
+  function polishControls(){
+    const prompt = byId('creatorPrompt');
+    if(prompt) prompt.textContent = 'Create with blocks';
+    document.querySelectorAll('#bottomBuildTools button').forEach(btn => {
+      if(btn.textContent.includes('Missions')){
+        btn.id = 'returnMissionsButton';
+        btn.innerHTML = '🌎 Return to Missions';
+      }
+    });
+    syncAutoReadToStart();
+    setupBadgeClicks();
+    if(window.speechSynthesis){ populateVoiceChoices(); }
+  }
+
+  window.addEventListener('load', polishControls);
+  setTimeout(polishControls, 400);
+  setInterval(setupBadgeClicks, 1500);
+  if('speechSynthesis' in window){ window.speechSynthesis.onvoiceschanged = populateVoiceChoices; }
+})();
 </script>
 
 </body>
