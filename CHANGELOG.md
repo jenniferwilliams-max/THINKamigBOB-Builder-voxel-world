@@ -1,4 +1,24 @@
 # CHANGELOG
+
+## Update #101A — Inspect Build Area for Engineering Grid
+
+### Type
+Diagnostic inspection only — no code changes.
+
+### Findings
+- Confirmed the active build surface is the `ground` mesh.
+- Confirmed the ground is a 50 × 1 × 50 box positioned at `y = -1`.
+- Confirmed the visible ground and block-placement raycasting surface are the same object.
+- Confirmed block placement snaps to one-unit coordinates.
+- Found no active Three.js engineering grid.
+- Identified the empty `buildStarterGrid()` function as the safest insertion point.
+- Recommended a lightweight custom `THREE.LineSegments` grid with minor lines every 1 unit and major lines every 5 units.
+- Recommended placing the grid approximately 0.015 units above the ground.
+- Confirmed the grid can be non-interactive and should have negligible Chromebook performance impact.
+
+### Status
+Inspection complete. Awaiting Update #101B implementation and testing.
+
 ## Update #100.3B — Apply Final Mission HUD Style Immediately
 
 ### Changes
