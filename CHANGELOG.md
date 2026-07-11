@@ -57,3 +57,17 @@ Status: VERIFIED ✅
 - Removed the delayed HUD reveal after the mission popup closes.
 - Preserved mission launch, popup behavior, robot, sign, and gameplay.
 - Mission HUD remains dynamic and stable.
+
+Update #99.1 (Diagnostic)
+Identified delayed legacy title-state CSS affecting #gameLogo. No code changes made.
+
+Update #99.3 (Diagnostic)
+Identified competing CSS rules causing the Selected Mission HUD to shift downward after legacy Builder title-state classes expire. No code changes made.
+
+## Update #99.4 — Stable Builder Header and Mission HUD
+Status: VERIFIED ✅
+
+- Froze the Builder robot and sign in the approved centered position.
+- Froze the Selected Mission HUD at its approved vertical position.
+- Prevented delayed horizontal and vertical movement caused by legacy title-state CSS.
+- Preserved immediate HUD visibility, dynamic mission titles, mission launch, popup behavior, and gameplay.
