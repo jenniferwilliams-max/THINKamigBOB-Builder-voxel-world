@@ -1,4 +1,13 @@
 # CHANGELOG
+## Update #101.2C — Increase Grass Engineering Grid Contrast
+
+Completed:
+- Increased engineering grid visibility on grass missions.
+- Preserved existing grid alignment.
+- Preserved cube placement and snapping.
+- Preserved Grid On/Off toggle.
+- No gameplay or performance changes.
+
 ## Update #101B — Add Engineering Build Grid
 
 ### Changes
