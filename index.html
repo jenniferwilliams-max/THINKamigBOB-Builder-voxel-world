@@ -19870,5 +19870,127 @@ body:not(.starterScreenActive) #returnMissionsButton:active{
 body:not(.starterScreenActive) .dashboardUtilityButtons button:disabled{opacity:.48 !important;filter:grayscale(.55) brightness(.7) !important;}
 </style>
 
+<!-- Final positioning and face refinements for the compact dashboard. -->
+<style id="dashboardButtonFaceLayoutRefinementCSS">
+/* Keep the shape picker directly beneath its zone heading instead of aligned
+   to the color-track edge. */
+body:not(.starterScreenActive) .dashboard139ShapeZone .dashboard139ShapeRow{
+  justify-content:center !important;
+  width:100% !important;
+}
+body:not(.starterScreenActive) .dashboard139ShapeZone #blockShape{
+  margin-inline:auto !important;
+}
+
+/* The dedicated return plate has a square proportion and a baked, three-line
+   label: RETURN / TO / MISSIONS. */
+body:not(.starterScreenActive) #returnMissionsButton{
+  width:114px !important;
+  height:94px !important;
+  min-height:94px !important;
+  padding:0 !important;
+  background-image:url("assets/images/dashboard/button-faces/return-to-missions.png") !important;
+}
+
+/* Both color-navigation arrows now use the same brass-and-navy face as the
+   other dashboard controls, with their arrow baked into the PNG. */
+body:not(.starterScreenActive) .dashboard139ShapeZone .colorScrollWrap{
+  grid-template-columns:42px minmax(0,1fr) 42px !important;
+}
+body:not(.starterScreenActive) .dashboard139ShapeZone .colorScrollArrow{
+  width:42px !important;
+  height:36px !important;
+  padding:0 !important;
+  border:0 !important;
+  border-radius:0 !important;
+  color:transparent !important;
+  -webkit-text-fill-color:transparent !important;
+  background-color:transparent !important;
+  background-position:center !important;
+  background-repeat:no-repeat !important;
+  background-size:100% 100% !important;
+  box-shadow:none !important;
+}
+body:not(.starterScreenActive) .dashboard139ShapeZone .colorScrollArrow:first-child{
+  background-image:url("assets/images/dashboard/button-faces/color-previous.png") !important;
+}
+body:not(.starterScreenActive) .dashboard139ShapeZone .colorScrollArrow:last-child{
+  background-image:url("assets/images/dashboard/button-faces/color-next.png") !important;
+}
+body:not(.starterScreenActive) .dashboard139ShapeZone .colorScrollArrow:hover{
+  filter:brightness(1.14) !important;
+  transform:translateY(-1px) !important;
+}
+</style>
+
+<!-- Dashboard group labels become a single, digital top readout row. -->
+<style id="dashboardDigitalZoneLabelsCSS">
+body:not(.starterScreenActive) .dashboard139MainGrid{
+  align-items:stretch !important;
+}
+body:not(.starterScreenActive) .dashboard139ShapeZone,
+body:not(.starterScreenActive) .dashboard139BuildZone,
+body:not(.starterScreenActive) .dashboard139UtilityZone,
+body:not(.starterScreenActive) .dashboard139VoiceZone{
+  position:relative !important;
+  padding-top:28px !important;
+}
+body:not(.starterScreenActive) .dashboard139Zone .dashboard139ZoneLabel{
+  position:absolute !important;
+  z-index:3 !important;
+  top:5px !important;
+  left:50% !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  width:max-content !important;
+  min-width:72% !important;
+  max-width:calc(100% - 8px) !important;
+  height:18px !important;
+  margin:0 !important;
+  padding:0 7px !important;
+  box-sizing:border-box !important;
+  transform:translateX(-50%) !important;
+  color:#8af4ff !important;
+  -webkit-text-fill-color:#8af4ff !important;
+  background:linear-gradient(180deg,rgba(14,43,61,.96),rgba(3,18,29,.96)) !important;
+  border:1px solid rgba(72,220,255,.7) !important;
+  border-radius:3px !important;
+  box-shadow:inset 0 1px 0 rgba(173,249,255,.35),0 0 7px rgba(36,202,255,.32) !important;
+  font-family:"SFMono-Regular",Menlo,Consolas,monospace !important;
+  font-size:9px !important;
+  font-weight:900 !important;
+  line-height:1 !important;
+  letter-spacing:.11em !important;
+  text-transform:uppercase !important;
+  text-shadow:0 0 4px rgba(100,241,255,.92) !important;
+  white-space:nowrap !important;
+}
+body:not(.starterScreenActive) .dashboard139MissionZone .dashboard139ZoneLabel{
+  display:none !important;
+}
+</style>
+
+<!-- Keep feedback below the dashboard controls instead of over them. -->
+<style id="dashboardMessageSafeLaneCSS">
+body:not(.starterScreenActive) #buildBar.dashboardOpen .dashboard139MessageStrip,
+body:not(.starterScreenActive) #buildBar:hover .dashboard139MessageStrip{
+  left:50% !important;
+  width:min(28%,360px) !important;
+  height:18px !important;
+  min-height:18px !important;
+  bottom:3px !important;
+  transform:translateX(-50%) !important;
+  z-index:1 !important;
+  pointer-events:none !important;
+}
+body:not(.starterScreenActive) #toolMessage.bottomToolMessage{
+  min-height:18px !important;
+  padding:0 8px !important;
+  font-size:8px !important;
+  line-height:1 !important;
+}
+</style>
+
 </body>
 </html>
