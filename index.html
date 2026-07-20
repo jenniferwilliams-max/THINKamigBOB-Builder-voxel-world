@@ -19992,5 +19992,30 @@ body:not(.starterScreenActive) #toolMessage.bottomToolMessage{
 }
 </style>
 
+<!-- Chromebook dashboard: reserve the lower center for feedback by lifting
+   only the three central control groups beneath the brass top rail. -->
+<style id="dashboardCentralControlsTopLaneCSS">
+body:not(.starterScreenActive) .dashboard139ShapeZone,
+body:not(.starterScreenActive) .dashboard139BuildZone,
+body:not(.starterScreenActive) .dashboard139UtilityZone{
+  transform:translateY(-19px) !important;
+}
+/* Return to Missions and Voice & Tools deliberately remain in their current
+   positions; the open lower lane belongs only to tool feedback. */
+body:not(.starterScreenActive) #buildBar.dashboardOpen .dashboard139MessageStrip,
+body:not(.starterScreenActive) #buildBar:hover .dashboard139MessageStrip{
+  width:min(32%,430px) !important;
+  height:22px !important;
+  min-height:22px !important;
+  bottom:1px !important;
+}
+body:not(.starterScreenActive) #toolMessage.bottomToolMessage{
+  min-height:22px !important;
+  padding:0 12px !important;
+  font-size:9px !important;
+  line-height:1.1 !important;
+}
+</style>
+
 </body>
 </html>
