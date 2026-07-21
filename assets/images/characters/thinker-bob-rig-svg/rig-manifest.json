@@ -1,0 +1,21 @@
+{
+  "name": "THINKer Bob",
+  "version": 1,
+  "canvas": { "width": 389, "height": 582 },
+  "orientation": "Character anatomical left/right; Bob's right is viewer-left.",
+  "format": "SVG hierarchy with linked RGBA PNG artwork",
+  "entry": "thinker-bob-rig.svg",
+  "controls": {
+    "rotation": "Set --rotation on any .joint element.",
+    "blink": "Set --blink on #eyes (1 open, 0.08 closed).",
+    "eyeOffset": "Set --eyes-x and --eyes-y on #eyes.",
+    "mouth": "Set --mouth-open on #mouth. Only one source mouth pose is available."
+  },
+  "pivots": {
+    "antenna": [198, 57], "head": [196, 185],
+    "right-shoulder": [134, 220], "right-upper-arm": [107, 234], "right-lower-arm": [94, 268], "right-hand": [61, 338],
+    "left-shoulder": [256, 220], "left-upper-arm": [283, 234], "left-lower-arm": [296, 268], "left-hand": [328, 338],
+    "right-upper-leg": [170, 334], "right-knee": [146, 402], "right-lower-leg": [143, 431], "right-foot": [143, 496],
+    "left-upper-leg": [219, 334], "left-knee": [246, 402], "left-lower-leg": [248, 431], "left-foot": [249, 496]
+  }
+}

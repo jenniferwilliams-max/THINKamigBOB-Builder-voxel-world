@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     width="389" height="582" viewBox="0 0 389 582" role="img" aria-labelledby="title desc">
+  <title id="title">THINKer Bob articulated browser rig</title>
+  <desc id="desc">A layered raster-art character assembled inside an SVG animation hierarchy.</desc>
+  <style>
+    .joint { transform-box: view-box; transform: rotate(var(--rotation, 0deg)); }
+    .layer { pointer-events: none; }
+    #antenna { transform-origin: 198px 57px; }
+    #head { transform-origin: 196px 185px; }
+    #eyes { transform-origin: 198px 128px; transform: translate(var(--eyes-x, 0px), var(--eyes-y, 0px)) scaleY(var(--blink, 1)); }
+    #mouth { transform-origin: 196px 160px; transform: scaleY(var(--mouth-open, 1)); }
+    #right-shoulder { transform-origin: 134px 220px; }
+    #right-upper-arm { transform-origin: 107px 234px; }
+    #right-lower-arm { transform-origin: 94px 268px; }
+    #right-hand { transform-origin: 61px 338px; }
+    #left-shoulder { transform-origin: 256px 220px; }
+    #left-upper-arm { transform-origin: 283px 234px; }
+    #left-lower-arm { transform-origin: 296px 268px; }
+    #left-hand { transform-origin: 328px 338px; }
+    #right-upper-leg { transform-origin: 170px 334px; }
+    #right-knee { transform-origin: 146px 402px; }
+    #right-lower-leg { transform-origin: 143px 431px; }
+    #right-foot { transform-origin: 143px 496px; }
+    #left-upper-leg { transform-origin: 219px 334px; }
+    #left-knee { transform-origin: 246px 402px; }
+    #left-lower-leg { transform-origin: 248px 431px; }
+    #left-foot { transform-origin: 249px 496px; }
+  </style>
+
+  <!-- Bob's right side appears on the viewer's left. -->
+  <g id="rig" data-canvas="389 582">
+    <g id="legs">
+      <g id="right-leg">
+        <g id="right-upper-leg" class="joint" data-pivot="170 334">
+          <image class="layer" href="assets/Bob_0008_upper-right-leg.png" x="0" y="0" width="389" height="582"/>
+          <g id="right-knee" class="joint" data-pivot="146 402">
+            <image class="layer" href="assets/Bob_0009_right-knee.png" x="0" y="0" width="389" height="582"/>
+            <g id="right-lower-leg" class="joint" data-pivot="143 431">
+              <image class="layer" href="assets/Bob_0010_lower-right-leg.png" x="0" y="0" width="389" height="582"/>
+              <g id="right-foot" class="joint" data-pivot="143 496">
+                <image class="layer" href="assets/Bob_0011_right-foot.png" x="0" y="0" width="389" height="582"/>
+              </g>
+            </g>
+          </g>
+        </g>
+      </g>
+      <g id="left-leg">
+        <g id="left-upper-leg" class="joint" data-pivot="219 334">
+          <image class="layer" href="assets/Bob_0012_upper-left-leg.png" x="0" y="0" width="389" height="582"/>
+          <g id="left-knee" class="joint" data-pivot="246 402">
+            <image class="layer" href="assets/Bob_0013_left-knee.png" x="0" y="0" width="389" height="582"/>
+            <g id="left-lower-leg" class="joint" data-pivot="248 431">
+              <image class="layer" href="assets/Bob_0014_lower-left-leg.png" x="0" y="0" width="389" height="582"/>
+              <g id="left-foot" class="joint" data-pivot="249 496">
+                <image class="layer" href="assets/Bob_0015_left-foot.png" x="0" y="0" width="389" height="582"/>
+              </g>
+            </g>
+          </g>
+        </g>
+      </g>
+    </g>
+
+    <g id="arms">
+      <g id="right-arm">
+        <g id="right-shoulder" class="joint" data-pivot="134 220">
+          <image class="layer" href="assets/Bob_0016_right-shoulder.png" x="0" y="0" width="389" height="582"/>
+          <g id="right-upper-arm" class="joint" data-pivot="107 234">
+            <image class="layer" href="assets/Bob_0017_upper-right-arm.png" x="0" y="0" width="389" height="582"/>
+            <g id="right-lower-arm" class="joint" data-pivot="94 268">
+              <image class="layer" href="assets/Bob_0018_lower-right-arm.png" x="0" y="0" width="389" height="582"/>
+              <g id="right-hand" class="joint" data-pivot="61 338">
+                <image class="layer" href="assets/Bob_0019_right-hand.png" x="0" y="0" width="389" height="582"/>
+              </g>
+            </g>
+          </g>
+        </g>
+      </g>
+      <g id="left-arm">
+        <g id="left-shoulder" class="joint" data-pivot="256 220">
+          <image class="layer" href="assets/Bob_0020_left-shoulder.png" x="0" y="0" width="389" height="582"/>
+          <g id="left-upper-arm" class="joint" data-pivot="283 234">
+            <image class="layer" href="assets/Bob_0021_upper-left-arm.png" x="0" y="0" width="389" height="582"/>
+            <g id="left-lower-arm" class="joint" data-pivot="296 268">
+              <image class="layer" href="assets/Bob_0022_lower-left-arm.png" x="0" y="0" width="389" height="582"/>
+              <g id="left-hand" class="joint" data-pivot="328 338">
+                <image class="layer" href="assets/Bob_0023_left-hand.png" x="0" y="0" width="389" height="582"/>
+              </g>
+            </g>
+          </g>
+        </g>
+      </g>
+    </g>
+
+    <g id="body">
+      <image id="hips" class="layer" href="assets/Bob_0007_hips.png" x="0" y="0" width="389" height="582"/>
+      <image id="tummy" class="layer" href="assets/Bob_0006_tummy.png" x="0" y="0" width="389" height="582"/>
+      <image id="chest" class="layer" href="assets/Bob_0005_chest.png" x="0" y="0" width="389" height="582"/>
+      <image id="neck" class="layer" href="assets/Bob_0004_neck.png" x="0" y="0" width="389" height="582"/>
+    </g>
+
+    <g id="head" class="joint" data-pivot="196 185">
+      <image id="head-shell" class="layer" href="assets/Bob_0003_head.png" x="0" y="0" width="389" height="582"/>
+      <image id="eyes" class="layer" href="assets/Bob_0002_eyes.png" x="0" y="0" width="389" height="582"/>
+      <image id="mouth" class="layer" href="assets/Bob_0001_mouth.png" x="0" y="0" width="389" height="582"/>
+      <g id="antenna" class="joint" data-pivot="198 57">
+        <image class="layer" href="assets/Bob_0000_antenna.png" x="0" y="0" width="389" height="582"/>
+      </g>
+    </g>
+  </g>
+</svg>
