@@ -4289,7 +4289,7 @@ Future extraction target: STEM Coach and read-aloud UI.
 </div>
 </div>
 <button id="readToBobPracticeButton" type="button" aria-expanded="false" aria-controls="readToBobPractice" onclick="startStemCoachReadToBob()">🎙️ Read to BOB</button>
-<button id="reopenLibraryFromCoach" type="button" onclick="reopenObjectLibraryFromCoach(event)">↗ Reopen Library</button>
+<button id="reopenLibraryFromCoach" type="button" onclick="reopenObjectLibraryFromCoach(event)">↗ REOPEN LIBRARY</button>
 </div>
 </div>
 <!-- =====================================================
@@ -20650,20 +20650,26 @@ body:not(.starterScreenActive) #reopenLibraryFromCoach{
   align-items:center !important;
   justify-content:center !important;
   width:calc(100% - 22px) !important;
-  min-height:32px !important;
+  min-height:48px !important;
   margin:8px 11px 10px !important;
-  padding:6px 10px !important;
+  padding:9px 14px !important;
   box-sizing:border-box !important;
   color:#b9f548 !important;
   -webkit-text-fill-color:#b9f548 !important;
   background:linear-gradient(180deg,#294b5b 0%,#0c2431 54%,#06151e 100%) !important;
-  border:1px solid #b98a22 !important;
+  border:2px solid #65ff68 !important;
   border-radius:8px !important;
-  box-shadow:inset 0 1px rgba(214,246,255,.28),inset 0 -2px rgba(0,0,0,.6),0 2px 4px rgba(0,0,0,.3) !important;
+  box-shadow:
+    inset 0 1px rgba(214,246,255,.28),
+    inset 0 -2px rgba(0,0,0,.6),
+    0 0 0 1px rgba(101,255,104,.30),
+    0 0 12px rgba(101,255,104,.85),
+    0 0 24px rgba(101,255,104,.48),
+    0 3px 6px rgba(0,0,0,.38) !important;
   font-family:"SFMono-Regular",Menlo,Consolas,monospace !important;
-  font-size:11px !important;
+  font-size:14px !important;
   font-weight:900 !important;
-  letter-spacing:.05em !important;
+  letter-spacing:.07em !important;
   text-shadow:0 1px #000,0 0 5px rgba(185,245,72,.36) !important;
   cursor:pointer !important;
   z-index:3 !important;
