@@ -22634,11 +22634,28 @@ body:not(.starterScreenActive) .readToBobPrivacyNote{
   window.setReadToBobMissionPassage=function(passage){
     missionPracticePassageOverride=cleanPracticeSentence(passage);
   };
+  function currentStemCoachSelectedVocabulary(){
+    var detail=byReadToBobId("vocabDetailBox");
+    if(!detail) return null;
+    var wordHeading=detail.querySelector("b");
+    if(!wordHeading) return null;
+    var word=cleanPracticeSentence(wordHeading.textContent.replace(/^[^A-Za-z0-9']+/,""));
+    var definitionParts=[];
+    var node=wordHeading.nextSibling;
+    while(node){
+      if(node.nodeType === 1 && node.tagName === "B") break;
+      if(node.nodeType === 3) definitionParts.push(node.nodeValue);
+      else if(node.nodeType === 1 && node.tagName !== "BR") definitionParts.push(node.textContent);
+      node=node.nextSibling;
+    }
+    var definition=cleanPracticeSentence(definitionParts.join(" "));
+    return word && definition ? {word:word,definition:definition} : null;
+  }
   function currentStemCoachReadToBobPassage(){
     var panel=byReadToBobId("thinkerBobPanel");
     if(!panel) return "";
     var labels=["STEM Fact","Think About It","Builder Challenge"];
-    return labels.map(function(label){
+    var sections=labels.map(function(label){
       var paragraph=Array.from(panel.querySelectorAll("p")).find(function(item){
         var heading=item.querySelector("b");
         return !!heading && heading.textContent.replace(/[^\w\s]/g,"").trim().toLowerCase() === label.toLowerCase();
@@ -22648,7 +22665,12 @@ body:not(.starterScreenActive) .readToBobPrivacyNote{
       var heading=content.querySelector("b");
       if(heading) heading.remove();
       return cleanPracticeSentence(content.textContent);
-    }).filter(Boolean).join(" ");
+    }).filter(Boolean);
+    var vocabulary=currentStemCoachSelectedVocabulary();
+    if(vocabulary){
+      sections.unshift(vocabulary.word.replace(/[.!?]$/,"")+".",vocabulary.definition);
+    }
+    return sections.join(" ");
   }
   window.startStemCoachReadToBob=function(){
     var passage=currentStemCoachReadToBobPassage();
